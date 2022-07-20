@@ -1,0 +1,16 @@
+package ex05_string;
+
+public class Ex01 {
+
+	public static void main(String[] args) {
+		
+		// 문자열 연결 연산
+		// 문자열이 포함된 + 연산은 연결하는것임
+		
+		String str1 = "구디" + "아카데미";
+		System.out.println(str1);
+		
+
+	}
+
+}

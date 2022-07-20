@@ -1,0 +1,35 @@
+package ex04_condition;
+
+public class Ex03 {
+	
+	public static void main(String[] args) {
+		
+		//조건 연산자
+		// 조건을 만족하는 경우와 그렇지 않은 경우 모두를 처리하는 연산
+		// 형식
+		// 조건 ? 만족하는경우의 결과 : 만족하지않는경우의 결과
+		
+		int score = 100;
+		String result = score >=60 ? "합격" : "불합격";
+		System.out.println(result);
+		
+		//연습
+		// 순위가 1이면 "금메달", 순위가 2이면 "은메달", 순위가 3이면 "동메달"
+		// 나머지 순위는 없음
+		int rank =1;
+		
+		String medal = (rank == 1)  ? "금메달" : "은메달";
+		System.out.println(medal);
+		//연습
+		//홀수는 "홀수" 짝수는 "짝수"
+		//힌트
+		//홀수 - 2로 나눈 나머지가 1인 수
+		//짝수 - 2로 나눈 나머지가 0인 수
+		
+		int n = 1;
+		String type =  (n %= 2) == 0  ? "짝수" : "홀수";
+		System.out.println(type);
+		
+		
+}
+}
