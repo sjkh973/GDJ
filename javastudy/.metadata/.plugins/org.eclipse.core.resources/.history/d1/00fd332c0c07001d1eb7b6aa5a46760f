@@ -1,0 +1,26 @@
+package ex02_casting;
+
+public class Ex03 {
+
+	public static void main(String[] args) {
+		
+		/*
+		 * 
+		 */
+		
+		String strScore = "100";
+		String strMoney = "10000000000";
+		String strGrade = "4.5";
+		
+		int score = Integer.parseInt(strScore); //String을 int로 바꿈
+		long money = Long.parseLong(strMoney); //문자열을 long으로 
+		double grade = Double.parseDouble(strGrade);
+		
+		System.out.println(score);
+		System.out.println(money);
+		System.out.println(grade);
+		
+
+	}
+
+}

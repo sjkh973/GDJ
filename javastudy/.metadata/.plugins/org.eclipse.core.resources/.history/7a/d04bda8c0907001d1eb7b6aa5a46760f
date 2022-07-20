@@ -1,0 +1,23 @@
+package ex02_casting;
+
+public class Ex02 {
+
+	public static void main(String[] args) {
+		
+		/*
+		 *  강제 형 변환
+		 *  casting이라고 한다.
+		 *  큰 크기의 데이터타입을 작은 크기의 데이터타입으로 변환할 때 강제로 진행한다.
+		 *  실수를 정수로 변환할 때 강제로 진행한다.
+		 *  
+		 */
+		double db = 1.5;
+		
+		int a = (int)db;
+		
+		System.out.println(a);
+		System.out.println(db);
+
+	}
+
+}
