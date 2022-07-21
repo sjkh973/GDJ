@@ -126,15 +126,15 @@ public class Ex03_else_if {
 	
 		if(day % 7 == 1) {
 			weekName = "수요일";
-		} else if(day%7== 2) {
+		} else if(day % 7 == 2) {
 			weekName = "목요일";
-		} else if(day%7== 3) {
+		} else if(day % 7 == 3) {
 			weekName = "금요일";
-		} else if(day%7== 4) {
+		} else if(day % 7 == 4) {
 			weekName = "토요일";
-		} else if(day%7== 5) {
+		} else if(day % 7 == 5) {
 			weekName = "일요일";
-		} else if(day%7== 6) {
+		} else if(day % 7 == 6) {
 			weekName = "월요일";
 		} else {
 			weekName = "화요일";

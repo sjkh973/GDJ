@@ -106,9 +106,8 @@ public class Ex04_switch {
 		int level = 1;
 		String right = ""; //권한
 		
-		
 		switch ( level ) {
-		case 1 : right+= "쓰기";
+		case 1 : right += "쓰기";
 		case 2 : right += "실행";
 		case 3 : right += "읽기"; break;
 		default : right = "없음";
