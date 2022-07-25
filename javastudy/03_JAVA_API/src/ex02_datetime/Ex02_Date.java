@@ -46,7 +46,7 @@ public class Ex02_Date {
 		
 		Date now = new Date();
 		System.out.println(now);
-		
+
 		
 		
 		

@@ -59,7 +59,6 @@ public class Ex06_practice {
 					break;
 				}
 			}
-			
 			System.out.println();
 		}
 		
