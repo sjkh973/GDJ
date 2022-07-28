@@ -15,6 +15,7 @@ public class Student {
 	public Student() {
 		
 	}
+	
 	public Student(String stuNo, String name) {
 		this.stuNo = stuNo;
 		this.name = name;
