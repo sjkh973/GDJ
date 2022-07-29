@@ -26,4 +26,5 @@ public class MyMath {
 		}
 		return result;
 	}
+	
 }

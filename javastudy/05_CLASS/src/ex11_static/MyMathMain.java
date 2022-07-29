@@ -27,6 +27,7 @@ public class MyMathMain {
 		System.out.println(MyMath.pow(2,5)); // 2의 5제곱(32)
 		
 		
+		
 	}
 
 }

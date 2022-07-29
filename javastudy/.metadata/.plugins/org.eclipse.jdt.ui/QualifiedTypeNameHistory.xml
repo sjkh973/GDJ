@@ -8,10 +8,8 @@
     <fullyQualifiedTypeName name="jdk.internal.misc.FileSystemOption"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="java.security.Timestamp"/>
-    <fullyQualifiedTypeName name="java.util.Calendar"/>
     <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
     <fullyQualifiedTypeName name="java.time.format.DateTimeFormatter"/>
-    <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
@@ -28,5 +26,24 @@
     <fullyQualifiedTypeName name="ex04_method.VendingMachine"/>
     <fullyQualifiedTypeName name="ex05_method.Car"/>
     <fullyQualifiedTypeName name="ex06_method_overload.Calculator"/>
+    <fullyQualifiedTypeName name="ex07_constructor.Computer"/>
+    <fullyQualifiedTypeName name="ex08_access_modifier.User"/>
+    <fullyQualifiedTypeName name="ex09_this.Student"/>
+    <fullyQualifiedTypeName name="java.lang.StringIndexOutOfBoundsException"/>
+    <fullyQualifiedTypeName name="java.lang.Readable"/>
+    <fullyQualifiedTypeName name="ex10_this.Rectangle"/>
+    <fullyQualifiedTypeName name="ex11_static.MyMath"/>
+    <fullyQualifiedTypeName name="Ex01_is_a.Person"/>
+    <fullyQualifiedTypeName name="Ex01_is_a.Student"/>
+    <fullyQualifiedTypeName name="Ex02_is_a.Hybrid"/>
+    <fullyQualifiedTypeName name="ex03_has_a.Gun"/>
+    <fullyQualifiedTypeName name="ex04_has_a_inherit.Gun"/>
+    <fullyQualifiedTypeName name="ex04_has_a_inherit.SoldierMain"/>
+    <fullyQualifiedTypeName name="ex03_has_a.Soldier"/>
+    <fullyQualifiedTypeName name="java.util.Calendar"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="exam.Player"/>
+    <fullyQualifiedTypeName name="exam.Watch"/>
+    <fullyQualifiedTypeName name="exam.Soldier"/>
 </qualifiedTypeNameHistroy>
