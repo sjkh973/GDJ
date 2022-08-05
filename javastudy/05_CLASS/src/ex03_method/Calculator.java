@@ -13,6 +13,9 @@ public class Calculator {
 	// 2. add : 메소드 명(마음대로 지으면 됨)
 	// 3. int a, int b : 매개 변수(add 메소드를 호출할 때는 int 타입의 값 2개가 전달 되어야한다.)
 	
+	
+	
+	
 	//덧셈
 	int add(int a,int b) {
 		int result = a + b;
