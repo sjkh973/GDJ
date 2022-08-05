@@ -1,5 +1,6 @@
 package parking;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ParkingLot {
@@ -15,11 +16,10 @@ public class ParkingLot {
 		sc = new Scanner(System.in);
 	}
 	
-	public void addCar() {
+	public void addCar() throws RuntimeException {
 		System.out.println("현재 등록된 차량" + idx + "대");
 		if(idx == cars.length) {
-			System.out.println("더 이상 차량 등록이 불가능합니다.");
-			return;
+			throw new RuntimeException("더 이상 차량 등록이 불가능합니다.");
 		}
 		System.out.print("차량번호>>>");
 		String carNum = sc.nextLine();
@@ -30,10 +30,10 @@ public class ParkingLot {
 		System.out.println("차량번호 " + carNum + " 차량이 등록되었습니다." );
 	}
 	
-	public void deleteCar() {
+	
+	public void deleteCar() throws RuntimeException {
 		if(idx == 0) {
-			System.out.println("등록된 차량이 없습니다.");
-			return;
+			throw new RuntimeException("등록된 차량이 없습니다.");
 		}
 		System.out.print("제거할 차량번호>>>");
 		String carNum = sc.nextLine();
@@ -48,10 +48,9 @@ public class ParkingLot {
 		System.out.println("대상 차량이 존재하지 않습니다");
 	}
 	
-	public void printAllCars() {
+	public void printAllCars() throws RuntimeException {
 		if(idx == 0) {
-			System.out.println("등록된 차량이 없습니다.");
-			return;
+			throw new RuntimeException("조회할 차량이 없습니다.");
 		}
 		System.out.println(name + " 차량 목록");
 		
@@ -62,16 +61,24 @@ public class ParkingLot {
 	}
 	
 	public void manage() {
+		
 		while(true) {
-			System.out.print("1.추가 2. 삭제 3. 전체 0. 종료>>>");
-			int n = sc.nextInt();
-			sc.nextLine();
-			switch(n) {
-			case 1 : addCar(); break;
-			case 2 : deleteCar(); break;
-			case 3 : printAllCars(); break;
-			case 0 : System.out.println("주차관리 종료");return;
-			default : System.out.println("존재하지 않는 메뉴입니다.");
+			try {
+				System.out.print("1.추가 2. 삭제 3. 전체 0. 종료>>>");
+				int n = sc.nextInt();
+				sc.nextLine();
+				switch(n) {
+				case 1 : addCar(); break;
+				case 2 : deleteCar(); break;
+				case 3 : printAllCars(); break;
+				case 0 : System.out.println("주차관리 종료");return;
+				default : System.out.println("존재하지 않는 메뉴입니다.");
+				}	
+			} catch (InputMismatchException e) {
+				sc.next(); // 미스매치 입력인 문자열을 제거해줌
+				System.out.println("처리 명령은 정수 (1 ~ 4,0)");
+			} catch(RuntimeException e) {
+				System.out.println(e.getMessage());
 			}
 		}
 	}
