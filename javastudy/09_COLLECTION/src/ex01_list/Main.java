@@ -78,11 +78,13 @@ public class Main {
 			System.out.println(arr[i]);
 		}
 		
+		//범위에 메소드를 넣으면 성능이 저하되는 이슈가 생길수있음
 		for(int i = 0; i < list.size(); i++) {
 			System.out.println(list.get(i));
 		}
 		
 		//개선책
+		//변수 하나에 list.size를 저장하여 메소드를 한번만 호출하게 한다.
 		// for() 메소드 호출을 한 번만 진행
 		for(int i = 0, length = list.size(); i < length; i++) {
 			System.out.println(list.get(i));
@@ -91,7 +93,7 @@ public class Main {
 		for(String element : list) {
 			System.out.println(element);
 		}
-		
+	
 	}
 	
 	public static void m3() {

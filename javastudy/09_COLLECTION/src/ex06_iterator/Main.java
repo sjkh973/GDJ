@@ -54,9 +54,7 @@ public class Main {
 		map.put("query", "날씨");
 		
 		Set<String> keys = map.keySet();
-		
-		System.out.println(keys);
-		
+			
 		Iterator<String> itr = keys.iterator();
 		
 		while(itr.hasNext()) {
