@@ -10,6 +10,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\GDJ\javastudy\10_IO"/>
 			<item value="C:\Users\GDJ54\Desktop\Exam01"/>
 			<item value="C:\Users\GDJ54\Desktop\Exam"/>
 		</list>

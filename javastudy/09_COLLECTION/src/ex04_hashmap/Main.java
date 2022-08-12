@@ -72,15 +72,14 @@ public class Main {
 		map.put("title", "소나기"); // Entry 1
 		map.put("author", "황순원");
 		map.put("price", 20000);
-		
-		//Entry 단위로 순회(for)
-		
+			
 		for(Map.Entry<String, Object> entry : map.entrySet()) {
 			System.out.println(entry.getKey() + ":" + entry.getValue());
 		}
 		
 		//Key를 이용한 순회(for)
-		
+		//keySet() map의 key값을 가져오는 메소드
+		//get(key) key값의 value값을 가져오는 메소드
 		for(String key : map.keySet()) {
 			System.out.println(key + ":" + map.get(key));
 		}
@@ -124,7 +123,7 @@ public class Main {
 		
 	}
 	public static void main(String[] args) {
-		m4();
+		m3();
 	}
 
 }
