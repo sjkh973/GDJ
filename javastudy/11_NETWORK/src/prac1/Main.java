@@ -19,24 +19,19 @@ public class Main {
 	public static void main(String[] args) {
 		
 		try {
-			String apiURL = "https://kma.go.kr/XML/weather/sfc_web_map.xml";
+			String apiURL = "https://www.kma.go.kr/XML/weather/sfc_web_map.xml";
 
 			URL url = new URL(apiURL);
 			
 			HttpURLConnection con = (HttpURLConnection)url.openConnection();
-			
-			//바이트 입력 스트림
-			InputStream in =  con.getInputStream(); 
 			
 			//접속 확인 코드
 			if(con.getResponseCode() != HttpURLConnection.HTTP_OK) {
 				System.out.println("API 접속 실패");
 				return;
 			}
-			
-			// 문자 입력 스트림으로 변환
-			
-			BufferedReader br = new BufferedReader(new InputStreamReader(in));
+				
+			BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
 			
 			File file = new File("C:\\storage", "sfc_web_map.xml");
 	
@@ -56,6 +51,7 @@ public class Main {
 		}catch (MalformedURLException e) {
 			System.out.println("API 주소 오류");
 		} catch (IOException e) {
+			e.getMessage();
 			System.out.println("API 서버 오류");
 		}
 		

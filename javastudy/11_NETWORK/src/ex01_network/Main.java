@@ -5,9 +5,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 public class Main {
 
@@ -35,6 +39,7 @@ public class Main {
 			System.out.println("호스트 : " + url.getHost());
 			System.out.println("파라미터: " + url.getQuery());
 			
+			//형식이 잘못된걸 알려주는 exception // 주소 틀렸을때
 		}catch (MalformedURLException e) {
 			System.out.println("API 주소 오류");
 		}
@@ -94,8 +99,10 @@ public class Main {
 			//바이트 입력 스트림
 			InputStream in =  con.getInputStream(); 
 			
-			// 문자 입력 스트림으로 변환
+			// 문자 입력 스트림으로 변환 //char 기반
 			InputStreamReader reader = new InputStreamReader(in);
+			
+			//InputStreamReader isr = new InputStreamReader(con.getInputStream());
 			
 			// 모두 읽어서 StringBuilder에 저장
 			StringBuilder sb = new StringBuilder();
@@ -125,8 +132,33 @@ public class Main {
 		
 	}
 	
+	public static void m4() {
+		
+		// 인코딩 : UTF-8 방식으로 암호화
+		// 디코딩 : UTF-8 방식으로 복호화
+		//원본데이터 - > 인코딩 - > 전송 - > 디코딩 - > 원본데이터
+		
+		try {
+			//원본데이터
+			String str = "한글 english 12345 !@#$+";
+			
+			// 인코딩
+			String encode = URLEncoder.encode(str, "UTF-8");
+			System.out.println(encode);
+			
+			//디코딩
+			String decode = URLDecoder.decode(encode, StandardCharsets.UTF_8);
+			System.out.println(decode);
+			
+			//인코드 방식 잘못적었을때 잡아주는 exception
+		}catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public static void main(String[] args) {
-		m3();
+		m4();
 
 	}
 
