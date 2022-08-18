@@ -34,7 +34,9 @@ public class ServerMain {
 			server.bind(new InetSocketAddress("localhost", 9090));
 			System.out.println("♠채팅 서버 오픈");
 	
-			while(true) {			
+			while(true) {
+				
+				//서버 중지 조건은 없는 상태임
 				client = server.accept(); //클라이언트 접속
 				Server s = new Server(client);
 				servers.add(s);

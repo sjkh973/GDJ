@@ -5,20 +5,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 
-public class Client extends Thread{
+public class Client extends Thread {
 
-	private Socket socket;
 	private BufferedReader in;
-	
-	
+
 	public Client(Socket socket) {
 		try {
-		this.socket = socket;
-		in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-	
-		}catch (IOException e) {
+			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+		} catch(IOException e) {
 			e.printStackTrace();
-			
 		}
 	}
 	
@@ -28,28 +23,23 @@ public class Client extends Thread{
 		try {
 			while(true) {
 				String message = in.readLine();
-				if(message.equalsIgnoreCase("exit")) { // 채팅창에 exit 입력하면 채팅종료
+				if(message == null || message.equalsIgnoreCase("exit")) {
 					break;
 				}
 				System.out.println(message);
-			}		
-		}catch (IOException e) {
+			}
+		} catch(IOException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
 				if(in != null) {
 					in.close();
 				}
-				if(socket.isClosed() ==false) {
-					socket.close();
-				}
-			}catch (IOException e) {
+			} catch(IOException e) {
 				e.printStackTrace();
 			}
 		}
+		
 	}
-	
-	
-	
 	
 }

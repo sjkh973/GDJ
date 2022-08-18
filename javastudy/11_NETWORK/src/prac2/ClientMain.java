@@ -18,21 +18,17 @@ public class ClientMain {
 		try {
 			socket = new Socket();
 			socket.connect(new InetSocketAddress("localhost", 9090));
-			
-			out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())); // 서버와 연결된 소켓에게 writer기능
-			
-			sc = new Scanner(System.in);
-			
+					
 			Client client = new Client(socket);
 			client.start();
 			
+			sc = new Scanner(System.in);
+			out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())); // 서버와 연결된 소켓에게 writer기능		
+				
 			while(true) {
 				System.out.println(">>>");
-				String message =sc.nextLine();
-				if(message.equalsIgnoreCase("exit")) {
-					break;
-				}
-				out.write(message);
+				String message =sc.nextLine(); // 채팅내용입력		
+				out.write(message + "\n"); // Client.java의 BufferedReader in으로 전달
 				out.flush();
 			}
 			
@@ -44,9 +40,7 @@ public class ClientMain {
 				if(out != null) {
 					out.close();
 				}
-				if(socket.isClosed()== false) {
-					socket.close();
-				}
+				
 			}catch (IOException e) {
 				e.printStackTrace();
 				
