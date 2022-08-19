@@ -22,7 +22,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class Main {
+public class Main1_XML {
 
 	
 	// 요청
@@ -470,43 +470,39 @@ public class Main {
 	
 	//M7다시해야댐
 	public static void m7() {
-		
+
 		File file = new File("C:\\storage", "api4.xml");
 		
-		
 		try {
+			
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			Document doc = builder.parse(file);
 			
 			Element root = doc.getDocumentElement();
-			NodeList items = root.getElementsByTagName("channel");
-			for(int i = 0; i < items.getLength(); i++) {
-				Element item = (Element) items.item(i);
-				StringBuilder sb = new StringBuilder();
-				Node title = item.getElementsByTagName("title").item(0);
-				sb.append(title.getTextContent()).append("\n");
-				Node pubDate = item.getElementsByTagName("pubDate").item(0);
-				sb.append(pubDate.getTextContent()).append("\n");
-				
-				NodeList data = root.getElementsByTagName("data");
-				for(int j=0; j < data.getLength(); j++) {
-					Element datas = (Element)data.item(j);
-					String strCategory = null;
-					switch (datas.getTextContent()) {
-					case "hour" :  strCategory =  "시";
-					case "temp" :  strCategory =  "도";
-					case "wfKor":  
-				}
-				System.out.println(sb.toString());
-				
-				
 			
+			StringBuilder sb = new StringBuilder();
+			
+			Node title = root.getElementsByTagName("title").item(0);
+			sb.append(title.getTextContent()).append("\n");
+			
+			Node pubDate = root.getElementsByTagName("pubDate").item(0);
+			sb.append(pubDate.getTextContent()).append("\n");
+			
+			NodeList dataList = root.getElementsByTagName("data");
+			for(int i = 0; i < dataList.getLength(); i++) {
+				Element data = (Element)dataList.item(i);
+				Node hour = data.getElementsByTagName("hour").item(0);
+				Node temp = data.getElementsByTagName("temp").item(0);
+				Node wfKor = data.getElementsByTagName("wfKor").item(0);
+				sb.append(hour.getTextContent()).append("시 ");
+				sb.append(temp.getTextContent()).append("도 ");
+				sb.append(wfKor.getTextContent()).append("\n");
 			}
 			
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			System.out.println(sb.toString());
+			
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		
@@ -589,7 +585,7 @@ public class Main {
 	}
 	
 	public static void main(String[] args) {
-		m9();
+		m7();
 		
 		
 	}

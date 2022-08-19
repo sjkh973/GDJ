@@ -7,5 +7,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/GDJ/installer/jar/lombok-1.18.18.jar"/>
+	<classpathentry kind="lib" path="C:/GDJ/installer/jar/json-20220320.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -20,9 +20,7 @@ public class ParseMain {
 	
 		File file = new File("C:\\storage","boxoffice.xml");
 		List<Movie> movies = new ArrayList<>();
-		
-		
-		
+	
 		try {
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();
