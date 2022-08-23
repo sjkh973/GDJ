@@ -189,7 +189,6 @@ public class Main1_XML {
 			con.setRequestMethod("GET"); //생략가능 생략하면 자동으로 get방식임
 			con.setRequestProperty("Content-Type", "application/xml; charset=UTF-8");
 		} catch (MalformedURLException e) {
-	
 			e.printStackTrace();
 		} catch(IOException e) {
 			System.out.println("API 주소 접속 실패");
