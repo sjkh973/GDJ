@@ -1,0 +1,47 @@
+
+--테이블 삭제
+DROP TABLE CUSTOMER;
+DROP TABLE BANK;
+
+
+--테이블생성
+
+CREATE TABLE BANK(
+    BANK_CODE VARCHAR2(20 BYTE), -- 기본키
+    BANK_NAME VARCHAR2(30 BYTE)
+);
+
+--테이블 생성
+CREATE TABLE CUSTOMER(
+    NO NUMBER, -- 기본키
+    NAME VARCHAR2(30 BYTE) NOT NULL,
+    PHONE VARCHAR2(30 BYTE) UNIQUE,
+    AGE NUMBER,
+    BANK_CODE VARCHAR2(20 BYTE), --FK
+    CONSTRAINT CK_CUSTOMER CHECK(AGE BETWEEN 0 AND 100)
+);
+
+--기본키 추가
+ALTER TABLE BANK
+    ADD CONSTRAINT PK_BANK PRIMARY KEY(BANK_CODE);
+
+ALTER TABLE CUSTOMER
+    ADD CONSTRAINT PK_CUSTOMER PRIMARY KEY(NO);
+
+--외래키 추가
+ALTER TABLE CUSTOMER
+    ADD CONSTRAINT FK_CUSTOMER_BANK FOREIGN KEY(BANK_CODE) 
+        REFERENCES BANK(BANK_CODE)
+            ON DELETE CASCADE;  
+            
+/*
+    FK 옵션
+    
+    1. ON DELETE SET NULL
+        1) 참조하던 PK의 값이 삭제되면 PK의 값을 NULL로 수정
+        2) FK이 필수 설정(NOT NULL)이면 사용할 수 없는 옵션
+
+    2. ON DELETE CASCADE
+        1) 참조하던 PK의 값이 삭제되면 FK의 값을 함께 삭제
+        2) 회원 탈퇴 시 작성한 게시글 모두 삭제, 게시글 삭제 시 달린 댓글 모두 삭제와 같은 경우
+*/            
