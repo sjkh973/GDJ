@@ -138,7 +138,7 @@ public class ApiMain {
 			String occrrncDt = element.getString("occrrnc_dt");
 			String occrrncDayCd =element.getString("occrrnc_day_cd");
 			int dthDnvCnt = element.getInt("dth_dnv_cnt");
-			int injpsnCnt= element.getInt("injpsn_cnt");
+			int injpsnCnt= element.getInt("injpsn_cnt");			
 			
 			Accident accident = Accident.builder()
 					.occrrncDt(occrrncDt)
