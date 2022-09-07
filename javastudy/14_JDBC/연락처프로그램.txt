@@ -1,0 +1,11 @@
+- db.properties
+  1. 민감 정보는 별도의 파일로 보관하고 gitignore를 통해서 github에 안 올려야 함
+  2. DB접속정보를 db.propreties 파일에 보관
+
+- .gitignore 사용순서
+  1. .gitignore 파일에 db.properties 작성 후 저장
+  2. push (원격레파지토리 변경)
+  3. db.properties 파일생성
+     url=주소
+     user=사용자
+     password=비밀번호

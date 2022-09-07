@@ -1,0 +1,60 @@
+JDBC
+
+1. Java DataBase Connection
+2. 사용할 클래스/인터페이스
+
+    - 오라클(DB벤더)에서 제공 - ojdbc6.jar
+    1) OracleDriver
+        (1) ojdbc6.jar 경로 - C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib
+        (2) 클래스명 - oracle.jdbc.OracleDriver
+        (3) 프로젝트의 Build Path - Classpath에 ojdbc6.jar 라이브러리를 등록해야 함
+
+    - 이후 클래스는 모두 자바에서 제공
+    - 공통 패키지 : java.sql 패키지
+    2) DriverManager : DB접속(커넥션) 생성 - getConnection() 메소드 : Connection 반환
+        (1) url : DB주소(로컬에 설치한 DB - localhost 또는 127.0.0.1)
+        (2) user : 사용자(스키마)
+        (3) password : 비밀번호
+    3) Connection : DB접속
+    4) PreparedStatement : 쿼리문 실행
+    5) ResultSet : SELECT문 실행 결과
+
+- SQL Injection
+1. 특정 쿼리문을 삽입하여 원하는 정보를 탈취하는 방법
+2. 로그인 상황
+    1) SELECT * FROM 회원 WHERE 아이디=id AND 비밀번호=pw
+    2) "SELECT * FROM 회원 WHERE 아이디='" + id + " AND 비밀번호='" + pw + "'"
+    3) 변수
+        (1) id : min
+        (2) pw : ' OR 1=1 --
+    4) 쿼리에 변수 값 대입
+        SELECT * FROM 회원 WHERE 아이디='min' AND 비밀번호='' OR 1=1 --'
+
+- SQL Injection을 방지하려면 PreparedStatement를 사용하면 된다!
+
+PreparedStatement의 로그인 상황
+    1) "SELECT * FROM 회원 WHERE 아이디=? AND 비밀번호=?"
+    2) 사전에 쿼리문을 미리 컴파일 한 뒤 ?으로 처리되는 부분에만 나중에 변수 값을 문자열로 넣어 처리하므로 어떤 형태의 사용자 입력이든 쿼리문으로 인식하지 않고 문자열로 처리하므로 SQL Injection으로부터 안전하다!
+
+- INSERT, UPDATE, DELETE
+  1. JDBC 코드가 동일하다. (실행이 executeUpdate() 메소드)
+  2. JDBC는 동작 기본값이 Auto Commit이기 때문에 코드로 commit을 할 필요가 없다.
+
+- SELECT
+  1. 실행은 executeQuery() 메소드를 이용한다.
+  2. 실행 결과는 ResultSet 객체이다.
+  3. ResultSet 객체는 테이블을 행(Row) 단위로 스캔하고 가져올 수 있는 객체이다.
+  4. next() 메소드를 이용해서 행(Row) 단위로 스캔한다.
+
+- DTO와 DAO
+  1. DTO : Data Transfer Object, 데이터 전송 객체, DB로 전송할 데이터는 하나로 모아서 처리, 클래스를 이용해 객체로 만들어서 전달하는 형태, 데이터 저장 객체를 처리하는 영역으로 도메인(domain) 패키지로 처리
+  2. DAO : Database Access Object, 데이터베이스 접근 객체, 쿼리문을 실행하는 모든 메소드를 처리하는 클래스, Singleton 패턴으로 하나의 객체만 존재할 수 있도록 처리, DB저장소를 처리하는 영역으로 레파지토리(repository) 패키지로 처리
+
+- Properties 파일
+  1. 각종 설정(DB 설정)을 저장하는 텍스트 파일
+  2. 확장자가 *.properties
+  3. 프로퍼티=값 형식으로 내용을 채워줌
+  4. 최근에는 Properties 파일 대신 YAML(*.yaml, *.yml) 파일을 자주 사용
+  5. 민감한 정보들은 Properties 파일에 작성하고 gitignore로 github에 올리지 않아야 함
+  
+  
