@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Contact {
+public class ContactDTO {
 
 	private int contact_no;
 	private String name;
