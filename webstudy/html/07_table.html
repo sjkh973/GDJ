@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        테이블(table)
+
+        1. 표 만들기
+        2. <table> 태그와 <thead>, <tbody>, <tfoot> 하위 태그로 구성
+            1) <thead>
+                (1) 테이블의 제목 영역
+                (2) 생략 가능
+            2) <tbody>
+                (1) 테이블의 본문 영역
+                (2) 반드시 사용됨
+                (3) 생략하더라도 자동으로 추가됨
+            3) <tfoot>
+                (1) 테이블의 하단 영역
+                (2) 생략 가능
+        4. <thead>, <tbody>, <tfoot> 태그의 하위 태그
+            1) <tr> 
+            2) 행(row)을 만들 때 사용하는 태그
+            3) 반드시 사용해야 함
+        5. <tr> 태그의 하위 태그
+            1) <th>
+                (1) 제목 열 만들 때 사용하는 태그
+                (2) 주로 <thead>에 태그에서 사용    
+                (3) 굵게 + 가운데 정렬 처리됨
+            2) <td> // table data
+                (1) 일반 열 만들 때 사용하는 태그
+                (2) <thead>, <tbody>, <tfoot> 태그에서 모두 사용    
+     -->
+
+     <!-- 1. 기본 형태 -->
+     <table border="1">
+        <thead>
+            <tr>
+                <th>제품명</th>
+                <th>입고수량</th>
+                <th>출고수량</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>홈런볼</td>
+                <td>100</td>
+                <td>50</td>              
+            </tr>
+            <tr>
+                <td>꼬북칩</td>
+                <td>200</td>
+                <td>100</td> 
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td>합계</td>
+                <td>300</td>
+                <td>150</td>
+            </tr>
+        </tfoot>
+     </table>
+
+     <!-- 2. 레이아웃용 테이블 -->
+     
+</body>
+</html>
