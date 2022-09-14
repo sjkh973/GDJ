@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!--
+        1. 순서가 없는 목록(unordered list)
+            1) 블록 레벨
+            2) 각 목록을 글머리기호로 나타냄(<ul> 태그의 type 속성을 사용)
+                (1) <ul type="disc">   : ● (디폴트, type 속성을 생략하면 적용)
+                (2) <ul type="circle"> : ○
+                (3) <ul type="square"> : ■
+            3) <ul> 태그 : 전체 목록을 포함하는 태그
+            4) <li> 태그 : 목록을 구성하는 각 항목을 나타내는 태그
+            5) 부모 태그로 <ul> 태그를 사용하고 자식 태그로 <li> 태그를 사용함
+    -->
+    <ul type="disc">
+        <li>동그랑땡</li>
+        <li>잡채</li>
+        <li>갈비</li>
+        <li>송편</li>
+        <li>아구찜</li>
+    </ul>
+    
+    <!--
+        Emmet 활용하기
+
+        5개 <li> 태그를 가지는 <ul> 태그
+        ul>li*5
+    -->
+    <ul type="circle">
+        <li>카페</li>
+        <li>메일</li>
+        <li>뉴스</li>
+        <li>지도</li>
+        <li>증권</li>
+    </ul>
+
+    <!--
+        2. 순서가 있는 목록(ordered list)
+            1) 블록 레벨
+            2) 각 목록을 번호로 나타냄(<ol> 태그의 type 속성을 사용)
+                (1) <ol type="1"> : 1,2,3,... (디폴트)
+                (2) <ol type="A"> : A,B,C,...
+                (3) <ol type="a"> : a,b,c,...
+                (4) <ol type="I"> : I,II,III,...
+                (5) <ol type="i"> : i,ii,iii,...
+            3) <ol> 태그 : 전체 목록을 포함하는 태그
+            4) <li> 태그 : 목록을 구성하는 각 항목을 나타내는 태그
+            5) 부모 태그로 <ol> 태그를 사용하고 자식 태그로 <li> 태그를 사용함
+    -->
+    <h1>SELECT문은 어느 언어에 속하는가?</h1>
+    <ol type="1">
+        <li>DDL</li>
+        <li>DML</li>
+        <li>DCL</li>
+        <li>DQL</li>
+        <li>TCL</li>
+    </ol>
+
+    <!--
+        3. 개요 목록(decription list)
+            1) 블록 레벨
+            2) 한 개요는 용어(단어)와 설명(개요)로 구성
+            3) 전체 개요 목록은 <dl> 태그로 구성
+            4) 용어(단어)는 <dt> 태그로 구성하고, 설명(개요)는 <dd> 태그로 구성
+            5) <dl> : description list
+               <dt> : description term
+               <dd> : description description
+    -->
+    <h1>오징어 게임</h1>
+    <dl>
+        <dt>오픈</dt>
+        <dd>2021.09.17.</dd>
+        <dt>채널</dt>
+        <dd>넷플릭스</dd>
+        <dt>등장인물</dt>
+        <dd>
+            <ul>
+                <li>기훈 역(이정재)</li>
+                <li>새벽 역(정호연)</li>
+                <li>덕수 역(허성태)</li>
+            </ul>
+        </dd>
+    </dl>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!--
+        그림(image)
+
+        1. 인라인 레벨
+        2. <img>, <img/>
+        3. 주요 속성
+            1) alt : 이미지 대신 나타낼 텍스트(이미지 로드 실패를 대비)
+            2) src : 이미지 경로
+                (1) 절대 경로 : 사용 불가
+                (2) 상대 경로 : 사용 가능
+                    ① 상위 폴더 : ..
+                    ② 현재 폴더 : .
+                (3) 웹 경로   : 사용 가능
+            3) width  : 이미지 너비 지정
+            4) height : 이미지 높이 지정
+               - 주의. width와 height중 하나만 지정할 것(하나만 조정하면 전체 비율을 유지)
+    -->
+
+    <!-- 절대 경로 -->
+    <img alt="사랑해" src="C:/GDJ/images/like.png">
+
+    <!-- 수평선 태그 : hr 태그 -->
+    <hr>
+
+    <!-- 상대 경로 -->
+    <!--
+        D:/GDJ54/webstudy/HTML/05_image.html
+        D:
+        ㄴGDJ54       : 상위x2 (../..)
+          ㄴwebstudy  : 상위 폴더(..)
+            ㄴHTML    : 현재 폴더(.)
+    -->
+    <img alt="사랑해" src="../../images/like.png">
+
+    <hr>
+
+    <!-- 웹 경로 -->
+    <img alt="오징어게임" src="https://search.pstatic.net/common?type=o&size=174x242&quality=75&direct=true&src=https%3A%2F%2Fcsearch-phinf.pstatic.net%2F20211222_272%2F1640172866420MTXVN_PNG%2Fbda18900d5a1cf82b4a6167678c88958.png"
+
+</body>
+</html>

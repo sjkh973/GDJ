@@ -1,0 +1,91 @@
+<!--
+    Emmet
+
+    1. 에밋
+    2. 자동완성기능
+    3. 별도로 추가하는 경우도 있으나 vscode는 내장되어 있음
+-->
+<!-- 
+    적용 범위에 따른 태그 구분
+
+    1. 블록 레벨   : 적용 범위가 해당 블록(해당 라인 전체)
+    2. 인라인 레벨 : 적용 범위가 해당 태그 범위(라인의 일부)
+ -->
+ <!DOCTYPE html>
+ <html lang="ko">
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+ </head>
+ <body>
+     
+     <!-- 
+         1. 제목 태그(heading)
+             1) 블록 레벨
+             2) 제목을 만드는 태그(글자 크기 조정 + 굵게)
+             3) <h1>, <h2>, <h3>, <h4>, <h5>, <h6>
+     -->
+     <h1>1번째로 큰 제목</h1>
+     <h2>2번째로 큰 제목</h2>
+     <h3>3번째로 큰 제목</h3>
+     <h4>4번째로 큰 제목</h4>
+     <h5>5번째로 큰 제목</h5>
+     <h6>6번째로 큰 제목</h6>
+ 
+     <!--
+         2. 문단 태그(paragraph)
+             1) 블록 레벨
+             2) 문단을 만드는 태그
+             3) 특징
+                 (1) 공백 문자(스페이스)는 1개만 적용됨
+                 (2) 줄 바꿈(엔터)은 적용 안 됨
+             4) <p>
+     -->
+     <p>
+         여기는 p태그.    여기는 p태그.    여기는 p태그.    
+         여기는 p태그.    여기는 p태그.    여기는 p태그.    
+         여기는 p태그.    여기는 p태그.    여기는 p태그.    
+     </p>
+ 
+     <!--
+         3. 형식을 갖춘 문단(pre-formatted paragraph)
+             1) 블록 레벨
+             2) 포맷(형식)을 가지고 있는 문단을 만드는 태그
+             3) 사용자가 작성한대로 나타남
+             4) <pre>
+     -->
+     <pre>
+         여기는 pre태그.    여기는 pre태그.    여기는 pre태그.    
+         여기는 pre태그.    여기는 pre태그.    여기는 pre태그.    
+         여기는 pre태그.    여기는 pre태그.    여기는 pre태그.    
+     </pre>
+ 
+     <!--
+         4. 줄 바꿈(breaking line)
+             1) 인라인 레벨
+             2) 사용한만큼 줄 바꿈 처리됨
+             3) <br>, <br/> : 나 홀로 태그
+     -->
+     <p>
+         여기는 p태그.    여기는 p태그.    여기는 p태그.<br>
+         여기는 p태그.    여기는 p태그.    여기는 p태그.<br><br>
+         여기는 p태그.    여기는 p태그.    여기는 p태그.<br>
+     </p>
+ 
+     <!--
+         5. 엔티티 코드(entity code)
+             1) 특수문자
+             2) HTML 구성요소와의 충돌 방지
+     -->
+     작다(less than) &lt; <br>
+     작거나 같다(less than equal) &le; <br>
+     크다(greater than) &gt; <br>
+     크거나 같다(greater than equal) &ge; <br>
+     앰퍼센드 &amp; <br>
+     공백 &nbsp; <br>
+     Hello&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;World<br>   
+ 
+ </body>
+ </html>
