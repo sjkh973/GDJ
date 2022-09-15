@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            color: blue;
+        }
+        p{
+            color: yellow!important; /* important 지정되면 최우선 적용(남용 금지, 가급적 사용 자제할 것) */
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        inline 스타일
+
+        1. 태그에 style 속성으로 CSS를 직접 적용
+        2. 가장 우선순위가 높은 적용 방법(style 속성은 무조건 적용됨) 
+     -->
+     <h1 style="color: teal;">Hello CSS</h1>
+     <p style="color: crimson;">만나서 반갑습니다.</p>
+
+</body>
+</html>

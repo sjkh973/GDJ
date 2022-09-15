@@ -142,11 +142,13 @@
 
     <h1>연습1</h1>
     <table border="1">
-        <tr>
-            <td><strong>이름</strong></td>
-            <td><strong>나이</strong></td>
-            <td><strong>주소</strong></td>
+        <thead>   <tr>
+            <th>이름</th>
+            <th>나이</th>
+            <th>주소</th>
         </tr>
+        </thead>
+     
         <tr>
             <td>
                 홍길동
@@ -157,11 +159,11 @@
             </td>
         </tr>
         <tr>
-            <td><strong>특기</strong></td>
+            <th>특기</th>
             <td colspan="3">먹기</td>
         </tr>
         <tr>
-            <td rowspan="2"><strong>신체</strong></td>
+            <th rowspan="2">신체</th>
             <td colspan="3">180.0cm</td>
             
         </tr>
@@ -242,7 +244,120 @@
         </tr>
     </table>
 
+    <!-- 
+        기타 테이블 관련 태그
 
+        1. <caption>
+            1) <table> 태그의 하위 태그
+            2) 테이블에 제목을 작성할 수 있는 태그
+        2. <colgroup>
+            1) <thead>, <tbody>, <tfoot> 태그의 하위태그
+            2) 열 단위로 공통 스타일 작업을 수행할 수  있는 태그
+     -->
+
+     <table border="1">
+        <caption>테이블의 제목</caption>
+        <tbody>
+            <colgroup>
+                <col style="background-color: yellow;">
+                <col style="background-color: yellow;">
+                <col style="background-color: yellow;">
+                
+            </colgroup>
+            <tr>
+                <td>AAAAA</td>
+                <td>BBBBB</td>
+                <td>CCCCC</td>
+                <td>DDDDD</td>
+            </tr>
+            <tr>
+                <td>AAAAA</td>
+                <td>BBBBB</td>
+                <td>CCCCC</td>
+                <td>DDDDD</td>
+            </tr>
+            <tr>
+                <td>AAAAA</td>
+                <td>BBBBB</td>
+                <td>CCCCC</td>
+                <td>DDDDD</td>
+            </tr>
+        </tbody>
+     </table>
+
+     <h1>연습4</h1>
+     <table border="1">
+        <caption>제주특별자치도 학교현황(2015 기준)</caption>
+        <tbody>
+            <colgroup>
+                <col>
+                <col style="background-color:lightgray;">
+                <col>
+                <col style="background-color:lightgray;">
+            
+            </colgroup>
+        <tr>
+
+            <th >구분</th>
+            <th>학교수</th>
+            <th>학급수</th>
+            <th>학생수</th>
+            <th>교원수</th>
+        </tr>
+        <tr>
+            <th>유 치 원</th>
+            <td>117</td>
+            <td>252</td>
+            <td>5,547</td>
+            <td>474</td>
+        </tr>
+        <tr>
+            <th>합계</th>
+            <td>300</td>
+            <td>3,487</td>
+            <td>86,354</td>
+            <td>6,111</td>
+        </tr>
+        </tbody>
+     </table>
+
+     <h1>연습문제5</h1>
+     <table border="1">
+         <caption>우리펜션 객실안내</caption>
+         <thead style="background-color: lightgray;">
+             <tr>
+                 <th>방 이름</th>
+                 <th>고객구분</th>
+                 <th>정원</th>
+                 <th>가격</th>
+             </tr>
+         </thead>
+         <tbody>
+             <tr>
+                 <th>콜로라도</th>
+                 <td>여성 전용</td>
+                 <td rowspan="3">4인실</td>
+                 <td rowspan="4">100,000원</td>
+             </tr>
+             <tr>
+                 <th rowspan="2">아레나도</th>
+                 <td>가족용</td>
+             </tr>
+             <tr>
+                 <td>커플용</td>
+             </tr>
+             <tr>
+                 <th>엘레나</th>
+                 <td>커플 전용</td>
+                 <td>2인실</td>
+             </tr>
+         </tbody>
+         <tfoot style="background-color: lightgray;">
+             <tr>
+                 <th colspan="4">6월 15일까지 전 객실 50% 할인</th>
+             </tr>
+         </tfoot>
+     </table>
 
 </body>
 </html>

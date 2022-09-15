@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            /* 글자크기, 디폴트 16px*/     font-size: 70px;
+            /* 글자굵기, 디폴트 400 */     font-weight: 900;
+            /* 기울임(none, italic 등) */ font-style: italic; 
+            /* 글꼴(글꼴1, 글꼴2, ...) */ font-family: '궁서', '명조', serif; /*pc에 궁서 없으면 명조 없으면 serif ...  */
+            /*  serif(명조 계열), sans-serif(고딕 계열) */ font-family:'맑은 고딕', sans-serif;
+            /* rgb(0, 0, 0) */       color: rgb(0, 0, 0);
+            /* rgb(255, 255, 255) */ color: rgb(255, 255, 255);
+            /* rgb(128, 128, 128) */ color: rgb(128, 128, 128);
+            /* #000, #000000 */      color: #000;
+            /* #FFF, #FFFFFF */      color: #FFF;
+            /* #888  #888888 */      color: #888;
+            /* rgba(0, 0, 0, 0.5) */ color: rgba(0, 0, 0, 0.5); /* alpha(투명도) : 0(투명) ~ 1(불투명) */
+            /* 정렬(left, right, center, justify) */      text-align: center;
+            /* 밑줄(none, underline 등) */                text-decoration: underline;
+            /* 그림자(x y blur color) */                  text-shadow: -5px -5px  10px yellow;
+            /* 행높이(세로 가운데 정렬할 때 많이 사용) */   line-height: 50px;
+            /* 글자간격(자간) */                          letter-spacing: -0.5px;
+
+            /* 
+                벤더 프리픽스(Vender Prefix)
+
+                1. CSS속성 앞에 브라우저 제공업체를 작성
+                2. 브라우저마다 다른 기능이거나 설정 방법이 다른 경우에 사용
+                3. 종류
+                    1) -webkit- : 크롬, tkvkfl
+                    2) -moz-    : 파이어폭스
+                    3) -o-      : 오페라
+                    4) -ms-     : 익스플로러
+            */
+            /* 글자테두리색상*/   -webkit-text-stroke-color : red;
+            /* 글자테두리두께*/   -webkit-text-stroke-width : 1px;
+            
+        }
+
+        span{
+            /* 인라인 요소는 정렬이 적용되지 않는다. */
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div> 태그 : 블록 레벨의 영역 지정 -->
+    <div style="background-color: teal;">1구역</div>
+    <br>
+
+    <!-- <span> 태그 : 인라인 레벨의 영역 지정 -->
+    <span style="background-color: crimson;">2구역</span>
+
+</body>
+</html>
