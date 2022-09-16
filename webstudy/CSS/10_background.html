@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <style>
+        div{
+            box-sizing: border-box;
+            border: 1px solid gray;
+        }
+    </style>
+    <style>
+        /* 박스크기 = 이미지크기 */
+        .box1{
+            width: 100px;
+            height: 76px;
+            background-image: url(../../images/attach.png);
+            background-size: 100px 76px ; /* 너비 높이 순 */
+        }
+    </style>
+    
+    <div class="box1"></div>
+
+    <style>
+        /* 박스크기 > 이미지 */
+        .box2{
+            width: 200px;
+            height: 152px;
+            background-image: url(../../images/attach.png);
+            background-repeat: repeat; /* 디폴트 */
+        }
+    </style>
+    <div class="box2"></div>
+
+    <style>
+        .box3{
+            width: 200px;
+            height: 152px;
+            background-image: url(../../images/attach.png);
+            background-repeat: no-repeat; 
+            background-position: center;
+        }
+    </style>
+    <div class="box3"></div>
+
+    <hr>
+    <style>
+        .box4{
+            width: 50px;
+            height: 38px;
+            background-image: url(../../images/attach.png);
+        }
+    </style>
+    <div class="box4"></div>
+
+    <hr>
+
+    <style>
+        .box5{
+            /* 박스 < 이미지 */
+            width: 100px;
+            height: 38px;
+            background-image: url(../../images/attach.png);
+            background-repeat: no-repeat;
+            background-size: contain; /* 너비/높이 중 작은 값에 맞춤 */
+        }
+    </style>
+    <div class="box5"></div>
+
+
+    <style>
+        .box6{
+            /* 박스 < 이미지 */
+            width: 100px;
+            height: 38px;
+            background-image: url(../../images/attach.png);
+            background-repeat: no-repeat;
+            background-size: cover; /* 너비/높이 중 큰 값에 맞춤 */
+        }
+    </style>
+    <div class="box6"></div>
+
+    <hr>
+
+    <style>
+        .box7 {
+            width: 140px;
+            height: 120px;
+            background-image: url(../../images/logos.png);
+            background-position: left -600px top -200px;
+        }
+    </style>
+    <div class="box7"></div> 
+
+    <hr>
+
+    <style>
+        .box8{
+            width: 960px;
+            height: 640px;
+            background-image: url(../../images/eiffeltower.jpg);
+            background-size: 100% 100%; /* 박스 크기 기준 */
+            background-blend-mode: multiply;
+            background-color: gray;
+        }
+    </style>
+    <div class="box8"></div>
+
+    <style>
+        .box9{
+            width: 1280px;
+            height: 960px;
+            background-image: url(../../images/hooray.jpg);
+            background-size: 100% 100%;
+            border: 5px solid gray;
+            margin: 0 auto;
+            font-size: 80px;
+            font-weight: 700;
+            color: rgb(255, 255, 255);
+            padding-top: 400px;
+        }
+        .box9:hover{
+            background-image: url(../../images/eiffeltower.jpg);
+        }
+    </style>
+    <div>
+        
+        <div class="box9">
+            가라는 회사는 안 가고<br> 
+            이래도 되나 싶다.
+        </div>     
+    </div>
+
+    <hr>
+    <style>
+
+        .img_box{
+            box-sizing: border-box;
+            width: 640px;
+            height: 480px;
+            background-image: url(../../images/eiffeltower.jpg);
+            background-size: 100% 100%; /* 사진크기를 width, height값에 맞춤 */
+            margin: 0 auto;
+        }
+        .img_desc{
+            box-sizing: border-box;
+            width: 640px;
+            margin: 20px auto 0;
+            padding: 10px 0px; /* height 없이 상하padding을 통해 세로 가운데 줄 맞춤 */
+            font-size: 30px;
+            font-weight: 700;
+            border: 5px solid blue;
+            border-radius: 10px;
+            background-color: skyblue;
+            text-align: center;
+        }
+    </style>
+    
+    <div class="img_box"></div>
+    <div class="img_desc">에펠탑</div>
+     
+
+</body>
+</html>

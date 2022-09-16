@@ -155,7 +155,52 @@
         <input type="password">
     </form>
 
+    <hr>
 
+    <style>
+        /* 
+            10. 마우스 반응 선택자 
+                1) :active : 마우스를 누르고 있는 동안
+                2) :hover  : 마우스를 가져다 대는 동안
+                3) :hover를 먼저 써야 함
+        */
+        .link:hover{
+            color: orangered;
+        }
+        .link:active {
+            color: orange;
+        }
+    </style>
+    <a class="link" href="javascript:void(0)">클릭</a>
+
+    <style>
+        /* 
+            11. 상태 선택자
+                1) :focus 선택했을때
+                2) :checked 체크했을때 
+        */
+        #name:focus {
+            background-color: brown;
+        }
+        .register > div > input[name=gender]:checked + label{
+            font-weight: 900;
+        }     
+        </style>
+        
+
+    <form class="register">
+        <div>
+            <label for="name">성명</label>
+            <input type="text" id="name">
+        </div>
+        <div>
+            <input type="radio" name="gender" value="1" id="male">
+            <label for="male">남자</label>
+            <input type="radio" name="gender" value="2" id="female">
+            <label for="female">여자</label>
+
+        </div>
+    </form>
 
 </body>
 </html>

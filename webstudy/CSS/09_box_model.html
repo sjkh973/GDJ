@@ -93,5 +93,66 @@
         }
     </style>
     <div class="box7">BOX7</div>
+
+    <hr>
+
+    <style>
+
+        .box8{
+            /* 
+                박스 크기 : 너비/높이 + 테두리 + 내부 여백
+                이와 같은 방식으로 박스 크기가 결정되는 박스를 content-box 라고 함 
+                box-sizing 속성으로 박스의 종류를 결정할 수 있음.
+                디폴트
+            */
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            padding: 10px;
+            box-sizing: content-box; /* 박스크기(122px) = contnet(100px) + padding(20px) + border(2px) */
+        }
+    </style>   
+        <div class="box8">BOX8</div>
+
+    <hr>
+
+    <style>
+        .box9{
+            /* 
+                박스 크기 : 너비/높이
+                이와 같은 방식으로 박스 크기가 결정되는 박스를 border-box 라고 함 
+                box-sizing 속성으로 박스의 종류를 결정할 수 있음.
+                가장 널리 사용됨
+            */
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            padding: 10px;
+            box-sizing: border-box;  /* 박스 크기 = content(78px) + padding(20px) + border(2px) */
+        }
+    </style>
+    <div class="box9">BOX9</div>
+   
+    <hr>
+
+    <style>
+        .box10{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            /* 바깥 여백 */
+            margin: 10px;
+            margin: 10px 0;
+            margin: 10px 0 10px;
+            margin: 5px 10px 15px 20px;
+            /* 박스를 화면 가운데 배치하기 */
+            margin: 0 auto;
+        }
+    </style>
+    <div class="box10">BOX10</div>
+
+
+
+
 </body>
 </html>
