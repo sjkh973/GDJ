@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <style>
+        .box1{
+            /* 너비 */ width: 100px;
+            /* 높이 */ height: 100px;
+            /* 배경 */ background-color: limegreen;
+        }
+        .box2{
+            /* 인라인 요소(span, a, 등)는 너비/높이 적용 불가 */
+            /* 너비 */ width: 100px;
+            /* 높이 */ height: 100px;
+            /* 배경 */ background-color: salmon;
+        }
+    </style>
+    <div class="box1">BOX1</div>
+    <span class="box2">BOX2</span>
+
+    <hr>
+
+    <style>
+        .wrap{
+            /* 부모 */
+            width: 200px;
+            height: 200px;
+        }
+        .wrap > .box3{
+            /* 자식 : %의 기준은 부모의 크기*/
+            width: 50%;
+            height: 50%;
+            background-color: pink;
+        }
+        .wrap .box4{
+            /* 자식 %의 기준은 부모의 크기*/
+            width: 25%;
+            height: 25%;
+            background-color: rosybrown;
+        }
+    </style>
+    <div class="wrap">
+        <div class="box3">BOX3</div>
+        <div class="box4">BOX4</div>
+    </div>
+
+    <hr>
+
+    <style>
+        .box5{
+            /* 테두리 두께 */ border-width: 1px;
+            /* 테두리 종류 */ border-style: solid;
+            /* 테두리 색상 */ border-color: rgb(0, 0, 0);
+            /* 단축 속성 */   border: 2px dashed red;
+            /* 방향 선택 */   border-bottom: 3px double blue;
+        }
+    </style>
+    <div class="box5">BOX5</div>
+
+    <hr>
+
+    <style>
+        .box6{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            /* 모서리 곡률  시계 방향으로 값을 준다.*/
+            border-radius: 5px;
+            border-radius: 10px 0;
+            border-radius: 20px 0 20px;
+            border-radius: 5px 10px 15px 20px;
+        }
+    </style>
+    <div class="box6">BOX6</div>
+
+    <hr>
+    
+    <style>
+        .box7{
+            border: 1px solid black;
+            /* 내부 여백 : content와 border 사이 공간 시계 방향으로 값을 준다.*/
+            padding: 0;
+            padding: 10px 20px;
+            padding: 20px 0px 20px;
+            padding: 5px 10px 15px 20px;
+            
+        }
+    </style>
+    <div class="box7">BOX7</div>
+</body>
+</html>
