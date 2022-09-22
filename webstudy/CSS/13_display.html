@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        .box1 > img{
+            width: 320px;
+        }
+        .box1 > img:nth-of-type(2){
+            /* display : none; 자리를 차지하지 않고 보이지도 않음*/
+            display: none;
+        }
+    </style>
+
+    <div class="box1">
+        <img alt="꽃" src="../../images/flower1.jpg">
+        <img alt="꽃" src="../../images/flower2.jpg">
+        <img alt="꽃" src="../../images/flower3.jpg">
+    </div>
+
+    <hr>
+
+    <style>
+        .box2 > input[type=checkbox]{
+            display: none;
+        }
+        .box2 label:hover{
+            cursor: pointer;
+        }
+        .box2 > input[type=checkbox]:checked + label{
+            font-weight: 900;
+        }
+    </style>
+    <div class="box2">
+        <input type="checkbox" id="service">
+        <label for="service">이용약관 동의</label><br>
+        <input type="checkbox" id="privacy">
+        <label for="privacy">개인정보 수집 및 이용 동의</label><br>
+        <input type="checkbox" id="location">
+        <label for="location">위치기반서비스 이용약관 동의</label><br>
+    </div>
+    
+
+
+</body>
+</html>

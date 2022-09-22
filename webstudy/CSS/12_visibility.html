@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <style>
+        .box1 > img{
+            width: 320px;
+            
+        }
+        .box1 > img:nth-of-type(2){
+            /* 
+                visibility: visible; 디폴트
+                visibility: hidden;  자리는 차지하고 보이지는 않음
+            */
+            visibility: hidden;
+        }
+    </style>
+    <div class="box1">
+        <img alt="꽃" src="../../images/flower1.jpg">
+        <img alt="꽃" src="../../images/flower2.jpg">
+        <img alt="꽃" src="../../images/flower3.jpg">
+    </div>
+
+    <hr>
+
+    <style>
+        .box2 > img{
+            width: 320px;
+        }
+        /*
+        img를 직접 hover하면 이미지가 hidden되었을 때 
+        더 이상 hover 할 수 없으므로 잘못된 구성
+        .box2 > img:hover{
+            visibility: hidden;
+        }
+        */
+        /* 
+            img의 hidden과 상관없이 div는 남아있으므로 
+            div를 대상으로 hover처리
+        */
+        .box2 > div{
+            width: 320px;
+        }
+        .box2 > div > img{
+            width: 100%;
+        }
+        /* 마우스를 댄 div 아래 img */
+        .box2 > div:hover > img{
+            visibility: hidden;
+        } 
+    </style>
+    <div class="box2">
+        <div><img alt="꽃" src="../../images/flower1.jpg"></div>
+        <div><img alt="꽃" src="../../images/flower2.jpg"></div>
+        <div><img alt="꽃" src="../../images/flower3.jpg"></div>    
+    </div>
+
+
+    <hr>
+
+    <h1>다음 중 블록레벨이 아닌 태그는 무엇인가?</h1>
+    <ol>
+        <li>&lt;div&gt;</li>
+        <li>&lt;ul&gt;</li>
+        <li>&lt;a&gt;</li>
+        <li>&lt;p&gt;</li>
+    </ol>
+
+    <style>
+        .answer{
+            visibility: hidden;
+        }
+        .show_answer{
+            border: 1px solid black;
+            background-color: lightgray;
+        }
+        .show_answer:hover + span{ /* show_answer의 인접 태그 span만 적용 */
+            visibility: visible;
+        }
+    </style>
+
+    <span class="show_answer">정답보기</span>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="answer">3</span>
+    
+</body>
+</html>
