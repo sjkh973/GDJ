@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <style>
+        /* 
+            1. position=static
+                1) HTML 기본흐름대로 배치
+                2) 상대적 위치 조정(top, bottom, left, right) 불가
+                3) 디폴트
+            2. position : relative 
+                1) HTML 기본흐름대로 배치 
+                2) 상대적 위치조정 (top, bottom, left, right) 가능
+                3) 옵셋 기준 : 원래 자신의 위치
+            3. position: absoulte
+                1) HTML 기본흐름을 깨고 배치
+                2) 상대적 위치 조정 (top, bottom, left, right) 가능
+                3) 옵셋 기준 : 부모 요소
+                4) 부모 요쇼가 position static이라면 absoulte 적용 불가
+                5) 대부분의 경우 부모 요소는 position : relative, 자식요소는 position: absoulte
+            4. position: fixed
+                1) HTML문서 특정 위치에 고정(항상 보임)
+                2) 상대적 위치조정 (top, bottom, left, right) 가능
+                3) 옵셋 기준 : 브라우저 화면 전체
+        */
+    </style>
+    <style>
+        .box1{
+            position: static;
+            border: 1px solid gray;
+            top: 100px; /* 적용 안 됨 */
+            left: 100px;/* 적용 안 됨 */
+        }
+    </style>
+    <div class="box1">
+        static position
+    </div>
+    
+    <style>
+        .box2{
+            position: relative;
+            border: 1px solid gray;
+            top: 100px; /* 적용 안 됨 */
+            left: 100px;/* 적용 안 됨 */
+        }
+    </style>
+     <div class="box2">
+        relative position
+    </div>
+
+    <style>
+        .wrap{
+            margin-top: 150px;
+            width: 300px;
+            height: 300px;
+            border: 1px solid gray;
+            position: relative;
+        }
+        .wrap > div{
+            width: 100px;
+            height: 100px;
+            border: 1px solid gray;
+            position: absolute;
+        }
+        .spring{
+            top: 10px;
+            left: 10px;
+        }
+        .summer{
+            top: 10px;
+            right: 10px;
+        }
+        .autumn{
+            bottom: 10px;
+            right: 10px;
+        }
+        .winter{
+            bottom: 10px;
+            left: 10px;
+        }
+    </style>
+    <div class="wrap">
+        <div class="spring">봄</div>
+        <div class="summer">여름</div>
+        <div class="autumn">가을</div>
+        <div class="winter">겨울</div>
+    </div>
+
+    <style>
+        .box3{
+            position: fixed;
+            top: 300px;
+            right: 50px;
+            width: 100px;
+            height: 100px;
+            border: 1px solid gray;
+        }
+    </style>
+    <div class="box3">
+        fixed position
+    </div>
+
+    <hr>
+
+    <style>
+        /* help는 부모 */
+        .help{
+            color: teal;
+            cursor: help;
+            position: relative;
+        }
+        /* after는 help의 자식 */
+        .help:hover::after{
+            content: attr(data-desc);/* content: '메롱'; */
+            display: inline-block;
+            width: 80px;
+            border: 1px solid bisque;
+            border-radius: 5px;
+            background-color: beige;
+            color: gray;
+            position: absolute;
+            top: 30px;
+            left: 100px;
+        }
+    </style>
+    <p><span class="help" data-desc="메롱">여기</span>를 선택하시오</p>
+
+</body>
+</html>
