@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <style>
+        div{
+            box-sizing: border-box; /* width/height가 실제 크기가 됨*/
+
+        }
+        /* 
+            수평 레이아웃 - 1  
+            
+            1. 부모에 display=flex를 지정하면 자식들이 수평 레이아웃을 가짐
+            2. flex 관련 속성을 이용해서 자식들의 수평 레이아웃을 조정할 수 있음 
+        */
+        .container1{
+            width: 300px;
+            height: 90px;
+            display: flex;
+            /* 
+                flex 관련 속성
+            */
+            flex-direction: row;            /* row, row-reverse, column, column-reverse */
+            flex-wrap: wrap;                /* nowrap, wrap*/
+            justify-content: space-between; /* space-around, space-between*/
+        }
+        .container1 > div{
+            width: 90px;
+            height: 90px;
+            border: 1px solid black;
+            text-align: center;
+            line-height: 100px; /* 새로 가운데 정렬*/
+        }
+    </style>
+    <div class="container1">
+        <div>BOX1</div>
+        <div>BOX2</div>
+        <div>BOX3</div>
+    </div>
+
+    <hr>
+</body>
+</html>

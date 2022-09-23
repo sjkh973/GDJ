@@ -46,7 +46,60 @@
         <label for="location">위치기반서비스 이용약관 동의</label><br>
     </div>
     
+    <style>
+        /* 블록 - > 인라인 변경 */
+        .box3{
+            display: inline;
+            /* 인라인에서는 적용되지 않는 CSS 속성 */
+            width: 500px;
+            height: 500px;
+            text-align: center;
 
+        }
+    </style>
+    <div class="box3">
+        BOX3
+    </div>
+
+    <hr>
+
+    <style>
+        /* 인라인 - > 블록 변경 */
+        .box4{
+            display: block;
+            /* 인라인에서는 적용되지 않는 CSS 속성 */
+            border: 1px solid gray;
+            width: 100px;
+            height: 100px;
+            text-align: center;           
+        }
+    </style>
+
+    <span class="box4">
+        BOX4
+    </span>    
+
+    <hr>
+
+    <style>
+        .box5, .box6{
+            /* 
+                inline-block
+                - inline 요소 : 동일 블록에 함께 배치
+                - block 요소  : 너비, 높이, 정렬 등 블록 작업 가능
+            */
+            display: inline-block;
+            border: 1px solid gray;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <div class="box5">
+        BOX5
+    </div>
+    <div class="box6">
+        BOX6
+    </div>
 
 </body>
 </html>

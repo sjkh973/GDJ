@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        /* 
+            수평 레이아웃 -1 
+            
+            1. 부모에 display=flex를 지정하면 자식 요소들이 수평 레이아웃을 가짐
+        */
+        .container1 {
+            display: flex;
+        }
+        .container1 > div{
+            width: 100px;
+            height: 50px;
+            border: 1px solid gray;
+        }
+    </style>
+    <div class="container1">
+        <div>BOX1</div>
+        <div>BOX2</div>
+        <div>BOX3</div>
+    </div>
+
+    <hr>
+
+    <style>
+        /* 
+            수평 레이아웃 -2
+
+            1. 부모 요소 overflow : hidden;
+            2. 자식 요소 float: left
+            3. 위와 같은 방식의 레이아웃을 one true layout이라고 함
+            4. 자식 요소들이 수평 레이아웃을 가짐
+        */
+        .container2{
+            overflow: hidden;
+        }
+        .container2 > div{
+            width: 100px;
+            height: 50px;
+            border: 1px solid gray;
+            float: left;
+        }
+
+    </style>
+    <div class="container2">
+        <div>BOX1</div>
+        <div>BOX2</div>
+        <div>BOX3</div>
+    </div>
+
+</body>
+</html>

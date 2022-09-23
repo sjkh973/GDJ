@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+       a{
+            color: black;
+            text-decoration: none;
+
+       }
+
+       ul{
+            border-top: 1px solid gray;
+            border-bottom: 1px solid gray; 
+            list-style: none; /* 글머리기호 없애기 */
+            display: flex;    /* 메뉴들의 수평 레이아웃 배치 */
+       }
+
+       ul > li{
+            width: 80px; 
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+       }
+       ul > li > a{
+            display: block; /* 블록레벨의 요소만 너비/높이를 가질 수 있음 */
+            width: 100%;
+            height: 100%;
+       }
+
+       ul > li:hover {
+            height: 47px;   /* height와 border값을 합쳐서 원래 크기 50px를 만듬 */
+            border-bottom: 3px solid limegreen;
+       } 
+       ul > li:hover a{
+            color: limegreen;
+       }
+
+       
+
+    </style>
+    <ul class="container1">
+        <li>
+            <a href="javascript:void(0)">사전</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">뉴스</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">증권</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">부동산</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">지도</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">VIBE</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">도서</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">웹툰</a>
+        </li>
+    </ul>
+
+</body>
+</html>
