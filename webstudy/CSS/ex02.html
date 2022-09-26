@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http_equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css');
+       
+        div {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+
+        .login_wrap {
+            width: 450px;
+            display: flex;
+        }
+
+        .left_wrap {
+            width: 300px;
+        }
+        .id_wrap, .pw_wrap {
+            display: flex;
+            padding: 5px;
+        }
+        .icon_box {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            padding-top: 15px;
+            background: gray;
+            border: 1px solid gray;
+            border-radius: 5px 0px 0px 0px;
+        }
+        .id_wrap > input, .pw_wrap > input {
+            width: 250px;
+            padding: 10px;
+            border: 1px solid gray;
+            border-radius: 0px 0px 5px 0px;
+            outline: none;
+        }
+        .id_wrap > input:focus, .pw_wrap > input:focus {
+            border: 1px solid orange;
+        }
+
+        .right_wrap {
+            width: 150px;
+            padding: 5px;
+        }
+        .login_button {
+            width: 110px;
+            height: 110px;
+            text-align: center;
+            line-height: 110px;
+            background: gray;
+            border: 1px solid gray;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login_button:hover {
+            background-color: orange;
+            border: 1px solid orange;
+        }
+
+    </style>
+</head>
+<body>
+    <form action="01_internal.html" method="post">
+        <div class="login_wrap">
+            <div class="left_wrap">
+                <div class="id_wrap">
+                    <div class="icon_box">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <input type="text" placeholder="Username" />
+                </div>
+                <div class="pw_wrap">
+                    <div class="icon_box">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <input type="password" placeholder="●●●●" />
+                </div>
+            </div>
+            <div class="right_wrap">
+                <button class="login_button">
+                    로그인
+                </button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

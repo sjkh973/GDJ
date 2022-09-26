@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            1. 산술 연산자
+                1) 덧셈 : +
+                2) 뺄셈 : -
+                3) 곱셈 : *
+                4) 나눗셈 : / (5 / 2 == 2.5)
+                5) 나머지 : % (5 % 2 == 1)
+                6) 몫     : pareInt(5 / 2) == 2, Math.floor(5 / 2) == 2
+                7) 증감   : ++, --
+                8) 제곱   : ** (5 ** 2 == 25)
+            2. 복합 연산자
+                1) +=
+                2) -=
+                3) *=
+                4) /=
+                5) %=
+            3. 관계 연산자
+                1) 초과 : >
+                2) 미만 : <
+                3) 이상 : >=
+                4) 이하 : <=
+                5) 같다
+                    (1) ==  : 값만 비교('1'과 1을 같은 값으로 인식)
+                    (2) === : 값과 타입을 모두 비교('1'과 1을 다른 값으로 인식)
+                6) 같지않다
+                    (1) !=  : 값만 비교
+                    (2) !== : 값과 타입을 모두 비교
+            4. 논리 연산자
+                1) 논리 AND : &&
+                2) 논리 OR  : ||
+                3) 논리 NOT : !
+            5. 조건 연산자
+                (조건식) ? true인 경우 : false인 경우 
+            6. 문자열 연산자
+                1) + : 문자열 연결( 문자열이 하나라도 포함되면 연결)
+                2) + 이외의 산술 연산자(-, *, / 등)는 문자열이 포함되더라도 산술 연산을 수행 
+        */
+
+        var a = '1';
+        var b = 1;
+        console.log(a ==b, a===b); // true, false
+
+        console.log(1 + '1');    // '11'
+        console.log('1' + '1')   // '11'
+        console.log('5' - 2);    // 3
+        console.log('5' - '2');  // 3
+    </script>
+
+    <script>
+        // 문제
+        // 최저시급 9160원
+        // 8시간 근무 : 시급 
+        // 8시간 초과 근무 : 시급 * 1.5
+        // 10시간 근무하면 일급 얼마?
+        var payPerHour = 9160; // const payPerHour = 9160;
+        var workTime = 10;
+        var regular = payPerHour * workTime; // 기본급여
+        var extra = (workTime <= 8) ? 0: (workTime - 8) * payPerHour * 0.5; //초과급여
+        console.log(regular + extra);
+        
+        var a = 9160;
+        var b = a * 1.5;
+
+        var c = (a * 8) + (b * 2);
+        console.log(c);
+    </script>
+</body>
+</html>

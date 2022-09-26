@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // script 태그 내부는 자바스크립트(JS) 영역
+
+        // 주석 : 자바와 같음(//, /* */)
+
+        // script 태그는 head, body 태그 모두 사용 가능
+
+        // HTML 구성 요소를 프로그래밍 처리할 수 있는 언어
+
+        // JavaScript(JS) == ECMAScript(ES)
+    </script>
+
+    <script>
+
+        /*
+            1.기본 자료형
+                1) number
+                    (1) 정수, 실수 구분이 없음
+                    (2) 숫자, NaN(Not a Number), +Infinity, -infinity(+0/ -0 으로 나누가를 해 보면 확인 가능)
+                2) string 
+                    (1) 문자, 문자열 구분 없이 모두 string            
+                    (2) 작은 따옴표(''), 큰 따옴표("") 모두 사용할 수 있음
+                3) boolean
+                    (1) true, false
+                4) null
+                    (1) 의도적으로 값을 비운 상태
+                    (2) null
+                5) undefined
+                    (1) 값이 저장된 적이 없는 상태(초기화를 안한 변수)
+                    (2) undefined    
+            2. 변수
+                1) 동적 타입(느슨한 타입)
+                2) 변수를 선언할 때 자료형(타입)을 결정하지 않고 
+                3) 변수에 값이 저장될 때 자료형(타입)이 결정됨
+                4) 이미 저장된 변수의 자료형(타입)을 바꿔서 다시 저장할 수 있음
+                5) 변수 선언이 없는 상태에서도 변수를 사용할 수 있음(ES6에서는 반드시 선언이 필요한 변수가 존재)
+            3. 변수 선언 키워드
+                1) var
+                    (1) 스코프(범위) : 함수 레벨
+                    (2) 변수 선언 생략 가능
+                    (3) 같은 변수명으로 재선언 가능
+                    (4) 초기화 생략 가능 : undefined 상태
+                    (5) 저장된 값의 수정 가능
+                2) let (ES6 표준) -지역변수
+                    (1) 스코프(범위) : 블록{}
+                    (2) 변수 선언의 생략 불가능
+                    (3) 같은 변수명으로 재선언 불가능
+                    (4) 초기화 생략 가능 : 메모리에 변수가 안 만들어진 상태
+                    (5) 저장된 값의 수정 가능
+                3) const (ES6 표준) - 상수
+                    (1) 스코프(범위) : 블록{}
+                    (2) 변수 선언의 생략 불가능
+                    (3) 같은 변수명으로 재선언 불가능
+                    (4) 초기화 생략 불가능 : 상수이므로(자바의 final)
+                    (5) 저장된 값의 수정 불가능 : 상수이므로
+            4. 호이스팅
+                1) hoisting
+                2) 코드 중에는 항상 먼저 처리되는 코드가 있음
+                3) 변수의 선언이나 함수의 정의 등이 호이스팅에 속함
+                4) 호이스팅 대상 : var, let, const, function, class
+        */
+    </script>
+
+    <script>
+
+        /* 
+            자바 스크립트의 출력 방식
+
+            1. 경고창
+                alert(출력메시지); // 세미콜론(;) 생략 가능
+            2. 브라우저 화면 
+                document.write(출력메시지); // 출력메시지에 HTML 구성요소 표현 가능
+            3. Console(F12 - 개발자 도구의 console 탭)
+                console.log(출력메시지);       
+        */
+
+    </script>
+
+    <script>
+        var a; // 초기화가 없으면 undefined 상태 
+        console.log(a);
+
+        console.log(b);
+        var b; // 호이스팅(항상 먼저 처리되는 코드)
+
+        var c = 10; // 10을 저장하면서 number 타입을 가짐
+        console.log(c, typeof c);
+
+        var c = 'hello'; // 같은 이름의 변수를 재선언할 수 잌ㅆ음
+        console.log(c, typeof c);
+
+        var c = Math.sqrt(-25); // 루트 -25를 의미함(실제로 존재하는 숫자가 아님)
+        console.log(c, typeof c);
+
+        var c = 10 / -0; // Infinity, -Infinity
+        console.log(c, typeof c);
+    </script>
+
+    <script>
+        /*
+            자료형 변환
+
+            1. 문자열 - > 정수 
+                1) Number('100')   : 100
+                2) parseInt('100') : 100
+            2. 문자열 - > 실수
+                1) Number('1.5')     : 1.5
+                2) parseFloat('1.5') : 1.5 
+            3. 정수/실수 - > 문자열
+                1) String(100) : '100'
+                2) String(1.5) : '1.5'
+        */
+       var a = '100';
+       var b = Number(a);
+       console.log(b, typeof b);
+       var b = parseInt(a);
+       console.log(b, typeof b);
+       // 실수를 parseInt 처리하면?
+
+       var a = 1.5;
+       var b = parseInt(a);
+       console.log(b, typeof b); 
+
+       var c = '1.5';
+       var d = Number(c);
+       console.log(d, typeof d);
+       var d = parseFloat(c);
+       console.log(d, typeof d);
+
+       var e = '100';
+       console.log(String(e));
+       var e = '1.5';
+       console.log(String(e));
+    </script>
+
+</body>
+</html>
