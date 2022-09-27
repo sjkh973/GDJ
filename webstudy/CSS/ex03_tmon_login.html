@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a{
+            text-decoration: none;
+        }
+        .join_cont{
+            width: 390px;
+            padding: 60px 50px 51px;
+            margin: 110px auto 0;
+            border: 1px solid #f2f4f5;
+        }
+        .tit_bi{
+            width: 160px;
+            height: 40px;
+            margin: 0 auto 30px auto;
+            background-image: url(http://img1.tmon.kr/static/img/sp_social_login.png?v=1486361930&v=1658968077&v=1663808643);
+            background-repeat: no-repeat;
+            background-position: left 0 top 0;
+            text-indent: -2000px; /*들여쓰기를 크게하여 화면에서 글씨 치움 */
+        }
+        .login_ipt_box{
+            display: block;
+            height: 48px;
+            border: 1px solid #d7d7d7;
+            margin-bottom: 6px;
+            position: relative; /* 자식요소인 strong, input의 position: absolute 조정을 위해서 설정 */
+        }
+        .login_ipt_box > strong{
+            position: absolute;
+            top: 16px;
+            left: 19px;
+            height: 17px;
+            font-size: 14px;
+            color: #aaa;
+        }
+        .login_ipt_box > input{
+            width: 350px;
+            height: 17px;
+            padding: 16px 19px 15px 19px;
+            border: none; /* 평소 테두리 */
+            outline: none; /* focus 가졌을 때 테두리 */
+            font-size: 14px;
+            font-weight: bold;
+            color: #aaa;
+        }
+        .btn_login{
+            display: block;
+            height: 50px;
+            background-color: #ff5000;
+            color: #FFF;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: -0.5px;
+            text-align: center;
+            line-height: 50px;
+        }
+        .chk_choice{
+            margin: 10px 0 40px 0;
+            position: relative;
+        }
+        .uio_check_box{
+            display: inline-block;
+            height: 20px;
+            padding: 0 20px 0 30px;
+            font-size: 12px;
+            font-weight: normal;
+            color: #555;
+            line-height: 22px;
+            letter-spacing: -0.5px; /* 글자 사이 간격*/
+            position: relative;
+        }
+        .uio_check_box > input {
+            position: absolute;
+            left: -9999px;
+        }
+        .check_style{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 18px;
+            height: 18px;
+            border: 1px solid #707070;
+        }
+        .uio_check_box > input:checked + .check_style{
+            border: 1px solid #FF5000;
+        }
+    </style>
+</head>
+<body>
+    <div class="join_cont">
+        <form name="loginFrm" id="loginFrm"> <!-- name과 id는 같은이름으로 설정하는게 좋음 name은 백엔드 id는 프론트 --> 
+            <a href="javascript:void(0)">
+                <h2 class="tit_bi">티몬</h2>
+            </a>
+            <label for="userid" class="login_ipt_box">
+                <strong>아이디</strong>
+                <input type="text" name="userid" id="userid">
+            </label>
+            <label for="pwd" class="login_ipt_box">
+                <strong>비밀번호</strong>
+                <input type="password" name="pwd" id="pwd">
+            </label>
+            <a href="javascript:void(0)" class="btn_login">로그인</a>
+            <div class="chk_choice">
+                <label for="chk_auto_login" class="uio_check_box">
+                    <input type="checkbox" name="chk_auto_login" id="chk_auto_login" value="auto_login">
+                    <span class="check_style">
+                        <i></i>
+                    </span>
+                    로그인 상태 유지
+                </label>
+                <label for="chk_secure" class="uio_check_box">
+                    <input type="checkbox" name="chk_secure" id="chk_secure" value="secure">
+                    <span class="check_style">
+                        <i></i>
+                    </span>
+                    보안접속
+                </label>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
