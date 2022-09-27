@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="box1"></div>
+    <script>
+        // 1 2 3 4 5
+        var n = 1;
+        while(n <= 5){
+            document.getElementById('box1').innerHTML += n + '<br>';
+            n++;
+        }
+    </script> 
+
+    <div id="box2"></div>
+    <script>
+        /*
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>    
+        */
+       var ul = '<ul>';
+       var n  = 1;
+       while(n <= 5){
+            ul += '<li>' + n + '</li>';
+            n++;
+       }
+       ul += '</ul>';
+       document.getElementById('box2').innerHTML = ul;
+    </script>
+
+    <div id="box3"></div>
+    <script>
+        /*
+            <select name="month">
+                <option value="1">1월</option>
+                ...
+                <option value="1">12월</option>
+            </select>
+        */
+       var select = '<select name="month">';
+        for(let m = 1; m<=12; m++){
+            select += ('<option value="' + m + '">' + m + '월</option>');
+        }
+        select += '</select>';
+        document.getElementById('box3').innerHTML = select;
+    </script>
+
+    <div id="box4"></div>
+    <script>
+        // animal1.jpg ~ animal10.jpg
+        // width= 100px 화면에 출력하기
+        
+        var img = '';   
+        for(let m = 1; m<=10; m++){
+            img += '<img src="../../images/animal' + m + '.jpg" width="100px">';
+        }
+        document.getElementById('box4').innerHTML = img;
+    </script>
+
+    <div id="box5"></div>
+    <script>
+        /*
+            테이블 이용
+                      col = 1  col = 2  col = 3
+            row = 1      1        2       3
+            row = 2      4        5       6
+            row = 3      7        8       9
+            row = 4      *        0       #
+            -----------------------------------
+            (row - 1) * 3 + col
+        */
+
+        var table = '<table border="1"><tbody>';
+        for(let row=1; row <=4; row++){
+            table += '<tr>'
+            for(let col=1; col <=3; col++){
+                var data = (row - 1) * 3 + col;
+                switch(data){
+                case 10 : table += '<td>*</td>';break;    
+                case 11 : table += '<td>0</td>';break;    
+                case 12 : table += '<td>#</td>';break;    
+                default : table += '<td>' + data + '</td>';
+                }           
+            }
+            table += '</tr>';
+        }    
+        table += '</tbody></table>';
+        document.getElementById('box5').innerHTML = table;
+    </script>
+</body>
+</html>

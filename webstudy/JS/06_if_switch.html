@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- <script>
+        if(confirm('진행할까요?')){
+            alert('진행합니다.');
+        } else{
+            alert('취소합니다.')
+        }
+    </script> -->
+
+    <div>
+        <div>평균 : <span id="ave"></span>점</div>
+        <div>학점 : <span id="grd"></span></div>
+        
+    </div>
+    <script>
+        // 국어, 영어, 수학 점수를 차례대로 입력 받아서 학점(A ~ F) 출력하기
+        // prompt로 입력받는 값은 string이므로 number로 변환해준다.
+        // 입력
+        var kor = Number(prompt('국어 점수 입력'));
+        var eng = Number(prompt('영어 점수 입력'));
+        var mat = Number(prompt('수학 점수 입력'));
+        // 평균
+        var avg = (kor + eng + mat) / 3;
+        // 학점(if)
+        // var grade;
+        // if(avg >= 90){
+        //     grade = 'A';
+        // } else if(avg >= 80){
+        //    grade = 'B';
+        // } else if(avg >= 70){
+        //     grade = 'C';
+        // } else if(avg >= 60){
+        //     grade = 'D';
+        // } else{
+        //     grade = 'F';
+        // }
+        
+        // 학점(switch)
+        /*
+        switch (parseInt(avg / 10)) {
+        case 10:
+        case  9: grade = 'A'; break;    
+        case  8: grade = 'B'; break;
+        case  7: grade = 'C'; break;
+        case  6: grade = 'D'; break;
+        default: grade = 'F';
+        }
+        */
+
+        // 학점(switch) : 자바스크립트의 switch는 관계 연산자 사용 가능함
+        switch(true){
+        case avg >= 90: grade = 'A';break;
+        case avg >= 80: grade = 'B';break;
+        case avg >= 70: grade = 'C';break;
+        case avg >= 60: grade = 'D';break;
+        default: grade = 'F';
+        } 
+
+        // 결과확인
+        // .textContent로 태그내부에 값넣기
+        document.getElementById('ave').textContent= avg;
+        document.getElementById('grd').textContent= grade;
+    </script>
+</body>
+</html>

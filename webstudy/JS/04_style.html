@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <style>
+        #box{
+            color: red;
+        }
+    </style>
+    <div id="box">
+        BOX
+    </div>
+    <script>
+
+        /* 
+            CSS 처리
+
+            1. style 속성
+            2. inline style로 처리되므로 언제나 적용됨
+            3. 작성 방법
+                1) 마침표(.)  : 하이픈(-) 제거 후 camel case 방식으로 CSS 속성을 사용
+                2) 대괄호([]) : 문자열('',"")방식으로 CSS 속성을 그대로 사용
+        */
+       var a = document.getElementById('box');
+       a.style.fontSize = '32px';      // 마침표 
+       a.style['font-weight'] = '900'; // 대괄호
+       a.style.color = 'blue';         // inline style
+    </script>
+</body>
+</html>
