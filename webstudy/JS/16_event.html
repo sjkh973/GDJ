@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        /* 
+            1. 이벤트 타입
+                1) 이벤트 종류를 의미함
+                2) 이벤트 객체의 type
+                3) 주요 이벤트 타입
+                    (1) click      : 클릭
+                    (2) dbclick    : 더블클릭
+                    (3) load       : HTML문서 모두 읽음
+                    (4) mouserover : 마우스 가져다 댐 
+                    (5) mouseout   : 마우스 나감
+                    (6) keydown    : 키가 내려감 (입력 직전)
+                    (7) keyup      : 키가 올라옴 (입력 직후)
+                    (8) focus      : 포커스를 가짐
+                    (9) blur       : 포커스를 잃음
+                   (10) submit     : 서브밋 (form 태그의 모든 입력 요소를 서버로 보냄)
+            2. 이벤트 대상
+                1) 이벤트가 동작하는 HTML구성요소를 의미함
+                2) 이벤트 객체의 target 속성으로 확인
+            3. 이벤트 리스너
+                1) 이벤트가 발생하면 동작하는 함수
+                2) 선언적 함수, 익명 함수 모두 리스너로 등록 가능
+                3) 이벤트 리스너의 매개변수에는 자동으로 이벤트 객체가 전달됨
+            4. 이벤트 객체
+                1) 해당 이벤트의 상세 정보를 저장한 객체
+                2) 이벤트 발생 시 자동으로 생성
+                3) 이벤트 발생 시 이벤트 리스너에 인수로 자동으로 전달
+        */
+    </script>
+    <button id="btn">버튼</button>
+    <script>
+        document.getElementById('btn').onclick = function(ev){
+            console.log(ev.type);   // 이벤트객체 ev의 이벤트타입 확인하기
+            console.log(ev.target); // target은 클릭되는놈이 뭔지 확인하기
+            console.log(ev);        // ev가 가진것 다 확인해 보는것 
+        }
+    </script>
+</body>
+</html>

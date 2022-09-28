@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        /* 
+            배열
+            1. 대괄호([])를 이횽해서 배열 요소를 묶어줌
+            2. 서로 다른 자료형을 하나에 배열에 저장할 수 있음
+            3. undefined 데이터가 저장될 수 있음(홀: hole)
+            4. 배열의 길이는 동적으로 변하고 length 속성으로 확인 가능
+            5. 인덱스 : 0부터 시작
+        */ 
+    </script>
+
+    <script>
+
+        // 1. 배열 생성(초기화 이용)
+        var arr = [10, 1.5, '자바스크립트', true, function(){alert('Hello World');}];
+
+        // 2. 배열 생성(생성자 함수 이용) - 느리므로 추천 안 함
+        //var arr = new Array(10, 1.5, '자바스크립트', true, function(){alert('Hello World');})
+
+        // 3. 배열 길이
+        console.log(arr.length);
+
+        // 4. 배열 길이 조작
+        arr.length = 7;
+
+        // 5. 배열 요소 확인
+        console.log(arr[0]);
+        console.log(arr[1]);
+        console.log(arr[2]);
+        console.log(arr[3]);
+        console.log(arr[4]); // function(){}
+        //(arr[4])();          // 5번째 요소로 저장된 function 호출하기(자기 호출 방식)
+        console.log(arr[5]); // undefined(hole)
+        console.log(arr[6]); // undefined(hole)
+
+    </script>
+
+    <script>
+
+        // 1. 일반 for문
+        for(let i = 0; i < arr.length; i++){
+            console.log(arr[i]);
+        }
+
+        // 2. for - in 문
+        // 배열의 인덱스를 자동으로 가져옴
+        // 배열의 요소를 가져오는 것이 아님에 주의할 것!
+        for(let i in arr){
+            console.log(arr[i]);
+        }
+
+    </script>
+
+    <script>
+
+        var menu = ['김치찌개', '된장찌개'];
+
+        // 1. 추가
+        //  1) push(요소)    : 마지막 요소로 추가
+        //  2) unshift(요소) : 첫 번째 요소로 추가
+        menu.push('삼겹살');
+        menu.unshift('오리불고기');
+
+        console.log(menu);
+
+        // 인덱스를 지정한 직접 추가
+        // 가능하지만 잘못된 인덱스를 사용하면 홀(hole) 발생 우려가 있음
+        menu[10] = '돈까스';
+        console.log(menu);
+
+        // 2. 삭제
+        //     1) pop()   : 마지막 요소를 제거  
+        //     2) shift() : 첫 번째 요소를 제거
+        menu.pop();
+        menu.shift();
+        console.log(menu);
+
+        // 3. 배열 요소 수정(수정, 추가, 삭제)
+        //    splice(변경을 시작할 인덱스, 삭제할 요소의 갯수, 추가할 요소1, 추가할 요소2, ...)
+
+        // 1) 2번 인덱스에 '칼국수'
+        // 삭제할 요소의 갯수에 0을 넣으면 지우지않는다는 뜻
+        menu.splice(2, 0, '칼국수');
+        console.log(menu);
+
+        // 2) 1번 인덱스 요소 제거하기
+        menu.splice(1, 1);
+        console.log(menu);
+
+        // 3) 1번 인덱스부터 2개 요소를 변경하기
+        //    1번 인덱스부터 2개 요소 제거 * 2개 요소 추가
+        menu.splice(1, 2, '전복죽', '냉면');
+        console.log(menu);
+    </script>
+</body>
+</html>

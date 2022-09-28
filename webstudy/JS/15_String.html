@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        var str = 'JavaScript';
+
+        // 1. 문자열 길이 
+        console.log(str.length);
+
+        // 2. 특정 문자 추출(인덱스 활용)
+        console.log(str.charAt(0));
+        console.log(str.charAt(str.length - 1));
+
+        // 3. 특정 문자열 추출(인덱스 활용)
+        console.log(str.substring(0, 4)); // 0 <= 추출문자열 < 4 
+        console.log(str.substring(4));    // 4 <= 추출문자열
+        console.log(str.substr(0, 4));    // 인덱스 0부터 4글자
+        console.log(str.substr(4));       // 인덱스 4부터 끝까지
+
+        // 4. 인덱스 반환
+        console.log(str.indexOf('J'));     // 첫 번째 대문자 J의 인덱스 반환
+        console.log(str.indexOf('j'));     // 첫 번째 소문자 j의 인덱스 반환, 없으면 -1 반환
+        console.log(str.lastIndexOf('a')); // 마지막 소문자 a의 인덱스 반환
+
+        // 5. 대 소문자 변환
+        console.log(str.toUpperCase());    // 모두 대문자로 변환
+        console.log(str.toLowerCase());    // 모두 소문자로 변환   
+
+        // 6. 좌우 공백 제거
+        var str2 = '    Java    Script    ';
+        console.log(str2.trimLeft)         // 왼쪽 모든 공백제거
+        console.log(str2.trimRight)        // 오른쪽 모든 공백 제거
+        console.log(str2.trim)             // 양쪽 모든 공백 제거
+
+        // 7. 찾아 바꾸기
+        var str3 = 'Java,Java';
+        console.log(str3.replace('Java', '자바')); // 첫 번째 Java를 '자바'로 수정
+
+        // 8. 시작/ 종료 패턴 검사하기
+        // ***로 시작하는가? / ***로 끝나는가?
+        console.log(str3.startsWith('J'))  // 'J'로 시작하면 true 반환
+        console.log(str3.endsWith('J'))    // 'J'로 끝나면 true 반환
+
+        // 9. 문자열 관리 - > 배열 생성
+        var str4 = 'Java,Oracle,HTML,CSS,JS';
+        var arr = str4.split(',');    // , 분류
+        console.log(arr);
+
+        // 10. 배열 요소 -> 문자열
+        console.log(arr.join(','))
+
+    </script>
+
+    <script>
+
+        // replaceAll() 함수 커스터마이징 하기
+        // String에 prototype으로 추가
+
+        // 1. indexOf + replace
+        String.prototype.replaceAll = function(before, after){
+            var str =this;  // this : replaceAll() 메소드를 호출하는 문자열
+            while(true){
+                if(str.indexOf(before) != -1){ 
+                str = str.replace(before,after);
+            }
+            return str;
+        }
+    }
+
+    // 2. split + join
+    String.prototype.replaceAll = function(before, after){
+        return this.split(before).join(after);
+    }
+
+        var str = 'Java,Java,Java';
+        console.log(str.replaceAll('Java','자바'));
+        
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // Date 객체 : 날짜/시간 처리
+
+        // 1. 현재 날짜와 시간
+        var now = new Date();
+        console.log(now);
+
+        // 2. 특정 날짜와 시간
+        var datetime1= new Date(2022, 9, 28); // 2022-10-28 (월: 0 ~ 11)
+        var datetime2 = new Date(2022, 9, 28, 15, 30, 45) // 2022-10-28 15:30:45
+        var datetime3 = new Date('2022-9-28 15:30:45') // 문자열로 전달하는 경우 월을 그대로 사용
+        console.log(datetime1, datetime2, datetime3);
+
+        // 3. 년, 월, 일, 시, 분, 초 추출
+        var year = now.getFullYear();  // 2022
+        var month = now.getMonth();    // 8
+        var day = now.getDate();       // 28
+        var weekNo = now.getDay();     // 3 (0:일, 1: 월, ...)
+        var hour = now.getHours();
+        var minute = now.getMinutes(); 
+        var second = now.getSeconds();
+        console.log(year, month, day, weekNo, hour, minute, second);   
+
+        // 문제 오늘 요일 출력하기(수요일)
+        var weekNames = ['일','월','화','수','목','금','토'];
+        console.log(weekNames[now.getDay()] + '요일');
+
+        // 심화. Date 클래스에 요일을 반환하는 getDayName() 메소드 추가
+        // prototype을 이용해서 추가해 두면 됨
+        Date.prototype.getDayName = function(){
+            return ['일','월','화','수','목','금','토'][new Date().getDay() + '요일'];
+        }
+        console.log(now.getDayName());
+
+    </script>
+
+
+    <style>
+        .over50{
+            color: red;
+        }
+    </style>
+    
+    <div>
+        <h1>
+            <span id="hour"></span> : 
+            <span id="minute"></span> : 
+            <span id="second"></span>
+            <span id="ampm"></span>
+        </h1>
+    </div>
+    <script>
+
+        // 문제. 초 시계 
+        setInterval(function(){
+            var now = new Date();
+            var hour = now.getHours();
+            var minute = now.getMinutes();
+            var second = now.getSeconds();
+            document.getElementById('hour').textContent = appendZero(hour >= 13 ? hour - 12 : hour);
+            document.getElementById('minute').textContent = appendZero(minute);
+            document.getElementById('second').textContent = appendZero(second);
+            document.getElementById('ampm').textContent = hour < 12 ? 'AM' : 'PM';
+            if(second >= 50){
+                document.getElementById('second').className = 'over50';
+            } else{
+                document.getElementById('second').className = '';
+            }
+        }, 1000);
+
+        // 0 ~ 9 = > 00 ~ 09
+        function appendZero(n){
+            return (n <= 9) ? '0' + n : '' + n;
+
+        }
+        
+    </script>
+</body>
+</html>

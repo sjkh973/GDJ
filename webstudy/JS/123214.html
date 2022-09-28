@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="title">
+        <h1>자리배치 프로그램</h1>
+    </div>
+    <div>
+        <span id="aClass"><strong>A1, A2</strong></span>
+
+
+        
+    </div>
+    <div>
+
+        <button onclick="btn()">버튼</button>
+    </div>
+
+    <script>
+       
+       
+       
+        function btn(){
+            let person = ['히랭쓰', '남고생핫팬T', '갅지맨', '호에엥', '피카츄', '아이언가장', 'Sera님'];
+             const randoms = Math.trunc(Math.random() * 7);    
+            document.getElementById('aClass').innerHTML += person[randoms];
+        }
+       
+  </script>
+</body>
+</html>

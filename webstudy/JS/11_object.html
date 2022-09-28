@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            객체
+            1. 여러 값으로 구성된 하나의 데이터
+            2. '속성(property)' : '값(value)'
+            3. 중괄호({})를 이용해 여러 값을 묶어줌
+
+        */
+    </script>
+
+    <script>
+        
+        // 객체 생성
+        var obj = {
+            'name' : '김주성',
+            'age'  : 29,
+            'friends' : {
+                'name' : '김철수',
+                'age' : 30
+            },
+            'hobbies' : [
+                '여행',
+                '운동',
+                '독서'
+            ],
+            'introduce' : function(){
+                console.log('이름' + this.name); // 현재 객체를 의미하는 this
+            }
+        }
+
+        // 속성(property) 확인
+        // 1. 마침표(.)  : 객체.속성
+        // 2. 대괄호([]) : 객체['속성']
+        console.log(obj.name);
+        console.log(obj.age);
+        console.log(obj.friends.name);
+        console.log(obj.friends.age);
+        console.log(obj.hobbies[0], obj.hobbies[1], obj.hobbies[2]);
+        (obj.introduce)(); // 자기 호출함수
+    </script>
+
+    <script>
+
+        // 빈 객체 생성
+        var computer = {};
+
+        // 속성 추가
+        // 동적 추가 방식 : 없던 속성을 새로 생성됨
+        computer.model = 'gram';
+        computer.price = 200;
+        console.log(computer);
+
+        // 속성 수정
+        // 존재하던 속성은 수정됨
+        computer.model = 'mac';
+        computer.price = 300;
+        console.log(computer);
+
+        // 속성 삭제
+        // delete 키워드 활용
+        delete computer.price;
+        console.log(computer);
+
+    </script>
+
+    <script>
+
+        // 객체의 모든 속성을 for - in문으로 순회
+
+        // 객체 생성
+        var book = {
+            'title'     : '소나기',
+            'author'    : '황순원',
+            'publisher' : '우리 출판사'
+        };
+
+        // 객체의 속성을 for문으로 순회
+        // 객체의 속성은 문자열로 반환됨('title', 'author', 'publisher')
+        for(let p in book){
+            // book.p  : book.'title' book.'author' book.'publisher'    : 사용 불가
+            // book[p] : book['title'] book['author'] book['publisher'] : 사용 가능
+            console.log(p + ":" + book[p]);
+        }
+
+    </script>
+
+    <div id="box1"></div>
+    <script>
+
+        // 테이블 만들기
+        var books = [
+            {
+                'title'  : '소나기',
+                'author' : '황순원' 
+            },
+            {
+                'title'  : '어린왕자',
+                'author' : '생택쥐베리' 
+            },
+            {
+                'title'  : '홍길동',
+                'author' : '허균' 
+            },
+        ];
+
+            // 테이블 태그
+            var table = '<table border="1"><thead><tr><td>제목</td><td>저자</td></tr></thead><tbody>';
+            for(let i = 0; i < books.length; i++){
+                table += '<tr>'
+                for(let p in books[i]){
+                    table += '<td>' + books[i][p] + '</td>';
+                }
+                table += '</tr>';
+            }
+            table += '</tbody></table>';
+
+            // 화면에 뿌리기
+            document.getElementById('box1').innerHTML = table;
+    </script>
+
+    <script>
+
+        /*
+            생성자 함수
+            1. 객체를 만드는 함수
+            2. 함수이름은 관례상 첫 글자를 대문자로 지정함
+            3. 형식
+                function 함수명(매개변수1, 매개변수2, ...){
+                    this.속성1 = 매개변수1;
+                    this.속성2 = 매개변수2;
+                    ...
+                }
+        */
+
+        // 생성자 함수 정의
+        function Car(model, maker){
+            this.model = model; // this.model이 속성 model이 존재함을 의미함
+            this.maker = maker;
+        }
+
+        // 생성자 함수 호출 = > 객체 생성을 의미(new 키워드를 활용함)
+        var car1 = new Car('스파크','쉐보레');
+        var car2 = new Car('레이','기아');
+
+        // 확인
+        console.log(car1, car2);
+
+    </script>
+
+    <script>
+
+        /*
+            프로토타입(prototype)
+            1. 객체들이 공유하는 하나의 메모리 공간 
+            2. 공통 값, 함수 등은 프로토타입에 저장해서 메모리 공간을 아낄 수 있음
+            3. 사용 방법
+                1) 생성자 함수 내부 
+                    this.__proto__.속성 = 값
+                    this.__proto__.속성 = function(){}
+                2) 생성자 함수 외부
+                    함수명.prototype.속성 = 값
+                    함수명.prototype.속성 = function(){}
+        */
+
+        //  생성자 함수 정의
+        function Korean(name){
+            this.name = name;
+            // 내부에서 prototype 추가하는 방법
+            this.__proto__.country = "Korea";
+            this.__proto__.slogan = function(){
+                console.log('8282');
+            }
+        }
+
+        // 외부에서 prototype 추가하는 방법
+        // 동일 속성값을 가지면 뒤의 함수는 적용 안됨
+        Korean.prototype.country = 'Korea';
+        Korean.prototype.slogan = function(){
+            console.log('8282');
+        }
+
+        // 객체 생성(생성자 함수 호출)
+        var k1 = new Korean('Kim');
+        var k2 = new Korean('Lee');
+
+        // 확인
+        console.log(k1, k2);
+
+        k1.slogan();
+    </script>
+
+</body>
+</html>
