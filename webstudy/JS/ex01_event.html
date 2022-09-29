@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- 1. 버튼을 누르면 이미지가 바뀐다. -->
+    <div id="box1">
+        <img src="../../images/uncheck.png" width="50px">
+        <br>
+        <button id="btn1">OFF</button>
+    </div>
+
+    <script>
+        var img = document.querySelector('#box1 > img');
+        document.getElementById('btn1').onclick = function(event){
+            // this는 getElementById로 불러온 btn1이다
+            if(this.textContent == 'OFF'){
+                this.textContent = 'ON';
+                img.src = '../../images/check.png';
+            } else{
+                this.textContent = 'OFF';
+                img.src = '../../images/uncheck.png';
+            }
+        }
+    </script>
+</body>
+</html>

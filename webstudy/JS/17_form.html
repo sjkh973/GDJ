@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- 1. <button>/<input type=submit>을 이용한 서브밋 -->
+    <form id="frm1" action="https://search.naver.com/search.naver">
+        <input type="text" name="query" id="query">
+        <button>검색</button>
+        <input type="submit" value="네이버검색">
+    </form>
+    <script>
+        // 문서객체
+        var frm1 = document.getElementById('frm1');
+        var query = document.getElementById('query');
+
+        // 서브밋 이벤트
+        // 서브밋 못하게 막는 이벤트 리스너
+        // 이벤트 대상은 버튼이 아닌 form이다.
+        frm1.onsubmit= function(event){
+            if(query.value == ''){ // 사용자가 입력한 값이 없으면
+                alert('검색어를 입력하세요.');
+                query.focus();
+                event.preventDefault(); // 이벤트 동작 방지(서브밋 동작 방지)
+                return; // 이벤트 리스너 종료
+            }
+        }
+        
+        /*
+        query.onkeyup = function(event){ //onkeyup : 입력직 후 
+            console.log(query.value);  // 사용자가 입력한값을 value속성으로 확인가능   
+        }
+        */
+    </script>
+
+    <!-- 2. <input type=button>을 이용한 서브밋 -->
+    <form id="frm2" action="https://www.google.com/search">
+        <input type="text" name="q" id="q">
+        <input type="button" value="구글검색" id="btn_google">
+    </form>
+    <script>
+        // 문서객체
+        var frm2 = document.getElementById('frm2');
+        var q = document.getElementById('q');
+        var btnGoogle = document.getElementById('btn_google');
+
+        // 버튼 클릭 이벤트
+        btnGoogle.onclick = function(event){
+            if(q.value == ''){
+                alert('검색어를 입력하세요.');
+                q.focus(); // q(검색창)에 포커스를 맞춤 
+                return;
+            }
+            // 서브밋
+            frm2.submit();
+        }
+
+    </script>
+
+    <!-- 연습.  이름이 2 ~ 6자 사이가 아니면 경고메시지 띄우고 서브밋 방지 -->
+    <form id="frm3" action="/">
+        <label for="name">
+            이름
+            <input type="text" name="name" id="name">
+        </label>
+        <button>조회</button>
+    </form>
+    <script>
+        var frm3 = document.getElementById('frm3');
+        var n = document.getElementById('name');
+
+        frm3.onsubmit = function(event){
+            if(n.value == '' || n.value.length < 2 || n.value.length > 6){
+                alert('이름은 2 ~ 6자 사이로 입력해주세요.');
+                event.preventDefault();
+                return;
+            }
+        }
+    </script>
+
+</body>
+</html>
