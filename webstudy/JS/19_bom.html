@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            BOM
+
+            1. Browser Object Model(브라우저 객체 모델)
+            2. 브라우저 구성 요소를 자바스크립트 객체로 처리할 수 있음
+            3. 주요 객체
+                1) window   : 최상위 객체. 생략 가능
+                2) screen   : 화면 객체. 화면의 너비/높이
+                3) history  : 방문 경로 저장 객체. 뒤로/앞으로
+                4) location : 경로 객체. 주소창 조작(URL 조작) 
+        */
+    </script>
+
+    <!-- 1. screen -->
+    <script>
+        console.log(screen.width, screen.height);
+        console.log(screen.availWidth, screen.availHeight);
+    </script>
+    
+    <!-- 2. history -->
+    <button id="btn1">뒤로</button>
+    <script>
+        /*
+            history.back()    : 뒤로 가기
+            history.forward() : 앞으로 가기
+            history.go(-1)    : 뒤로 1번 가기
+            history.go(-2)    : 뒤로 2번 가기
+        */
+       document.getElementById('btn1').onclick = function(event){
+            history.back();
+       }
+    </script>
+
+    <hr>
+
+    <!-- 3. location -->
+    <button id="btn_naver">네이버</button>
+    <button id="btn_google">구글</button>
+
+    <script>
+        /*
+            1. history를 남기는 이동
+                1) location.href = '경로'
+                2) location.assign('경로')
+            2. history를 안 남기는 이동(주소를 바꾸는 개념)
+                1) location.replace('경로')
+        */
+        document.getElementById('btn_naver').onclick = function(event){
+            location.href = 'https://www.naver.com';
+        }
+        document.getElementById('btn_google').onclick = function(event){
+            location.replace('https://www.google.com');
+        }
+    </script>
+
+    <hr>
+
+    <!-- 4. window -->
+
+    <script>
+        /*
+            window 객체의 구성 요소
+
+            1. 대화상자
+                1) window.alert()
+                2) window.confirm()
+                3) window.prompt()
+            2. 타이머 함수
+                1) window.setTimeout()
+                2) window.setInterval()
+            3. 창 
+                1) window.open()
+                2) window.close()
+        */
+    
+    
+    </script>
+
+    <button id="btn2">열기</button>
+    <script>
+
+        /*
+            window.open(url, name, features)
+
+            1. url  : 열어 줄 파일의 경로
+            2. name : 창 이름
+            3. features : 창 특징
+                1) width/height : 창의 너비 높이
+                2) top/bottom/left/right : 창의 위치
+
+        */
+        // 19_popup.html 열기
+        document.getElementById('btn2').onclick = function(event){
+            var features = 'width=640, height=500px,top=100px,left=100px';
+            window.open('19_popup.html', '팝업',features);
+        }
+    </script>
+
+
+</body>
+</html>

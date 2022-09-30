@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="msg_parent"></h1>
+    <input type="text" id="parent_ipt">
+    <button id="btn">전송</button>
+    <script>
+        // 문서객체
+        var parentIpt = document.getElementById('parent_ipt');
+        var btn = document.getElementById('btn');
+        // 전역변수(창 객체는 전역변수로 선언하고 모든 함수에서 사용)
+        var childWindow = null;
+
+        // 창 열기 함수
+        function openChildWindow(url,name){
+            const windowWidth = 480;
+            const windowHeight = 320;
+            const left = (screen.width - windowWidth) /2 ;
+            const top = (screen.height - windowHeight) / 2;
+            const features = 'width=' + windowWidth + 'px,height=' + windowHeight + 'px,left=' + left + 'px,top=' + top + 'px';
+            if(childWindow == null || childWindow.close){
+                childWindow = open(url, name, features);
+            }
+        }
+
+        // 데이터 보내기 함수
+        function sendData(){
+            // onload : 자식창이 모두 열린 뒤 처리
+            childWindow.onload = function(event){
+                childWindow.document.getElementById('msg_child').textContent = parentIpt.value;
+            }
+        } 
+
+        // 버튼 클릭 이벤트
+        btn.onclick = function(event){
+            openChildWindow('19_child.html','자식창');
+            sendData();
+        }
+
+    </script>
+</body>
+</html>

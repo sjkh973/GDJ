@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="msg_child"></h1>
+    <div style="margin : 20px auto; text-align: center;">
+        <button id="btn">반사</button>
+    </div>
+    <script>
+        // 자식창에서 부모창에 있는 id를 불러올때 opener를 씀
+        document.getElementById('btn').onclick = function(event){
+           opener.document.getElementById('msg_parent').textContent = document.getElementById('msg_child').textContent;
+        }
+    </script>
+</body>
+</html>

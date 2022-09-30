@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            AJAX
+
+            1. Asynchronous Javascript And Xml
+            2. 자바스크립트와 XML간 비동기 통신
+            3. 통신 방식
+                1) 동기 통신
+                    (1) 순서대로 통신
+                    (2) 요청을 하고, 응답이 올 때까지 기다림
+                    (3) 느림
+                2) 비동기 통신
+                    (1) 순서를 지키지 않는 통신
+                    (2) 응답이 오지 않더라도 요청을 계속
+            4. 페이지 전체를 로드하지 않고, 페이지 일부만 요청해서 처리하는 기능
+            5. 자바스크립트의 XMLHttpRequest 객체가 AJAX 처리를 담당함
+        */
+    </script>
+
+    <div id="box1"></div>
+    <script>
+
+        // data.txt 파일이 서버가 보낸 데이터
+
+        // 1. XMLHttpRequest 객체 생성
+        var xhr = new XMLHttpRequest();
+
+        // 2. open() - 요청 정보를
+        //    open(HTTP메소드, 요청서버경로, 통신방식)
+        //    1) HTTP메소드
+        //       (1) GET  : GET방식
+        //       (2) POST : POST방식
+        //    2) 요청서버경로
+        //        /컨텍스트패스/URLMapping
+        //    3) 통신방식
+        //       (1) 동기 통신   : false
+        //       (2) 비동기 통신 : true
+        xhr.open('GET','data.txt',true);   // 서버경로를 data.txt로 가정
+
+        // 3. send() - 요청하기
+        xhr.send();
+
+        // 4. 응답 처리
+        //    응답이 오는지 점검하기 위한 readystateChange 이벤트가 필요
+        xhr.onreadystatechange = function(event){
+            // 응답에 관련된 속성
+            // 1. readyState (통신 확인)
+            //    1) 0(OPENED)
+            //    2) 1(UNSEND)
+            //    3) 2(HEADERS_RECEIVE) 데이터를 받다 말음
+            //    4) 3(LOADING) 다되어서 띄우는중
+            //    5) 4(DONE) 다됨
+            // 2. status (응답 코드)
+            //    1) 200 : 응답 성공
+            //    2) 40X : 요청 실패 (클라이언트 잘못)
+            //    3) 50X : 서버 오류 (서버 잘못)
+            if(xhr.readyState == 4 & xhr.status == 200){
+                // 응답 데이터 속성
+                // 1. 텍스트 형식 응답 : responseText
+                // 2. XML   형식 응답 :  responseXML
+                // 3. JSON  형식 응답 :  JSON.parse(responseText)
+                document.getElementById('box1').textContent = xhr.responseText;
+            }
+        }
+
+    </script>
+</body>
+</html>

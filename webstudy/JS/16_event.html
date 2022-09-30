@@ -259,7 +259,7 @@
 
             // 첫 이미지에서 이전 버튼을 누른 경우 마지막 이미지가 열림
             if(idx == -1){
-                idx = images.length -1; // 배열의 마지막. idx 4의 이미지를 보여줌
+                idx = images.length -1; // 배열의 마지막. idx 10의 이미지를 보여줌
             }
 
             // 마지막 이미지에서 다음 버튼을 누른 경우 첫 이미지가 열림
@@ -271,19 +271,19 @@
             // 배열의 이미지를 div에 적용
             imgBox.style['background-image'] = 'url(../../images/' + images[idx] + ')';
 
-            // 이미지 번호 span에 적용 (1(idx+1) / 5(length))
+            // 이미지 번호 span에 적용 (1(idx+1) / 10(length))
             imgNo.textContent = (idx +1) + ' / ' + images.length;
         }
 
-            // 이전 버튼 이벤트
-            btnPrev.onclick = function(event){
-                changeImg(-1); // 변경할 인덱스를 전달
-            }
+        // 이전 버튼 이벤트
+        btnPrev.onclick = function(event){
+            changeImg(-1); // 변경할 인덱스를 전달
+        }
 
-            // 다음 버튼 이벤트
-            btnNext.onclick = function(event){
-                changeImg(1); // 변경할 인덱스를 전달
-            }
+        // 다음 버튼 이벤트
+        btnNext.onclick = function(event){
+            changeImg(1); // 변경할 인덱스를 전달
+        }
     </script>
 
     <hr>
