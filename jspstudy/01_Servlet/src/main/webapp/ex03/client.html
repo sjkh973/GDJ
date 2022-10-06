@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<!-- 1. GET방식 요청 : <a> 태그 -->
+	 <!-- /가 없으면 맵핑으로 인식    /가 있으면 컨텍스트패스로 인식 -->
+	 <!-- 컨택스트패스 = 프로젝트    맵핑 = 서블릿  -->
+	<div>
+		<a href="http://localhost:9090/01_Servlet/AnchorServlet">정상링크1</a>
+	</div>
+	<div>
+		<a href="/01_Servlet/AnchorServlet">정상링크2(추천)</a>   <!-- 가장 안전한 링크 방법   "/프로젝트/서블릿" -->
+	</div>
+	<div>
+		<a href="/AnchorServlet">불량링크1(슬래시로 시작하면 컨텍스트 패스로 인식)</a>
+	</div>
+	<div>
+		<a href="01_Servlet/AnchorServlet">불량링크2(컨텍스트 패스는 슬래시로 시작해야 함)</a>
+	</div>
+	<div>
+		<a href="AnchorServlet">불량링크3(URL 매핑으로 인식되지만 HTML 문서의 경로에 따라 실행 여부가 다름)</a>  <!-- webapp 폴더에 두면 정상링크 -->
+	</div>
+	 <div>
+       <button id="btn1">링크1</button>
+       <button id="btn2" data-name='김주성'>링크2</button>
+    </div>
+   <script src="../js/jquery-3.6.1.min.js"></script>
+   <script>
+      $('#btn1').on('click', function(event){
+          //location.href = '/01_Servlet/LocationServlet'; 시험문제 
+         open('/01_Servlet/LocationServlet');   // open(url, [name], [features])
+      });
+      $('#btn2').click(function(event){
+         location.href = '/01_Servlet/LocationServlet?param=' + $(this).data('name');
+      });
+   </script>
+</body>
+</html>
