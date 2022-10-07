@@ -24,6 +24,8 @@
 	<div>
 		<a href="AnchorServlet">불량링크3(URL 매핑으로 인식되지만 HTML 문서의 경로에 따라 실행 여부가 다름)</a>  <!-- webapp 폴더에 두면 정상링크 -->
 	</div>
+	
+	<!-- 2. GET방식 요청 javascript -->
 	 <div>
        <button id="btn1">링크1</button>
        <button id="btn2" data-name='김주성'>링크2</button>
@@ -38,5 +40,122 @@
          location.href = '/01_Servlet/LocationServlet?param=' + $(this).data('name');
       });
    </script>
+   
+   <hr>
+   <!-- 3. GET 방식 요청 : <form> 태그를 이용한 서브밋 -->
+   <!-- id는 자바스크립트, 제이쿼리에서 사용/ name은 서버에 전송용으로 사용 value값이 파라미터값임 -->
+   <div>
+   		<form id="frm" method="GET"action="/01_Servlet/FormServlet">
+   		<!-- 변수 보내기 -->
+   			<div>
+   				<input type="text" id="id" name="id" placeholder="아이디"><br>
+   			</div>
+   			<div>
+   				<input type="password" id="pwd" name="pwd" placeholder="●●●●"><br>
+   			</div>
+   			<div>
+	   			<label for="male"><input type="radio" id="male" name="gender" value="남자">남</label>
+	   			<label for="female"><input type="radio" id="female" name="gender" value="여자">여</label>
+	   			<label for="none"><input type="radio" id="none" name="gender" value="">선택안함</label>
+   			</div>
+   			<div>
+   				<select id="city" name="city" >
+   					<option value="">도시를 선택하세요</option>
+   					<option value="incheon">인천</option>
+   					<option value="seoul">서울</option>
+   					<option value="busan3">부산</option>
+   				</select>
+   			</div>
+   			<!-- 배열 보내기 -->
+   			<!-- 동일한 name이 2개면 배열로 간다.radio 제외 -->
+   			<div>
+   				<input type="text" name="phone" size="3" maxlength="3">-
+   				<input type="text" name="phone" size="4" maxlength="4">-
+   				<input type="text" name="phone" size="4" maxlength="4">
+   			</div>
+   			<div>
+   				<label for="terms"><input type="checkbox" id="terms" name="agree" value="terms">이용약관 동의</label>
+   				<label for="service"><input type="checkbox" id="service" name="agree" value="service">서비스 동의</label>
+   				<label for="marketing"><input type="checkbox" id="marketing" name="agree" value="marketing">마케팅 동의</label>
+   				 
+   			</div>
+   			<!-- 연습. 이메일 -->
+   			<div>
+   				<input type="text" name="email_id" placeholder="아이디">
+				@
+				<input type="text" name=domain list="domain_list" placeholder="입력 또는 선택"> 
+				<datalist id="domain_list">
+					<option value="google.com">
+					<option value="naver.com">
+					<option value="kakao.com">
+				</datalist>
+   			</div>
+   			<button id="btn">전송</button> <!-- 버튼을 누르면 폼을 찾고 폼의 모든 입력요소를 찾고 입력요소의 name을 찾음 -->
+   		</form>
+   </div>
+   <script>
+   	
+   		
+   		/* 서브밋 관련 이벤트리스너 2개
+   		// 1. 폼 서브밋 이벤트
+   		$('#frm').on('submit',function(event) {
+			
+		});
+   		
+   		// 2. <button> 클릭 이벤트
+   			  <button>을 클릭하면 서브밋되므로 폼의 서브밋 이벤트와 동일함
+   		$('#btn').on('click', function(event) {
+			
+		})
+		*/
+		
+   		// 아이디, 비밀번호 입력 없으면 서브밋 방지
+		$('#btn').on('click',function(event) {
+			if($('#id').val() == ''){
+				alert('아이디는 필수입니다.');
+				event.preventDefault(); // 이벤트(서브밋) 방지
+				return;   // 더 이상 코드 진행하지 말 것
+			}			
+			if($('#pwd').val() == ''){
+				alert('비밀번호는 필수입니다.');
+				event.preventDefault(); // 이벤트(서브밋) 방지
+				return;   // 더 이상 코드 진행하지 말 것
+			}
+			
+   			// 성별 선택 없으면 서브밋 방지
+   			if($(':radio').is(':checked') == false){ // radio의 체크상태가 false이면
+   				alert('성별은 필수입니다.');
+   				event.preventDefault(); // 이벤트(서브밋) 방지
+				return;
+   			}
+   			
+   			// 도시 선택 없으면 서브밋 방지
+   			if($('#city').val() == ''){
+   				alert('도시는 필수입니다.');
+				event.preventDefault(); 
+				return;  
+   			}
+   			// 이용약관 동의, 서비스 동의 없으면 서브밋 방지
+   			if($('#terms').is(':checked') == false || $('#service').is(':checked') == false){
+   				alert('이용약관 서비스를 동의해야 합니다.');
+   				event.preventDefault(); 
+				return;  
+   			}
+   			
+		});
+   		
+   		
+   		
+   		
+   </script>
+   
+   
+   
+   
+   
+   
+   
+   
+   
 </body>
 </html>

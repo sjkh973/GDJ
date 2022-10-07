@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!--
+		편지 쓰기
+		1. 파일명   : YYYY-MM-DD-작성자.txt
+		2. 파일내용 : 
+			To. 배수지
+			사랑해요 배수지
+			아이러브 유 배수지
+			From.김주성
+		Prac03A : 파일 생성
+		Prac03B : 경고창(YYYY-MM-DD-작성자.txt 파일이 생성되었습니다.)	
+	  -->
+	  
+	  <form method="POST" action="/01_Servlet/Prac03A">
+	  	<div>
+	  		<input type="text" name="from" placeholder="보내는사람">
+	  	</div>
+	  	<div>
+	  		<input type="text" name="to" placeholder="받는사람">
+	  	</div>
+	  	<div>
+	  		<textarea name="content" rows="5" cols="40"></textarea>
+	  	</div>
+	  	<div>
+	  		<button>편지쓰기</button>
+	  	</div>
+	  </form>
+	  
+</body>
+</html>
