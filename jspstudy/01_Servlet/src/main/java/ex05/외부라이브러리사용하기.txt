@@ -1,0 +1,11 @@
+Dynamic Web Project에서 외부 라이브러리 사용하는 방법
+
+1. Tomcat에 라이브러리 등록하기 
+	1) CATALINA_HOME 열기 (Tomcat 폴더)
+	2) lib 디렉터리 열기
+	3) 사용할 외부 라이브러리 복붙
+	4) 해당 Tomcat을 사용하는 모든 컨텍스트에서 등록된 라이브러리 사용 가능함
+
+2. 특정 컨텍스트(프로젝트)에 라이브러리 등록하기
+	1) src/main/webapp/WEB-INF/lib 열기
+	2) 사용할 외부 라이브러리 드래그(복사)

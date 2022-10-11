@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.1.min.js"></script>
+</head>
+<body>
+	<div><button id="btn1">클릭</button></div>
+	<div id="box1"></div>
+	<script>
+		$('#btn1').on('click', function(event){
+			$('#box1').empty();
+			$.ajax({
+				/* 요청 */
+				type: 'GET',					// 요청 메소드
+				url: '/01_Servlet/TextServlet', // 요청 URL
+				data: 'name=김주성&age=29',     // 요청 파라미터 url: '/01_Servlet/TextServlet?name=김주성&age=29', url과 data를 붙여서 url에 쓸수있음
+				
+				/* 응답 */
+				dataType : 'text',    			// 응답 데이터 타입(text, xml, json)
+				success : function(resData){	// 응답 데이터는 resData에 전달됨
+					$('#box1').text(resData);
+				},
+				error : function(jqXHR){		// 예외 발생 시 예외 정보가 jqXHR 객체에 전달됨
+					$('#box1').append('status : ' + jqXHR.status + '<br>');					
+					$('#box1').append(jqXHR.responseText);
+				}
+			})
+		});
+	</script>
+
+	<hr>
+	
+	<div><button id="btn2">클릭</button></div>
+	<div id="box2"></div>
+	
+	<script>
+		$('#btn2').on('click', function(event){
+			var box2 = $('#box2');
+			box2.empty();
+			$.ajax({
+				/* 요청 */
+				type : 'GET',
+				url : '/01_Servlet/JSONServlet',
+				data : 'name=김주성&age=29',
+				/* 응답 */
+				dataType : 'json',
+				success : function(resData){  // resData는 JSON 데이터가 응답되므로 자바스크립트 객체로 처리하면 됨
+					box2.html('<h1>이름 : ' + resData.name + ', 나이 : ' + resData.age + '살</h1>');
+				},
+				error: function(jqXHR){
+					box2.append('status : ' + jqXHR.status + '<br>')
+					box2.append(responseText);
+				}
+			})
+		});
+	</script>
+	
+	<hr>
+	
+	<div><button id="btn3">클릭</button></div>
+	<div id="box3"></div>
+	
+	<script>
+		var box3 = $('#box3');
+		$('#btn3').on('click', function(event){
+			box3.empty();
+			$.ajax({
+				/* 요청 */
+				type : 'GET',
+				url: '/01_Servlet/XMLServlet',
+				data : 'name=김주성&age=29',
+				/* 응답 */
+				dataType : 'xml',
+				success : function(resData){  // XML 처리는 이곳이 중요함
+					var ul = $('<ul>');
+					ul.append($('<li>').text($(resData).find('name').text()));
+					ul.append($('<li>').text($(resData).find('age').text()));
+					ul.appendTo(box3);
+				},
+				error : function(jqXHR){
+					box3.append('status : ' + jqXHR.status + '<br>');
+					box3.append(responseText);
+				}
+			})
+		})
+		
+	</script>
+</body>
+</html>

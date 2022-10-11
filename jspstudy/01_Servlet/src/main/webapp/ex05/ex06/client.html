@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../../js/jquery-3.6.1.min.js"></script>
+</head>
+<body>
+	<div>
+		<input type="text" id="query" placeholder="검색어 입력">
+		<select id="display">
+			<option value="10">10</option>
+			<option value="20">20</option>
+			<option value="50">50</option>
+			<option value="100">100</option>
+		</select>
+		<input type="button" id="btn1" value="검색">
+	</div>
+	<div>
+		<table border="1">
+			<thead>
+				<tr>
+					<td>영화제목</td>
+					<td>부제</td>
+					<td>이미지</td> <!-- 이미지 클릭하면 네이버 영화 링크 열림 -->
+					<td>제작년도</td>
+					<td>감독</td>
+					<td>출연배우</td>
+					<td>평점</td>
+				</tr>
+			</thead>
+			<tbody id="movies"></tbody>
+		</table>
+	</div>
+	<script>
+		$('#btn1').on('click', function(event){
+			 //fn_getXML();
+			fn_getJSON();
+		});
+		function fn_getXML(){
+			$.ajax({
+				/* 요청 */
+				type : 'GET',
+				url : '/01_Servlet/MovieXMLServlet',
+				data : 'query=' +  $('#query').val() + '&display=' + $('#display').val(),
+				/* 응답 */
+				dataType : 'xml', // xml, json 가능
+				success : function(resData){
+					$('#movies').empty();
+					// $.each() 메서드는 object 와 배열 모두에서 사용할 수 있는 일반적인 반복 함수입니다.
+					$.each($(resData).find('item'), function(i, item){
+						var tr = $('<tr>');
+						// xml데이터일때는 find메소드로 태그명을 찾고 .text()로 태그내용을 찾는다.
+						tr.append($('<td>').html($(item).find('title').text()));
+						tr.append($('<td>').html($(item).find('subtitle').text()));
+						tr.append($('<td>').html($('<a>').attr('href', $(item).find('link').text()).html($('<img>').attr('width', '80px').attr('height', '120px').attr('src', $(item).find("image").text()))));
+						tr.append($('<td>').html($(item).find('pubDate').text()));
+						tr.append($('<td>').html($(item).find('director').text()));
+						tr.append($('<td>').html($(item).find('actor').text()));
+						tr.append($('<td>').html($(item).find('userRating').text()));
+						tr.appendTo('#movies');
+					});
+				},
+				error : function(jqXHR){
+					console.log('status : ' + jqXHR.status);
+					console.log('responseText :' + jqXHR.responseText);
+				}
+			})
+		}
+		
+		function fn_getJSON(){
+			$.ajax({
+				/* 요청 */
+				type: 'GET',
+				url: '/01_Servlet/MovieJSONServlet',
+				data: 'query=' + $('#query').val() + '&display=' + $('#display').val(),
+				/* 응답 */
+				dataType: 'json',  // xml, json 가능
+				success: function(resData){
+					console.log(resData)
+					$('#movies').empty();
+					$.each(resData.items, function(i, item){
+						var tr = $('<tr>');
+						tr.append($('<td>').html(item.title));
+						tr.append($('<td>').html(item.subtitle));
+						tr.append($('<td>').html($('<a>').attr('href', item.link).html($('<img>').attr('width', '80px').attr('height', '120px').attr('src', item.image))));
+						tr.append($('<td>').html(item.pubDate));
+						tr.append($('<td>').html(item.director));
+						tr.append($('<td>').html(item.actor));
+						tr.append($('<td>').html(item.userRating));
+						tr.appendTo('#movies');
+					});
+				},
+				error: function(jqXHR){
+					console.log('status : ' + jqXHR.status);
+					console.log('responseText : ' + jqXHR.responseText);
+				}
+			});
+		}
+	</script>
+</body>
+</html>
