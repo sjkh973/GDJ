@@ -1,4 +1,4 @@
-package ex03;
+package ex03_parameter;
 
 import java.io.IOException;
 import java.io.PrintWriter;

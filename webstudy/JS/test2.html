@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1. 고전 이벤트 모델 -->
+    <button id="btn1">전송</button>
+    <script> 
+        function fn1(){
+            alert('전송합니다.');
+        }
+        document.getElementById('btn').onclick = fn1;
+    </script>
+
+    <!-- 2. 표준 이벤트 모델 -->
+    <button id="btn">전송</button>
+    <script>
+        function fn1(){
+            alert('전송합니다.');
+        }
+        document.getElementById('btn').addEventListener('click',fn1);
+    </script>
+
+    <!-- 3. 인라인 이벤트 모델 -->
+    <button id="btn" onclick="fn1()">전송</button>
+    <script>
+        function fn1(){
+            alert('전송합니다.');
+        }
+    </script>
+
+
+    <button id="to_site">이동</button>
+    <script>
+        document.getElementById('to_site').onclick= function(event){
+            location.href='https://www.google.com/';
+        }
+    </script>
+
+
+<form id="frm" action="https://search.naver.com/search.naver">
+    <input type="text" name="query" id="query">
+    <input type="submit" name="네이버검색" id="btn">
+</form>
+<script>
+    // input 타입의 button은 자바스크립트 등록용도로 동작하는것이 없으므로 type을 submit으로 바꿔준다.
+    document.getElementById('btn').onclick = function(event) {
+        alert('검색어는 ' + document.getElementById('query').value + '입니다.')
+    }
+
+</script>
+</body>
+</html>

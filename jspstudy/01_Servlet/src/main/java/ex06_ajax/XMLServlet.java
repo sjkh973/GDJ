@@ -1,4 +1,4 @@
-package ex05;
+package ex06_ajax;
 
 import java.io.IOException;
 import java.io.PrintWriter;

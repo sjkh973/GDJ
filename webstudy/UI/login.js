@@ -6,7 +6,6 @@ document.getElementById('btn_signin').onclick = function(event){
         event.preventDefault(); 
     }  
 }
-/* 버튼 이벤트 리스너에 아이디를 변수추가하여 이벤트 동작 방지 메소드하면될듯????? */
 document.getElementById('id').onkeyup = function(event){
     var id = document.getElementById('id');
     var id_msg = document.getElementById('id_msg');
@@ -14,7 +13,11 @@ document.getElementById('id').onkeyup = function(event){
         id_msg.textContent = '';       
     } else if(id.value.length <4){
         id_msg.textContent = '아이디는 4자 이상입니다.';
+        id_msg.style.color = '#FF0000';
+        id_msg.style.fontSize = '14px';
     } else if(id.value.length >= 4){
         id_msg.textContent = '정상적인 아이디입니다.';
+        id_msg.style.color = '#0000FF';
+        id_msg.style.fontSize = '14px';
     }
 }

@@ -1,4 +1,4 @@
-package ex04;
+package ex05_forward;
 
 import java.io.IOException;
 
