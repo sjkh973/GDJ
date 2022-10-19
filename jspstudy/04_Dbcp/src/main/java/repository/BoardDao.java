@@ -145,6 +145,24 @@ public class BoardDao {
 		return result;
 	}
 	
+	// 6. 게시글 삭제
+	public int deleteBoard(int board_no) { // 삭제한 데이터의 갯수가 반환되기때문에 int타입
+		int result =0;
+		try {
+			con= datasource.getConnection();
+			sql ="DELETE FROM BOARD WHERE BOARD_NO = ?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, board_no);
+			result= ps.executeUpdate(); // DELETE문은 executeUpdate() 메소드 사용
+		}catch (Exception e) { 
+			e.printStackTrace();
+		} finally {
+			close(con, ps, null);
+		}
+		
+		return result;
+		
+	}
 	public static BoardDao getInstance() {
 		return dao;
 	}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	
+	<!-- db.properties에 db정보  -->
+	<!-- db.properties의 driver, url, username, password와 아래의 property의 el이 같아야 함 -->
+	<!-- mybatis.org - > products - > mybatis3 다운 -> docs - > XML에서 SqlSessionFactory 빌드하기 코드 config에 넣기 -->
+	
+	<!-- db.properties 파일 경로 설정 -->
+ 	 <properties resource="mybatis/config/db.properties"></properties>
+	
+	<!-- snake_case(DB) to camelCase(Java) -->
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+	
+	<!-- domain.Board to Board -->
+	<typeAliases>
+		<typeAlias type="domain.Board" alias="Board"/>
+	</typeAliases>
+	
+	  <environments default="development">
+	    <environment id="development">
+	      <transactionManager type="JDBC"/>
+	      	<dataSource type="POOLED">
+		        <property name="driver" value="${driver}"/>
+		        <property name="url" value="${url}"/>
+		        <property name="username" value="${username}"/>
+		        <property name="password" value="${password}"/>
+	      	</dataSource>
+	      </environment>
+	  </environments>
+  
+  
+  <!-- mapper 경로  -->
+  <mappers>
+    <mapper resource="mybatis/mapper/board.xml"/>
+  </mappers>
+  
+</configuration>
