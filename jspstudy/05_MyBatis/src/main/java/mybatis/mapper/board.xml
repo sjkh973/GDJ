@@ -59,7 +59,17 @@
 	 	 WHERE BOARD_NO = #{boardNo} 
 	 </delete>
 	 
-	 
+	 <!-- 
+	 	5. 게시글 수정
+	 		1) parameterType : Board board
+	 		2) resultType    : 작성하면 안 됩니다. 자동으로 int로 처리된다.
+	  -->
+	  
+	  <update id="updateBoard" parameterType="Board">
+	  	UPDATE BOARD
+	  	   SET TITLE = #{title}, CONTENT = #{content}
+	  	 WHERE BOARD_NO = #{boardNo}  
+	  </update>
 	 
 	 
 	 

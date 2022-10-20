@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace="mapper의 패키지 경로" -->
+  
+<mapper namespace="mybatis.mapper.student">
+
+	<!-- 
+		mapper
+		1. 쿼리문 작성하는 곳
+		2. 모든 쿼리문에 세미콜론 금지
+		3. <select>, <insert>, <update>, <delete> 코드 사용
+	 -->
+	
+	<!-- 1. 학생목록 -->
+	 <select id="selectAllStudents" resultType="Student">
+	 	SELECT STU_NO, NAME, KOR, ENG, MATH, AVE, GRADE
+	 	  FROM STUDENT
+	 	 ORDER BY STU_NO 
+	 </select>
+	 
+	 <!-- 2. 전체학생수 -->
+	 <select id="selectAllStudentsCount" resultType="int">
+	 	SELECT COUNT(*) 
+	 	  FROM STUDENT
+	 </select>
+	 
+	 <!-- 3. 전체평균 -->
+	 <select id="selectAllStudentsAverage" resultType="double">
+	 	SELECT NVL(AVG(AVE),0)
+	 	  FROM STUDENT
+	 </select>
+	 
+	 <!-- 4. 학생등록  -->
+	 <insert id="insertStudent" parameterType="Student">
+	 	INSERT INTO STUDENT
+	 		(STU_NO, NAME, KOR, ENG, MATH, AVE, GRADE)
+	    VALUES
+	    	(STUDENT_SEQ.NEXTVAL, #{name}, #{kor}, #{eng}, #{math}, #{ave}, #{grade})		
+	 </insert>
+	 
+	 <!-- 5. 평균범위조회 -->
+	 <select id="selectStudentByAve" parameterType="Map" resultType="Student">
+	 	SELECT STU_NO, NAME, KOR, ENG, MATH, AVE, GRADE
+	 	  FROM STUDENT
+	 													<!-- <![CDATA[]] 안에 있으면 < 가 태그로 인식되지않고 작다 크다로 인식 됨 -->
+	 	 WHERE AVE >= #{begin} AND AVE <![CDATA[<]]>= #{end}
+	 	 
+	 </select>
+	 
+	 <!-- 6. 평균범위조회 : 개수 -->
+	 <select id="selectStudentByAveCount" parameterType="Map" resultType="int">
+	 	SELECT COUNT(*)
+	 	  FROM STUDENT
+	 	 WHERE AVE >= #{begin} AND AVE <![CDATA[<]]>= #{end}
+	 </select>
+	 
+	 <!-- 7. 평균범위조회 : 평균 -->
+	 <select id="selectStudentByAveAverage" parameterType="Map" resultType="double">
+	 	SELECT NVL(AVG(AVE),0)
+	 	  FROM STUDENT
+	 	  WHERE AVE >= #{begin} AND AVE <![CDATA[<]]>= #{end}
+	 </select>
+	 
+	 <!-- 8. 학생삭제 -->
+	 <delete id="deleteStudent" parameterType="int">
+	 	DELETE
+	 	  FROM STUDENT
+	 	 WHERE STU_NO = #{stuNo} 
+	 </delete>
+</mapper>

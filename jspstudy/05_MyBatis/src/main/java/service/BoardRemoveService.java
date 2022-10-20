@@ -22,8 +22,8 @@ public class BoardRemoveService implements BoardService{
 		
 		// DB로 boardNo 보내기(삭제)
 		int result = BoardDao.getInstance().deleteBoard(boardNo);
-				
-		// 삽입 성공 / 실패
+		
+		// 삭제 성공 / 실패
 		PrintWriter out = response.getWriter();
 		if(result > 0) {
 			out.println("<script>");
@@ -32,14 +32,14 @@ public class BoardRemoveService implements BoardService{
 			out.println("</script>");
 		} else {
 			out.println("<script>");
-			out.println("alert('게시글이 삭제가 실패했습니다.')");
-			out.println("history.back()"); // history.go(-1)과 동일 코드
+			out.println("alert('게시글 삭제가 실패했습니다.')");
+			out.println("history.back()");  // history.go(-1)
 			out.println("</script>");
 		}
 		out.close();
-				
-		return null; // Java문법때문에 남겨진 코드(실행되지 않는 코드) < - location.href or history.back()으로 다른페이지로 감
 		
+		return null;  // 컨트롤러로 null을 반환하면 컨트롤러는 리다이렉트&포워드 모두 수행하지 않음
+
 	}
 	
 }

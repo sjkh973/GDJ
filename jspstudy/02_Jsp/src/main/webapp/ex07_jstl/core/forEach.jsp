@@ -44,8 +44,8 @@
 	
 	<%-- 4. 배열 --%>
 	<%
-		String[] menus = {"김밥", "떡복이", "순대"};
-		pageContext.setAttribute("menus", menus);
+	String[] menus = {"김밥", "떡복이", "순대"};
+			pageContext.setAttribute("menus", menus);
 	%>
 	<c:forEach var="menu" items="${menus}" varStatus="vs">   <!-- varStatus 인덱스를 꺼낼때 쓰는값 -->
 		인덱스 : ${vs.index}, 순번 : ${vs.count}, 배열 : ${menu}<br>	
@@ -57,8 +57,8 @@
 	
 	<%
 		List<String> seasons = Arrays.asList("봄", "여름", "가을", "겨울");
-		pageContext.setAttribute("seasons", seasons);
-	%>
+				pageContext.setAttribute("seasons", seasons);
+		%>
 	<c:forEach var="season" items="${seasons}" varStatus="k">
 		인덱스 : ${k.index}, 순번 : ${k.count}, 리스트요소 : ${season}<br>
 	</c:forEach>
@@ -67,10 +67,10 @@
 	
 	<%-- 6. Map (반복이 필요한 건 아님)--%>
 	<%
-		Map<String, Integer> map = new HashMap<>();
-		map.put("begin", 1);
-		map.put("end", 10);
-		pageContext.setAttribute("map", map);
+	Map<String, Integer> map = new HashMap<>();
+			map.put("begin", 1);
+			map.put("end", 10);
+			pageContext.setAttribute("map", map);
 	%>
 	${map.begin} ~ ${map.end}<br>
 	
@@ -79,11 +79,11 @@
 	
 	<%-- 7. 객체 (반복이 필요한 건 아님) --%>
 	<%
-		Board board = new Board();
-		board.setBoardNo(1);
-		board.setTitle("도대체 언제까지...");
-		board.setHit(100);
-		pageContext.setAttribute("board", board);
+	Board board = new Board();
+			board.setBoardNo(1);
+			board.setTitle("도대체 언제까지...");
+			board.setHit(100);
+			pageContext.setAttribute("board", board);
 	%>
 	${board.boardNo}, ${board.title}, ${board.hit}<br>
 	${board.getBoardNo()}, ${board.getTitle()}, ${board.getHit()}<br>
@@ -99,15 +99,13 @@
 	 --%>
 	
 	<%
-		
-		
 		List<Board> boards = new ArrayList<>();
-		boards.add(new Board(100,"제목1", 2));
-		boards.add(new Board(200,"제목2", 1));
-		boards.add(new Board(300,"제목3", 5));
-		
-		pageContext.setAttribute("boards", boards);
-	%>
+				boards.add(new Board(100,"제목1", 2));
+				boards.add(new Board(200,"제목2", 1));
+				boards.add(new Board(300,"제목3", 5));
+				
+				pageContext.setAttribute("boards", boards);
+		%>
 	
 	<table border="1">
 		<thead>

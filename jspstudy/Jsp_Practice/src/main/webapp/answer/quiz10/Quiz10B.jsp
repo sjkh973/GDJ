@@ -10,16 +10,16 @@
 </head>
 <body>
 	<%
-		request.setCharacterEncoding("UTF-8");
-		
-		Board board = new Board();
-		board.setTitle(request.getParameter("title"));
-		board.setWriter(request.getParameter("writer"));
-		board.setContent(request.getParameter("content"));
-		board.setDate(new Date(System.currentTimeMillis()));
-		
-		// EL 사용을 위해서.
-		pageContext.setAttribute("board", board);
+	request.setCharacterEncoding("UTF-8");
+			
+			Board board = new Board();
+			board.setTitle(request.getParameter("title"));
+			board.setWriter(request.getParameter("writer"));
+			board.setContent(request.getParameter("content"));
+			board.setDate(new Date(System.currentTimeMillis()));
+			
+			// EL 사용을 위해서.
+			pageContext.setAttribute("board", board);
 	%>	
 	<div>제목 : ${board.title}</div>
 	<div>작성 : ${board.writer}</div>

@@ -14,7 +14,7 @@
 	
 $(document).ready(function() {
 	   
-    $('#frm_write').click(function(event) {
+    $('#frm_write').submit(function(event) {
        
        if($('#title').val() == '') {
           alert('제목은 필수입니다.');
