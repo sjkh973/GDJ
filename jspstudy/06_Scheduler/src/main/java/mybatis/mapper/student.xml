@@ -71,4 +71,30 @@
 	 	  FROM STUDENT
 	 	 WHERE STU_NO = #{stuNo} 
 	 </delete>
+	 
+	 <!-- 9. 학생상세보기 -->
+	 <select id="selectStudentByNo" parameterType="int" resultType="Student">
+	 	SELECT STU_NO, NAME, KOR, ENG, MATH, AVE, GRADE
+	 	 FROM STUDENT
+	 	 WHERE STU_NO = #{stuNo} 
+	 </select>
+	 
+	 <!-- 10. 학생 수정 -->
+	 <update id="updateStudent" parameterType="Student">
+	 	UPDATE STUDENT
+	 	   SET NAME = #{name}, KOR = #{kor}, ENG = #{eng}, MATH = #{math}, AVE = #{ave}, GRADE = #{grade} 
+	 	 WHERE STU_NO = #{stuNo}  
+	 </update>
+	 
+	 <!-- 11. 평균기준 상위 3명 -->
+	 <select id="selectStudentTop3" resultType="Student">
+	 	
+	 	SELECT A.RANK, A.STU_NO, A.NAME, A.KOR, A.ENG, A.MATH, A.AVE, A.GRADE
+		  FROM (SELECT RANK() OVER(ORDER BY AVE DESC) AS RANK, STU_NO, NAME, KOR, ENG, MATH, AVE, GRADE
+		          FROM STUDENT) A
+		 WHERE A.RANK <![CDATA[<=]]> 3
+	 </select>
+	 
+	 
+	 
 </mapper>

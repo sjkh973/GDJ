@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,7 @@
 </head>
 <body>
 
-	<a href="${contextPath}/student/list.do">학생관리</a>
+	<a href="${contextPath}/student/list.do">학생관리</a> 
 
 </body>
 </html>

@@ -18,7 +18,7 @@ public class StudentListService implements StudentService {
 		request.setAttribute("count", dao.selectAllStudentsCount());
 		request.setAttribute("average", dao.selectAllStudentsAverage());
 		
-		
+	
 		return new ActionForward("/student/list.jsp", false);
 	}
 

@@ -19,6 +19,8 @@ public class StudentDao {
 	
 	private static StudentDao dao = new StudentDao();
 	
+	
+	
 	private StudentDao() {
 		try {
 			// SqlSessionFactory 빌드
@@ -41,7 +43,7 @@ public class StudentDao {
 	
 	
 	public List<Student> selectAllStudents(){
-		SqlSession ss =factory.openSession();
+		SqlSession ss = factory.openSession();
 		List<Student> students = ss.selectList(mapper + "selectAllStudents");
 		ss.close();
 		return students;
@@ -51,7 +53,7 @@ public class StudentDao {
 	// 2. 전체 학생수
 	
 	public int selectAllStudentsCount() {
-		SqlSession ss =factory.openSession();
+		SqlSession ss = factory.openSession();
 		int count = ss.selectOne(mapper + "selectAllStudentsCount");
 		ss.close();
 		return count;
@@ -69,7 +71,7 @@ public class StudentDao {
 	// 4. 학생 등록
 	
 	public int insertStudent(Student student) {
-		SqlSession ss =factory.openSession();
+		SqlSession ss = factory.openSession();
 		int result = ss.insert(mapper + "insertStudent", student);
 		if(result > 0) {
 			ss.commit();
@@ -114,6 +116,35 @@ public class StudentDao {
 		}
 		ss.close();
 		return result;
+		
+	}
+	
+	// 9. 학생상세보기
+	
+	public Student selectStudentByNo(int stuNo) {
+		SqlSession ss = factory.openSession();
+		Student student = ss.selectOne(mapper + "selectStudentByNo", stuNo);
+		ss.close();
+		return student;
+	}
+	
+	// 10. 학생수정
+	public int updateStudent(Student student) {
+		SqlSession ss = factory.openSession(false);
+		int result = ss.update(mapper + "updateStudent", student);
+		if(result > 0) {
+			ss.commit();
+		}
+		ss.close();
+		return result;
+	}
+	
+	// 11. Top3 
+	public List<Student> selectStudentTop3(){
+		SqlSession ss = factory.openSession();
+		List<Student> top3 = ss.selectList(mapper + "selectStudentTop3");
+		ss.close();
+		return top3;
 		
 	}
 }
