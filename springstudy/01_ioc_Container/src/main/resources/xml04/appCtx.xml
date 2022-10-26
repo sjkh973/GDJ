@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!--  
+		<bean> 태그의 scope 속성
+		1. scope = "singleton"
+			1) bean을 하나만 만들어 둔다.
+			2) 생략하면 singleton이 사용된다.
+		2. scope="prototype"
+			1) bean을 요청할때마다 만들어 준다.
+			2) 자주 사용되지는 않는다.
+	-->
+
+
+	<bean id="dao" class="com.gdu.app01.xml04.Dao" scope="prototype"/>
+</beans>

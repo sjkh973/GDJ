@@ -17,9 +17,9 @@
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
 	
-	<!-- domain.Student to Student -->
+	<!-- domain.Member to Member -->
 	<typeAliases>
-		<typeAlias type="domain.Student" alias="Student"/>
+		<typeAlias type="domain.Member" alias="Member"/>
 	</typeAliases>
 	
 	  <environments default="development">
@@ -36,7 +36,7 @@
    
   <!-- mapper 경로  -->
   <mappers>
-    <mapper resource="mybatis/mapper/student.xml"/>
+    <mapper resource="mybatis/mapper/member.xml"/>
   </mappers>
   
 </configuration>

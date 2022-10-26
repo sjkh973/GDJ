@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<!--  
+		Namespaces 탭에서 "p" 옵션을 체크하면
+		<property> 태그를 <bean> 태그의 p: 속성으로 바꿔서 사용할 수 있다.
+	-->
+
+	<bean id="address" class="com.gdu.app01.xml03.Address" p:jibun="가산동" p:road="디지털로" p:zipCode="12345"/>
+
+
+
+	<bean id="person" class="com.gdu.app01.xml03.Person" p:name="김주성" p:age="29" p:addr-ref="address"/>
+		
+</beans>
