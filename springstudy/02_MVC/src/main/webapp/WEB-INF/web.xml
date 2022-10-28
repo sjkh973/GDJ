@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+	<!-- 
+		Spring Container : Bean을 만들어 두는 곳
+		root-context.xml 파일에 <bean> 태그를 추가해 두면 Bean이 만들어 집니다.
+	 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+	</context-param>
+	
+	<!-- Creates the Spring Container shared by all Servlets and Filters -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+
+
+	<!-- Processes application requests -->
+	<!-- 
+		<servlet-name>appServlet</servlet-name> : 서블릿을 appServlet으로 부르겠다.
+		<servlet-Class>org...DispatcherServlet<servlet-Class> : 실제서브릿은 DispatcherServlet이다.
+		
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value> : DispatcherServlet은 servlet-context.xml의 내용을 읽어서 동작한다.
+		</init-param>
+	 -->
+	<servlet>
+		<servlet-name>appServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<!--  
+		<servlet-mapping>은 @WebServlet 애너테이션을 의미한다.
+		: 어떤 서블릿이 어떤 매핑에서 동작하는지 정의하는 것을 의미한다.
+		
+		appServlet의 동작은 매핑 /(contextPath 경로)에서 이루어진다.
+		: DispatcherServlet은 http://localhost:9090/app02 경로(프로젝트=애플리케이션의 시작 경로)
+	-->
+	
+	
+	<servlet-mapping>
+		<servlet-name>appServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+</web-app>

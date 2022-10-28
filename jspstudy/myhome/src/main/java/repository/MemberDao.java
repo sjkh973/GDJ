@@ -43,10 +43,25 @@ public class MemberDao {
 		return login;
 	}
 	
-	// 모든 method는 SqlSessionFactory로부터 SqlSession을 얻어서 사용
-	// method
+	public int insertMember(Member member) {
+		SqlSession ss = factory.openSession(false);
+		int result = ss.insert(mapper + "insertMember", member);
+		if(result > 0) {
+			ss.commit();
+		}
+		ss.close();
+		return result;
+	}
 	
-	
+	public int deleteMember(int memberNo) {
+		SqlSession ss = factory.openSession(false);
+		int result = ss.delete(mapper + "deleteMember", memberNo);
+		if(result > 0) {
+			ss.commit();
+		}
+		ss.close();
+		return result;
+	}
 	
 	
 	

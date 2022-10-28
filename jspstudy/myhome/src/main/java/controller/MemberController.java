@@ -42,10 +42,20 @@ public class MemberController extends HttpServlet {
 		case "/member/logout.me" : 
 			af = service.logout(request, response);
 			break;
+		case "/member/join.me" : 
+			af = new ActionForward("/member/join.jsp", false);
+			break;
+		case "/member/register.me" : 
+			service.register(request, response); // af없이 register() 메소드 내부에서 직접 이동
+			break;
+		case "/member/cancel.me" : 
+			service.cancel(request, response);   // af없이 register() 메소드 내부에서 직접 이동
+			break;
+			
+		// 매핑 잘못 작성한 경우
+		default :
+			System.out.println("매핑을 확인하세요.");
 		}
-		
-		
-		
 		
 		// 어디로 어떻게 이동하는가?
 	      if(af != null) {

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+  
+<mapper namespace="mybatis.mapper.board">
+
+	<select id="selectAllBoards" resultType="Board">
+		SELECT BOARD_NO, WRITER, TITLE, CONTENT, CREATE_DATE
+	 	  FROM BOARD
+	 	 ORDER BY BOARD_NO DESC 
+	</select>	 
+	
+	<select id="selectAllBoardsCount" resultType="int">
+		SELECT COUNT(*)
+		  FROM BOARD
+	</select>
+	
+	 <select id="selectBoardByNo" parameterType="int" resultType="Board"> 
+	 	SELECT BOARD_NO, WRITER, TITLE, CONTENT, CREATE_DATE
+	 	  FROM BOARD
+	 	 WHERE BOARD_NO = #{boardNo}  
+	 </select>
+	 
+	  <insert id="insertBoard" parameterType="Board">
+	  		INSERT INTO BOARD
+	  			(BOARD_NO, WRITER, TITLE, CONTENT, CREATE_DATE)
+	  		 VALUES
+	  		 	(BOARD_SEQ.NEXTVAL, #{writer}, #{title}, #{content}, SYSDATE)
+	  </insert>
+	  
+	 <delete id="deleteBoard" parameterType="int">
+	 	DELETE
+	 	  FROM BOARD
+	 	 WHERE BOARD_NO = #{boardNo} 
+	 </delete>
+	
+	  <update id="updateBoard" parameterType="Board">
+	  	UPDATE BOARD
+	  	   SET TITLE = #{title}, CONTENT = #{content}
+	  	 WHERE BOARD_NO = #{boardNo}  
+	  </update>
+	 
+	 
+	 
+</mapper>

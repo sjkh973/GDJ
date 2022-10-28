@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 생성자 주입(Constructor Injection) : <constructor-arg> 태그 -->
+	<bean id="contact" class="com.gdu.app01.xml07.Contact">
+		<constructor-arg  value="가산동"/>	 <!-- 생성자의 매개변수 순서로만 작업가능 -->
+		<constructor-arg  value="user@naver.com"/>	 
+		<constructor-arg  value="010-1111-1111"/>	 
+	</bean>
+	
+	<bean id="user" class="com.gdu.app01.xml07.User">
+		<constructor-arg value="user"/>
+		<constructor-arg ref="contact"/>
+	</bean>
+	
+</beans>
