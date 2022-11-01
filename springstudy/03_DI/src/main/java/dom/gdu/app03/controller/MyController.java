@@ -67,7 +67,7 @@ public class MyController {
 	  	@Autowired는 타입(class)이 일치하는 Bean을 Container에서 가져온다.
 	  	
 	  	@Autowired
-	  	pirvate Board board; // 타입이 Board인 Bean을 Container에서 가져오거라.
+	  	private Board board; // 타입이 Board인 Bean을 Container에서 가져오거라.
 	  	
 	  	---- Container -----
 	  	<bean id="board1" class="dom.gdu.app03.domain.Board">

@@ -81,7 +81,7 @@ public class MyController1 {
 		return "member/detail";
 	}
 	
-	// <form action="${contextPath}/member/detail4" method="get">
+	// <form action="${contextPath}/member/detail4" method="post">
 	@PostMapping("detail4")		// 요청 : URLMapping + 요청메소드
 	public String postDetail4(@ModelAttribute(value="member") Member member) { // 파라미터 id, pw를 이용해 Member member를 만들고, Model에 member라는 이름의 속성으로 저장하시오
 		

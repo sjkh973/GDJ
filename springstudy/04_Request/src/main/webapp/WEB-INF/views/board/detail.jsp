@@ -11,7 +11,7 @@
 	
 	<h1>회원 상세 보기</h1>
 	
-	<div>제목 ${title}</div>	<%-- ${board.title}는 board.getTitle()를 호출한다. --%>
-	<div>조회수 ${hit}</div> <%-- ${board.hit}는board.getHit()를 호출한다. --%>
+	<div>제목${title}, ${board.title}</div>	<%-- ${board.title}는 board.getTitle()를 호출한다. --%>
+	<div>조회수${hit}, ${board.hit}</div> <%-- ${board.hit}는board.getHit()를 호출한다. --%>
 </body>
 </html>

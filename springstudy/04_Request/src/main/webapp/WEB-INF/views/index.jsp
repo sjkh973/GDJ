@@ -51,7 +51,7 @@
 	<hr>
 	
 	<div>
-		<a href="${contextPath}/board/detail1?title=공지사항&hit=10">전송</a>
+		<a href="${contextPath}/board/detail3?title=공지사항&hit=10">전송</a>
 	</div>
 	
 </body>
