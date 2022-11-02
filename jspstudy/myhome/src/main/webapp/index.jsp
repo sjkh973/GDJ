@@ -11,6 +11,10 @@
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 </head>
 <body>
+	<div>
+	<a href="${contextPath}/notice/list.no">공지사항</a>
+	</div>
+	
 	<c:if test="${login == null}">		
 		<div>
 			<form method="post" action="${contextPath}/member/login.me">

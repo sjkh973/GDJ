@@ -82,11 +82,6 @@ public class MyController1 {
 	 */
 	
 	
-	@ResponseBody
-	@PostMapping(value="member/detail4"
-			   ,produces=MediaType.APPLICATION_JSON_VALUE)
-	public Member detail4(@RequestBody Member member) {
-		return memberService.execute4(member);
-	}
+	
 	
 }

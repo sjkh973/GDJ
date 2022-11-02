@@ -12,30 +12,37 @@
 <script src="${contextPath}/resources/js/jquery-ui.min.js"></script>
 <script>
 	
-	$(document).ready(function(){
-		
-		$('#targetDt').datepicker({
-			dateFormat : 'yymmdd' // 실제로는 yyyymmdd로 적용
-		});
-		
-		$('#btn').click(function(){
-			$.ajax({
-				type : 'get',
-				url : '${contextPath}/movie/boxOfficeList', 
-				data : 'targetDt=' + $('#targetDt').val(),
-				dataType : 'json',
-				success : function(resData){
-					// 기존 목록 초기화 
-					$('#boxOfficeList').empty();
-					// 가져온 목록 나타내기
-					$.each(resData.boxOfficeResult.dailyBoxOfficeList, function(i, moive){
-						
-					});
-				}
-			});
-		});
-		
-	});
+$(document).ready(function(){
+    
+    $('#targetDt').datepicker({
+       dateFormat : 'yymmdd' // 실제로는 yyyymmdd로 적용
+    });
+    
+    $('#btn').click(function(){
+       $.ajax({
+          type : 'get',
+          url : '${contextPath}/movie/boxOfficeList', 
+          data : 'targetDt=' + $('#targetDt').val(),
+          dataType : 'json',
+          success : function(resData){
+             // 기존 목록 초기화 
+             $('#boxOfficeList').empty();
+             // 가져온 목록 나타내기
+             $.each(resData.boxOfficeResult.dailyBoxOfficeList, function(i, movie){
+                $('<tr>')
+                .append( $('<td>').text(movie.rank))
+                .append( $('<td>').text(movie.movieNm))
+                .append( $('<td>').text(movie.openDt))
+                .append( $('<td>').text(movie.audiCnt))
+                .append( $('<td>').text(movie.audiAcc))
+                .appendTo('#boxOfficeList');
+                 
+             });
+          }
+       });
+    });
+    
+ });
 	
 </script>
 </head>

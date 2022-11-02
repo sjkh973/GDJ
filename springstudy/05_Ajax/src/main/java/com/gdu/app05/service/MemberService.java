@@ -15,5 +15,5 @@ public interface MemberService {
 	public Map<String, Object> execute3(Member member);
 	
 	// 요청 JSON
-	public Member execute4(Member member);
+	
 }

@@ -53,10 +53,6 @@ public class MemberServiceImpl implements MemberService {
 		return map;
 	}
 	
-	@Override
-	public Member execute4(Member member) {
-		System.out.println(member.getId() + member.getPw());
-		return member;
-	}
+	
 
 }

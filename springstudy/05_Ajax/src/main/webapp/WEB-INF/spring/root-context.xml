@@ -7,4 +7,5 @@
 	
 <!-- 	<bean id="memberService" class="com.gdu.app05.service.MemberServiceImpl"/> -->
 	
+	<bean id="movieService" class="com.gdu.app05.service.MovieServiceImpl"></bean>
 </beans>
