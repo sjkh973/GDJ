@@ -80,25 +80,75 @@ public class BoardDAO {
 	
 	public BoardDTO selectBoardByNo(int board_no) {
 		BoardDTO board = null;
-		
+		try {
+			con = getConnection();
+			sql = "SELECT BOARD_NO, TITLE, CONTENT, WRITER, CREATE_DATE, MODIFY_DATE FROM BOARD WHERE BOARD_NO = ?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, board_no);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				board = new BoardDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));	
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
 		return board;
 	}
 	
 	public int insertBoard(BoardDTO board) {
 		int result = 0;
+		try {
+			con = getConnection();
+			sql = "INSERT INTO BOARD(BOARD_NO, TITLE, CONTENT, WRITER, CREATE_DATE, MODIFY_DATE) "
+					+ "VALUES(BOARD_SEQ.NEXTVAL, ?, ?, ?, TO_CHAR(SYSDATE, 'YYYY-MM-DD'), TO_CHAR(SYSDATE, 'YYYY-MM-DD'))";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, board.getTitle());
+			ps.setString(2, board.getContent());
+			ps.setString(3, board.getWriter());
+			result = ps.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
 		
 		return result;
 	}
 	
 	public int updateBoard(BoardDTO board) {
 		int result = 0;
-		
+		try {
+			con = getConnection();
+			sql = "UPDATE BOARD SET TITLE = ?, CONTENT = ?, MODIFY_DATE = TO_CHAR(SYSDATE, 'YYYY-MM-DD') "
+					+ "WHERE BOARD_NO = ?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, board.getTitle());
+			ps.setString(2, board.getContent());
+			ps.setInt(3, board.getBoard_no());
+			result = ps.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
 		return result;
 	}
 	
 	public int deleteBoard(int board_no) {
 		int result = 0;
-		
+		try {
+			con = getConnection();
+			sql = "DELETE FROM BOARD WHERE BOARD_NO = ?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, board_no); // 첫번째 물음표에 보드 넘버 전달
+			result = ps.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
 		return result;
 	}
 	

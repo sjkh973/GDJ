@@ -20,6 +20,11 @@
 </script>
 </head>
 <body>
+
+	<div>
+		<a href="${contextPath}/brd/write">새글작성</a>
+	</div>
+
       <div>
    		<table border="1">
    			<thead>
@@ -34,7 +39,7 @@
    				<c:forEach items="${boards}" var="board">
    					<tr>
    						<td>${board.board_no}</td>
-   						<td>${board.title}</td>
+   						<td><a href="${contextPath}/brd/detail?board_no=${board.board_no}">${board.title}</a></td>
    						<td>${board.writer}</td>
    						<td>${board.create_date}</td>
    					</tr>
