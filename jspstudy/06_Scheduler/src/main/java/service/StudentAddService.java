@@ -44,8 +44,7 @@ public class StudentAddService implements StudentService {
 		
 		// DB에 삽입
 		int result = StudentDao.getInstance().insertStudent(student);
-		
-		
+			
 		// 삽입 성공 / 실패
 		PrintWriter out = response.getWriter();
 		if(result > 0) {

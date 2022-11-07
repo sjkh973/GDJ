@@ -14,6 +14,7 @@
 <body>
 
 	<a href="${contextPath}/student/list.do">학생관리</a> 
-
+	
+	
 </body>
 </html>

@@ -38,7 +38,6 @@
 			<tfoot>
 				<tr>
 					<td colspan="2"><button>등록</button><input type="button" value="목록" id="btn_list"></td>
-					
 				</tr>
 			</tfoot>
 		</table>

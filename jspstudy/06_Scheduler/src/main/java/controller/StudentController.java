@@ -44,7 +44,6 @@ public class StudentController extends HttpServlet {
 		case "/student/list.do":
 			service = new StudentListService();
 			break;
-	
 		case "/student/add.do" :
 			service = new StudentAddService();
 			break;
