@@ -35,12 +35,7 @@ public class FreeAddService implements FreeService{
 			out.println("alert('게시글이 등록되었습니다.')");
 			out.println("location.href='" + request.getContextPath() + "/list.do'");
 			out.println("</script>");
-		} else {
-			out.println("<script>");
-			out.println("alert('학생 등록이 실패했습니다.')");
-			out.println("history.back()");
-			out.println("</script>");
-		}
+		} 
 		out.close();
 		
 		return null;

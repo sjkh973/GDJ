@@ -25,12 +25,7 @@ public class FreeRemoveService implements FreeService {
 			out.println("alert('게시글이 삭제되었습니다.')");
 			out.println("location.href='" + request.getContextPath() + "/list.do'");
 			out.println("</script>");
-		} else {
-			out.println("<script>");
-			out.println("alert('게시글 삭제가 실패했습니다.')");
-			out.println("history.back()");
-			out.println("</script>");
-		}
+		} 
 		out.close();
 		
 		return null;

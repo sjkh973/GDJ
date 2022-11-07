@@ -36,15 +36,15 @@
 	</div>
 	
 	<form id="frm_detail" method="post" action="${contextPath}/free/modify.do?freeNo=${free.freeNo}">
-	<div>
-		<label for="title">제목</label>
-		<input type="text" name="title" value="${free.title}">
-	</div>
-	<textarea id="content" name="content" rows="5" cols="30" >${free.content}</textarea>
-	<div>
-		<button>수정</button>
-		<input type="button" value="목록" id="btn_list">
-	</div>
+		<div>
+			<label for="title">제목</label>
+			<input type="text" name="title" value="${free.title}">
+		</div>
+		<textarea id="content" name="content" rows="5" cols="30" >${free.content}</textarea>
+		<div>
+			<button>수정</button>
+			<input type="button" value="목록" id="btn_list">
+		</div>
 	</form>
 </body>
 </html>
