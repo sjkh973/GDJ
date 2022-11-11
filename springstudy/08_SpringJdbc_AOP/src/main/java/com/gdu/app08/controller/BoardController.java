@@ -70,7 +70,10 @@ public class BoardController {
 		return "redirect:/brd/list";
 	}
 	
-	// 트랜잭션 확인을 위해서 testTransaction() 메소드를 호출하는 매핑
+	// 트랜잭션 확인을 위해서 testTransaction() 메소드를 호출하는 매핑 작성
+   // 동작 확인을 위해서 http://localhost:9090/app08/brd/transaction 입력
+   // BoardServiceImpl의 testTransaction() 메소드가 동작하는데 이 메소드에는 오류가 있기 때문에 예외가 발생함
+   // Board 테이블을 열고, 트랜잭션제목, 트랜잭션내용, 트랜잭션작성자 내용을 가진 행(Row)가 있는지 확인 -> 없으면 트랜잭션이 잘 동작한 것임
 	@GetMapping("brd/transaction")
 	public String transaction() {
 		boardService.testTransaction();

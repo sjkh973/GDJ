@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gdu.app12.mapper.BbsMapper"> <!-- 이걸해줘야 bbsMapper에서 메소드명으로해주면 쿼리문 사용가능 -->
+
+	<select id="selectAllBbsCount" resultType="int"> <!-- bbsMapp의 반환타입이 resultType임 -->
+		SELECT COUNT(*)
+		  FROM BBS
+		  
+	</select>
+	<!-- 
+		원글 개수 : WHERE DEPTH = 0
+		답글 개수 : WHERE GROUP_ORDER = 원글번호 AND DEPTH > 0
+	 -->
+
+	<select id="selectAllBbsList" parameterType="Map" resultType="BbsDTO">
+		SELECT A.RN, A.BBS_NO, A.WRITER, A.TITLE, A.IP, A.CREATE_DATE, A.STATE, A.DEPTH, A.GROUP_NO, A.GROUP_ORDER
+		  FROM (SELECT ROW_NUMBER() OVER(ORDER BY GROUP_NO DESC, GROUP_ORDER ASC) AS RN, BBS_NO, WRITER, TITLE, IP, CREATE_DATE, STATE, DEPTH, GROUP_NO, GROUP_ORDER
+		          FROM BBS) A
+		 WHERE A.RN BETWEEN #{begin} AND #{end}      
+	</select>
+	
+	<insert id="insertBbs" parameterType="BbsDTO">
+		INSERT INTO BBS
+			(BBS_NO, WRITER, TITLE, IP, CREATE_DATE, STATE, DEPTH, GROUP_NO, GROUP_ORDER)
+		VALUES
+			(BBS_SEQ.NEXTVAL, #{writer}, #{title}, #{ip}, SYSDATE, 1, 0, BBS_SEQ.CURRVAL, 0)
+	</insert>
+	
+	<!--
+		upDatePreviousReply 쿼리
+		1. 기존 답글들의 GROUP_ORDER를 1증가시키는 쿼리문이다.
+		2.parameterType="BbsDTO"는 원글을 의미한다.
+	  -->
+	<update id="upDatePreviousReply" parameterType="BbsDTO">
+		UPDATE BBS
+		   SET GROUP_ORDER = GROUP_ORDER + 1
+		 WHERE GROUP_NO = #{groupNo}     <!-- #{group_no} 원글에서 꺼낸 그룹 넘버  -->
+		   AND GROUP_ORDER > #{groupOrder}
+	</update>
+	
+	<insert id="insertReply" parameterType="BbsDTO">
+		INSERT INTO BBS
+			(BBS_NO, WRITER, TITLE, IP, CREATE_DATE, STATE, DEPTH, GROUP_NO, GROUP_ORDER)
+		VALUES
+			(BBS_SEQ.NEXTVAL, #{writer}, #{title}, #{ip}, SYSDATE, 1, #{depth}, #{groupNo}, #{groupOrder})
+	</insert>
+	
+	<update id="deleteBbs" parameterType="int">
+		UPDATE BBS
+		   SET STATE = 0
+		 WHERE BBS_NO = #{bbsNo}  
+	</update>
+	
+</mapper>
