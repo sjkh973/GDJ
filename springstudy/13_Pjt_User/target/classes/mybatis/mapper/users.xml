@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gdu.app13.mapper.UserMapper">
+
+	<select id="selectUserById" parameterType="String" resultType="UserDTO">
+		SELECT ID
+		  FROM USERS
+		 WHERE ID = #{id} 
+	</select>
+	
+	<select id="selectRetireUserById" parameterType="String" resultType="RetireUserDTO">
+		SELECT ID
+		  FROM RETIRE_USERS
+		 WHERE ID = #{id} 
+	</select>
+	
+	<select id="selectUserByEmail" parameterType="String" resultType="UserDTO">
+		SELECT EMAIL
+		  FROM USERS
+		 WHERE EMAIL = #{email} 
+	</select>
+	
+</mapper>
