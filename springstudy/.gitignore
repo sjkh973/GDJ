@@ -1,1 +1,5 @@
+#메타데이터
 /.metadata/
+# 프로퍼티
+*.properties
+
