@@ -20,7 +20,6 @@ import com.zaxxer.hikari.HikariDataSource;
 @MapperScan(basePackages = {"com.gdu.app13.mapper"})
 @PropertySource(value = {"classpath:mybatis/config/mybatis.properties"})
 @EnableTransactionManagement
-@EnableAspectJAutoProxy
 @Configuration
 public class DBConfig {
 

@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class UserDTO {
-	private Long userNo;
+	private int userNo;
 	private String id;
 	private String pw;
 	private String name;
@@ -26,7 +26,7 @@ public class UserDTO {
 	private String jibunAddress;
 	private String detailAddress;
 	private String extraAddress;
-	private Integer agreeCode;
+	private int agreeCode;
 	private String snsType;
 	private Date joinDate;
 	private Date pwModifyDate;

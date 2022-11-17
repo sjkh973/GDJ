@@ -23,6 +23,25 @@
 	
 	<context:component-scan base-package="com.gdu.app13" />
 	
+	<!-- interceptor -->
 	
+	<beans:bean id="keepLoginInterceptor" class="com.gdu.app13.interceptor.KeepLoginInterceptor" />
+	<beans:bean id="PreventLoginInterceptor" class="com.gdu.app13.interceptor.PreventLoginInterceptor"/>
+	<interceptors>
+		<interceptor>
+			<mapping path="/**" />
+			<beans:ref bean="keepLoginInterceptor" />
+		</interceptor>
+	</interceptors>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/user/login/form" />
+			<mapping path="/user/join/write" />
+			<mapping path="/user/agree" />
+			<!-- @Component로 빈 등록하면 class로 등록해줘야 함 -->
+			<beans:bean class="com.gdu.app13.interceptor.PreventLoginInterceptor"/>
+		</interceptor>
+	</interceptors>
 	
 </beans:beans>

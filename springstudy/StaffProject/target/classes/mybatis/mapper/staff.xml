@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gdu.staff.mapper.StaffMapper"> <!-- 이걸해줘야 bbsMapper에서 메소드명으로해주면 쿼리문 사용가능 -->
+
+	<select id="selectStaffList" resultType="StaffDTO">
+		SELECT SNO, NAME, DEPT, SALARY
+		  FROM STAFF
+		 ORDER BY SNO
+	</select>
+	
+	<insert id="insertStaff" parameterType="StaffDTO">
+		INSERT INTO STAFF
+			(SNO, NAME, DEPT, SALARY)
+		VALUES
+			(#{sno}, #{name}, #{dept}, #{salary})	
+	</insert>
+	
+	<select id="selectStaffByNo" parameterType="String" resultType="StaffDTO" >
+		SELECT SNO, NAME, DEPT, SALARY
+		  FROM STAFF
+		 WHERE SNO = #{sno} 
+	</select>
+	
+	
+</mapper>

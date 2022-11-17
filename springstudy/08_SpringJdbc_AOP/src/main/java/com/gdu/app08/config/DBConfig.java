@@ -25,7 +25,7 @@ import org.springframework.transaction.interceptor.TransactionInterceptor;
 @EnableTransactionManagement
 /* 
 	@EnableAspectJAutoProxy
-	안녕, 난 aspect를 자동으로 동작시키는 
+	안녕, 난 aspect를 자동으로 동작시키는 애너테이션이야.
 */
 @EnableAspectJAutoProxy
 @Configuration
