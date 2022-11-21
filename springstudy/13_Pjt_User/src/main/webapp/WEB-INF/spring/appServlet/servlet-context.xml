@@ -24,7 +24,7 @@
 	<context:component-scan base-package="com.gdu.app13" />
 	
 	<!-- interceptor -->
-	
+	<!-- keepLoginInterceptor : bean태그로 컨테이너 등록  -->
 	<beans:bean id="keepLoginInterceptor" class="com.gdu.app13.interceptor.KeepLoginInterceptor" />
 	<beans:bean id="PreventLoginInterceptor" class="com.gdu.app13.interceptor.PreventLoginInterceptor"/>
 	<interceptors>
@@ -34,6 +34,7 @@
 		</interceptor>
 	</interceptors>
 	
+	<!-- PreventLoginInterceptor @Component로 컨테이너에 등록 -->
 	<interceptors>
 		<interceptor>
 			<mapping path="/user/login/form" />
@@ -43,5 +44,14 @@
 			<beans:bean class="com.gdu.app13.interceptor.PreventLoginInterceptor"/>
 		</interceptor>
 	</interceptors>
+	
+	<!-- SleepUserCheckingInterceptor @Component로 컨테이너에 등록 -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/user/login"/>
+			<beans:bean class="com.gdu.app13.interceptor.SleepUserCheckingInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
 	
 </beans:beans>

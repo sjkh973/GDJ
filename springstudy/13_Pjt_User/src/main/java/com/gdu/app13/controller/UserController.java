@@ -74,13 +74,22 @@ public class UserController {
 	public String loginForm(HttpServletRequest request, Model model) {
 		// 요청 헤더 referer : 이전 페이지의 주소가 저장
 		model.addAttribute("url", request.getHeader("referer"));  // 로그인 후 되돌아 갈 주소 url
+		
+		// 네이버 로그인
+		model.addAttribute("apiURL", userService.getNaverLoginApiURL(request));
+		
 		return "user/login";
 	}
 	
-	@PostMapping("/member/login")
+	@PostMapping("/user/login")
 	public void login(HttpServletRequest request, HttpServletResponse response) {
 		userService.login(request, response);
 		
+	}
+	
+	@GetMapping("/user/naver/login")
+	public void naverLogin(HttpServletRequest request) {
+		userService.getNaverLoginTokenNProfile(request);
 	}
 	
 	@GetMapping("/user/logout")
@@ -109,4 +118,17 @@ public class UserController {
 		userService.modifyPassword(request, response);
 	}
 	
+	@GetMapping("/user/sleep/display")
+	public String sleepDisplay() {
+		return "user/sleep";
+	}
+	
+	@PostMapping("/user/restore")
+	public void restore(HttpServletRequest request, HttpServletResponse response) {
+		userService.restoreUser(request, response);
+	}
+	
+	
+	
 }
+
