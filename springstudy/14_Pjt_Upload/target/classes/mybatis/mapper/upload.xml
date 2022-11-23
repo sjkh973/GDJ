@@ -58,10 +58,31 @@
 		 WHERE ATTACH_NO = #{attachNo}
 	</select>
 	
-	<delete id="deleteAttachByAttachNo" parameterType="int">
+	<update id="updateUpload" parameterType="UploadDTO">
+		UPDATE UPLOAD
+		   SET TITLE = #{title}
+		     , CONTENT = #{content}
+		     , MODIFY_DATE = SYSTIMESTAMP
+		 WHERE UPLOAD_NO = #{uploadNo}
+	</update>
+	
+	<delete id="deleteAttach" parameterType="int">
 		DELETE
 		  FROM ATTACH
 		 WHERE ATTACH_NO = #{attachNo}
 	</delete>
+	
+	<delete id="deleteUpload" parameterType="int">
+		DELETE
+		  FROM UPLOAD
+		 WHERE UPLOAD_NO = #{uploadNo}
+	</delete>
+	
+	
+	<select id="selectAttachListInYesterday" resultType="AttachDTO"> <!-- 어제 날짜의 첨부목록가져오기 -->
+		SELECT ATTACH_NO, PATH, ORIGIN, FILESYSTEM, DOWNLOAD_CNT, UPLOAD_NO
+		  FROM ATTACH
+		 WHERE PATH = CONCAT('storage\\', TO_CHAR(SYSDATE - 1, 'yyyy\\mm\\dd'))
+	</select>
 	
 </mapper>

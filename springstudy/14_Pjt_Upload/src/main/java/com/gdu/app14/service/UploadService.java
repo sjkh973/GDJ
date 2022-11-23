@@ -2,6 +2,7 @@ package com.gdu.app14.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.core.io.Resource;
@@ -17,5 +18,7 @@ public interface UploadService {
 	public void save(MultipartHttpServletRequest multipartReuqest, HttpServletResponse response);	
 	public void getUploadByNo(int uploadNo, Model model);
 	public ResponseEntity<Resource> download(String userAgent, int attachNo);
+	public ResponseEntity<Resource> downloadAll(String userAgent, int uploadNo);
 	public void removeAttachByAttachNo(int attachNo);
+	public void removeUpload(HttpServletRequest multipartRequest, HttpServletResponse response);
 }

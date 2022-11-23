@@ -11,15 +11,14 @@ import com.gdu.app14.domain.UploadDTO;
 public interface UploadMapper {
 
 	public List<UploadDTO> selectUploadList();
-
 	public int insertUpload(UploadDTO upload);
-
-	public int insertAttach(AttachDTO attach);
-	
+	public int insertAttach(AttachDTO attach);	
 	public UploadDTO selectUploadByNo(int uploadNo);
-	
 	public List<AttachDTO> selectAttachList(int uploadNo); // 여러개의 파일을 업로드 해놨기 떄문에 list로 불러온다.
 	public int updateDownloadCnt(int attachNo);
 	public AttachDTO selectAttachByNo(int attachNo);
-	public int deleteAttachByAttachNo(int attachNo);
+	public int updateUpload(UploadDTO upload);
+	public int deleteAttach(int attachNo);
+	public int deleteUpload(int uploadNo);
+	public List<AttachDTO> selectAttachListInYesterday();
 }

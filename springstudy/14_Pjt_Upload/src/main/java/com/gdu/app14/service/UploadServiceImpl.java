@@ -1,10 +1,15 @@
 package com.gdu.app14.service;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -205,6 +210,88 @@ public class UploadServiceImpl implements UploadService {
 		return new ResponseEntity<Resource>(resource, header, HttpStatus.OK);
 	}
 
+
+@Override
+public ResponseEntity<Resource> downloadAll(String userAgent, int uploadNo) {
+	
+	// storage/temp 디렉터리에 임시 zip 파일을 만든 뒤 이를 다운로드 받을 수 있음
+	// com.gdu.app14.batch.DeleteTmpFiles에 의해서 storage/temp 디렉터리의 임시 zip 파일은 주기적으로 삭제됨
+	
+	// 다운로드 할 첨부 파일들의 정보(경로, 이름)
+	List<AttachDTO> attachList = uploadMapper.selectAttachList(uploadNo);
+	
+	// zip 파일을 만들기 위한 스트림
+	FileOutputStream fout = null;
+	ZipOutputStream zout = null;   // zip 파일 생성 스트림
+	FileInputStream fin = null;
+	
+	// storage/temp 디렉터리에 zip 파일 생성
+	String tmpPath = "storage" + File.separator + "temp";
+	
+	File tmpDir = new File(tmpPath);
+	if(tmpDir.exists() == false) {
+		tmpDir.mkdirs();
+	}
+	
+	// zip 파일명은 타임스탬프 값으로 생성
+	String tmpName =  System.currentTimeMillis() + ".zip";
+	
+	try {
+		
+		fout = new FileOutputStream(new File(tmpPath, tmpName));
+		zout = new ZipOutputStream(fout);
+		
+		// 첨부가 있는지 확인
+		if(attachList != null && attachList.isEmpty() == false) {
+
+			// 첨부 파일 하나씩 순회
+			for(AttachDTO attach : attachList) {
+				
+				// zip 파일에 첨부 파일 추가
+				ZipEntry zipEntry = new ZipEntry(attach.getOrigin());
+				zout.putNextEntry(zipEntry);
+				
+				fin = new FileInputStream(new File(attach.getPath(), attach.getFilesystem()));
+				byte[] buffer = new byte[1024];
+				int length;
+				while((length = fin.read(buffer)) != -1){
+					zout.write(buffer, 0, length);
+				}
+				zout.closeEntry();
+				fin.close();
+
+				// 각 첨부 파일 모두 다운로드 횟수 증가
+				uploadMapper.updateDownloadCnt(attach.getAttachNo());
+				
+			}
+			
+			zout.close();
+
+		}
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+
+	
+	// 반환할 Resource
+	File file = new File(tmpPath, tmpName);
+	Resource resource = new FileSystemResource(file);
+	
+	// Resource가 없으면 종료 (다운로드할 파일이 없음)
+	if(resource.exists() == false) {
+		return new ResponseEntity<Resource>(HttpStatus.NOT_FOUND);
+	}
+	
+	// 다운로드 헤더 만들기
+	HttpHeaders header = new HttpHeaders();
+	header.add("Content-Disposition", "attachment; filename=" + tmpName);  // 다운로드할 zip파일명은 타임스탬프로 만든 이름을 그대로 사용
+	header.add("Content-Length", file.length() + "");
+	
+	return new ResponseEntity<Resource>(resource, header, HttpStatus.OK);
+	
+}
+
 	@Override
 	public void removeAttachByAttachNo(int attachNo) {
 		
@@ -212,7 +299,7 @@ public class UploadServiceImpl implements UploadService {
 		AttachDTO attach = uploadMapper.selectAttachByNo(attachNo);
 		
 		// DB에서 삭제
-		int result = uploadMapper.deleteAttachByAttachNo(attachNo);
+		int result = uploadMapper.deleteAttach(attachNo);
 		
 		// 첨부 파일 삭제
 		if(result > 0) {
@@ -225,6 +312,59 @@ public class UploadServiceImpl implements UploadService {
 				file.delete();
 			}
 			
+		}
+		
+	}
+	
+
+	@Override
+	public void removeUpload(HttpServletRequest multipartRequest, HttpServletResponse response) {
+		
+		// 파라미터
+		int uploadNo = Integer.parseInt(multipartRequest.getParameter("uploadNo"));
+		
+		// 삭제할 Upload에 첨부된 첨부파일 목록 가져오기
+		List<AttachDTO> attachList = uploadMapper.selectAttachList(uploadNo);
+		
+		// DB에서 Upload 정보 삭제
+		int result = uploadMapper.deleteUpload(uploadNo);
+		
+		// 첨부 파일 삭제
+		if(result > 0) {
+			if(attachList != null && attachList.isEmpty() == false) {
+				// 순회하면서 하나씩 삭제
+				for(AttachDTO attach : attachList) {
+					// 삭제할 첨부 파일의 File 객체 생성
+					File file = new File(attach.getPath(), attach.getFilesystem());
+					// 삭제
+					if(file.exists()) {
+						file.delete();
+					}
+				}
+			}
+		}
+		
+		// 응답
+		try {
+			
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			
+			if(result > 0) {
+				out.println("<script>");
+				out.println("alert('삭제 되었습니다.');");
+				out.println("location.href='" + multipartRequest.getContextPath() + "/upload/list'");
+				out.println("</script>");
+			} else {
+				out.println("<script>");
+				out.println("alert('삭제 실패했습니다.');");
+				out.println("history.back();");
+				out.println("</script>");
+			}
+			out.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
 	}

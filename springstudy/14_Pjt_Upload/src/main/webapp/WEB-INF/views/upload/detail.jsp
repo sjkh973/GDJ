@@ -9,15 +9,28 @@
 <title>Insert title here</title>
 <script src="${contextPath}/resources/js/jquery-3.6.1.min.js"></script>
 <script>
-	
+
 	$(function(){
 		
-		// 첨부 삭제
-		$('.btn_attach_remove').click(function(){
-			if(confirm('해당 첨부파일을 삭제 할까요?')){
-				location.href= '${contextPath}/upload/attach/remove?uploadNo=' + $(this).data('upload_no') + '&attachNo=' + $(this).data('attach_no'); //btn_attach_remove의 데이터 속성 꺼내와서 파라미터로 넘김
+		// 게시글 수정화면으로 이동
+		$('#btn_upload_edit').click(function(event){
+			$('#frm_upload').attr('action', '${contextPath}/upload/edit');
+			$('#frm_upload').submit();
+		});
+		
+		// 게시글 삭제
+		$('#btn_upload_remove').click(function(event){
+			if(confirm('첨부된 모든 파일이 함께 삭제됩니다. 삭제할까요?')){
+				$('#frm_upload').attr('action', '${contextPath}/upload/remove');
+				$('#frm_upload').submit();
 			}
 		});
+		
+		// 게시글 목록
+		$('#btn_upload_list').click(function(event){
+			location.href = '${contextPath}/upload/list';
+		});
+		
 	});
 
 </script>
@@ -25,29 +38,37 @@
 <body>
 
 	<div>
-		<h1>업로드 게시판 정보</h1>
+		<h1>업로드 게시글 정보</h1>
 		<ul>
 			<li>제목 : ${upload.title}</li>
 			<li>내용 : ${upload.content}</li>
 			<li>작성일 : ${upload.createDate}</li>
 			<li>수정일 : ${upload.modifyDate}</li>
 		</ul>
-	
+		<div>
+			<form id="frm_upload" method="post">
+				<input type="hidden" name="uploadNo" value="${upload.uploadNo}">
+				<input type="button" value="게시글편집" id="btn_upload_edit"> 			
+				<input type="button" value="게시글삭제" id="btn_upload_remove"> 			
+				<input type="button" value="게시글목록" id="btn_upload_list"> 			
+			</form>
+		</div>
 	</div>
 	
 	<hr>
 	
 	<div>
-		<h3>첨부목록</h3>
+		<h3>첨부 다운로드</h3>	
 		<c:forEach items="${attachList}" var="attach">
 			<div>
-				<a href="${contextPath}//upload/download?attachNo=${attach.attachNo}">${attach.origin}</a>
-				<input type="button" value="삭제" class="btn_attach_remove" data-upload_no="${upload.uploadNo}" data-attach_no= "${attach.attachNo}">
+				<a href="${contextPath}/upload/download?attachNo=${attach.attachNo}">${attach.origin}</a>
 			</div>
 		</c:forEach>
+		<br>
+		<div>
+			<a href="${contextPath}/upload/downloadAll?uploadNo=${upload.uploadNo}">모두 다운로드</a>
+		</div>
 	</div>
-	
-
 	
 </body>
 </html>

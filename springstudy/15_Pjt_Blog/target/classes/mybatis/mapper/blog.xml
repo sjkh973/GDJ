@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gdu.app15.mapper.BlogMapper">
+
+	<select id="selectBlogListCount" resultType="int">
+		SELECT COUNT(*)
+		  FROM BLOG
+	</select>
+	
+	<select id="selectBlogListByMap" parameterType="map" resultType="BlogDTO"> <!-- 페이징처리 쿼리문  // 파리미터타입 map에는 begin과 end가 담겨야 함-->   
+		SELECT A.ROW_NUM, A.BLOG_NO, A.TITLE, A.CONTENT, A.HIT, A.IP, A.CREATE_DATE, A.MODIFY_DATE
+		  FROM (SELECT ROW_NUMBER() OVER(ORDER BY BLOG_NO DESC) AS ROW_NUM, BLOG_NO, TITLE, CONTENT, HIT, IP, CREATE_DATE, MODIFY_DATE
+		  		  FROM BLOG) A 	    
+		 WHERE A.ROW_NUM BETWEEN #{begin} AND #{end} 		  
+	</select>
+	
+</mapper>

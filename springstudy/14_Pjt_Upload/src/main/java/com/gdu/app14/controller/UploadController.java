@@ -1,5 +1,6 @@
 package com.gdu.app14.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,11 +57,28 @@ public class UploadController {
 		return upLoadService.download(userAgent, attachNo);
 	}
 	
+	@ResponseBody
+	@GetMapping("/upload/downloadAll")
+	public ResponseEntity<Resource> downloadAll(@RequestHeader("User-Agent") String userAgent, @RequestParam("uploadNo") int uploadNo) {
+		return upLoadService.downloadAll(userAgent, uploadNo);
+	}
+	
+	@PostMapping("/upload/edit")
+	public String edit(@RequestParam("uploadNo") int uploadNo, Model model) {
+		upLoadService.getUploadByNo(uploadNo, model);
+		return "upload/edit";
+	}
+	
 	@GetMapping("/upload/attach/remove") // detail페이지로 가기위해 uploadNo까지 파라미터로 받아줌
 	public String attachRemove(@RequestParam("uploadNo")  int uploadNo, @RequestParam("attachNo")  int attachNo) {
 		upLoadService.removeAttachByAttachNo(attachNo);
 		return "redirect:/upload/detail?uploadNo=" + uploadNo;
 		
+	}
+	
+	@PostMapping("/upload/remove")
+	public void remove(HttpServletRequest request, HttpServletResponse response) {
+		upLoadService.removeUpload(request, response);
 	}
 	
 }
