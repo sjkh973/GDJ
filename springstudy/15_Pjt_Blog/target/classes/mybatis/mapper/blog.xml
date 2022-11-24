@@ -18,4 +18,37 @@
 		 WHERE A.ROW_NUM BETWEEN #{begin} AND #{end} 		  
 	</select>
 	
+	<insert id="insertBlog" parameterType="BlogDTO">
+		INSERT INTO BLOG
+		  (BLOG_NO, TITLE, CONTENT, HIT, IP, CREATE_DATE, MODIFY_DATE)
+		VALUES 
+		  (blog_SEQ.NEXTVAL, #{title}, #{content}, 0, #{ip}, SYSDATE, SYSDATE)  
+	</insert>
+	
+	<update id="updateHit" parameterType="int">
+		UPDATE BLOG
+		   SET HIT = HIT + 1
+		 WHERE BLOG_NO = #{blogNo}  
+	</update>
+	
+	<select id="selectBlogByNo" parameterType="int" resultType="BlogDTO">
+		SELECT BLOG_NO, TITLE, CONTENT, HIT, IP, CREATE_DATE, MODIFY_DATE
+		  FROM BLOG
+		 WHERE BLOG_NO = #{blogNo} 
+	</select>
+	
+	<delete id="deleteBlog" parameterType="int">
+		DELETE 
+		  FROM BLOG
+		 WHERE BLOG_NO = #{blogNo} 
+	</delete>
+	
+	<update id="updateBlog" parameterType="BlogDTO">
+		UPDATE BLOG
+		   SET TITLE = #{title}
+		      ,COTENT = #{CONTENT}
+		      ,MODIFY_DATE = TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+	</update>
+	
+	
 </mapper>

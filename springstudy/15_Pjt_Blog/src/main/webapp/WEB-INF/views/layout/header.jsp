@@ -13,6 +13,7 @@
 <head>
 <meta charset="UTF-8">
 <title>${title}</title>
+<!-- 스크립트의 src에 적는 ${contexPath}/resources는 servlet-context.xml의 resources의 매핑요청임 // 경로가 아닌 매핑요청임 -->
 <script src="${contextPath}/resources/js/jquery-3.6.1.min.js"></script>
 <script src="${contextPath}/resources/js/moment-with-locales.js"></script>
 <script src="${contextPath}/resources/summernote-0.8.18-dist/summernote-lite.js"></script>
