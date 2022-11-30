@@ -123,42 +123,37 @@ public class BlogServiceImpl implements BlogService {
 	@Override
 	public Map<String, Object> saveSummernoteImage(MultipartHttpServletRequest multipartRequest) {
 		
-		// 파라미터 file
+		// 파라미터 files
 		MultipartFile multipartFile = multipartRequest.getFile("file");
-		
-		// 저장할 파일명
-		String filesystem = myFileUtil.getFilename(multipartFile.getOriginalFilename()); // 원래이름에서 확장자만 가져다 씀
-		
+			
 		// 저장 경로
-		String path = "C:\\upload";   
+		String path = "C:" + File.separator + "summernoteImage";
+				
+		// 저장할 파일명
+		String filesystem = myFileUtil.getFilename(multipartFile.getOriginalFilename());
 		
 		// 저장 경로가 없으면 만들기
 		File dir = new File(path);
-		
 		if(dir.exists() == false) {
 			dir.mkdirs();
 		}
 		
 		// 저장할 File 객체
-		File file = new File(path, filesystem); // new File(dir, filesystem)도 가능
+		File file = new File(path, filesystem);  // new File(dir, filesystem)도 가능
 		
 		// HDD에 File 객체 저장하기
 		try {
-			
 			multipartFile.transferTo(file);
-			
-		}catch (Exception e) {
-			e.printStackTrace();		
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		
 		// 저장된 파일을 확인할 수 있는 매핑을 반환
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("src", multipartRequest.getContextPath() + "/load/image/" + filesystem); 
+		map.put("src", multipartRequest.getContextPath() + "/load/image/" + filesystem);  // 이미지 mapping값을 반환
+		map.put("filesystem", filesystem);  // HDD에 저장된 파일명 반환
 		return map;
 		
-		// 저장된 파일이 aaa.jpg라고 가정하면
-		// src=${contextPath}/load/image/aaa.jpg
-		
-
 	}
 	
 	@Override
