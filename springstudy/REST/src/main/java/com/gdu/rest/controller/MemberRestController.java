@@ -7,9 +7,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,6 +31,7 @@ import com.gdu.rest.service.MemberService;
   		2) 목록  /members   GET
   		3) 상세  /members/1 GET
   		4) 수정  /members   PUT
+  		5) 삭제  /members/1 DELETE
  */
 
 @RestController // 이 컨트롤러는 모든 메소드에 @ResponseBody 애너테이션을 추가한다.
@@ -50,11 +53,23 @@ public class MemberRestController {
 		int page = Integer.parseInt(opt.orElse("1"));
 		return memberService.getMemberList(page);
 	}
-	
+	// 조회
 	@GetMapping(value="/members/{memberNo}", produces = "application/json")
-	public Map<String, Object> getmember(@PathVariable(value="memberNo", required = false) Optional<String> opt){
+	public Map<String, Object> getMember(@PathVariable(value="memberNo", required = false) Optional<String> opt){
 		int memberNo = Integer.parseInt(opt.orElse("0"));
 		return memberService.getMemberByNo(memberNo);
+	}
+	
+	// 수정
+	@PutMapping(value="/members", produces = "application/json")
+	public Map<String, Object> modifyMember(@RequestBody Map<String, Object> map, HttpServletResponse response){
+		
+		return memberService.modifyMember(map, response);
+	}
+	// 삭제
+	@DeleteMapping(value="/members/{memberNoList}", produces = "application/json")
+	public Map<String, Object> deleteMember(@PathVariable String memberNoList){
+		return memberService.removeMemberList(memberNoList);
 	}
 	
 }

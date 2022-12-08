@@ -1,7 +1,9 @@
 package com.gdu.rest.service;
 
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -95,6 +97,37 @@ public class MemberServiceImpl implements MemberService{
 		
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("member", memberMapper.selectMemberByNo(memberNo));
+		return result;
+	}
+	
+	@Override
+	public Map<String, Object> modifyMember(Map<String, Object> map, HttpServletResponse response) {
+		
+		try {
+			Map<String, Object> result = new HashMap<String, Object>();
+			result.put("updateResult", memberMapper.updateMember(map));
+			return result;
+		}catch (DataIntegrityViolationException e) {
+			try {
+				response.setContentType("text/plain; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				response.setStatus(501);
+				out.println("필수 정보가 누락되었습니다."); // 응답 메시지
+				out.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return null;
+	}
+	
+	@Override
+	public Map<String, Object> removeMemberList(String memberNoList) {
+		
+		List<String> list = Arrays.asList(memberNoList.split(","));  // ,를 기준으로 쪼개줌
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("deleteResult", memberMapper.deleteMemberList(list)); // 삭제된 데이터의 갯수가 반환됨
 		return result;
 	}
 	

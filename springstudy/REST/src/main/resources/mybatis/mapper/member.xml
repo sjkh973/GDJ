@@ -30,4 +30,24 @@
 		  FROM MEMBER
 		 WHERE MEMBER_NO = #{memberNo} 
 	</select>
+	
+	<update id="updateMember" parameterType="map">
+		UPDATE MEMBER
+		   SET NAME = #{name}
+		     , GENDER = #{gender}
+		     , ADDRESS = #{address}
+		 WHERE MEMBER_NO = #{memberNo}    
+	</update>
+	
+	<delete id="deleteMemberList" parameterType="List">
+		DELETE
+		  FROM MEMBER
+		 <where>
+		 	MEMBER_NO IN 
+		 	<foreach collection="list" item="memberNo" open="(" close=")" separator=",">  <!-- memberNo를 ()로 덮어주고 separator로 구분을해줌(여러개가 나오니까) -->
+		 		#{memberNo}
+		 	</foreach>
+		 </where> 
+	</delete>
+	
 </mapper>

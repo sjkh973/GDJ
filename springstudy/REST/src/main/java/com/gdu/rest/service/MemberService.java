@@ -11,4 +11,6 @@ public interface MemberService {
 	public Map<String, Object> register(MemberDTO member, HttpServletResponse response);
 	public Map<String, Object> getMemberList(int page);
 	public Map<String, Object> getMemberByNo(int memberNo);
+	public Map<String, Object> modifyMember(Map<String, Object> map, HttpServletResponse response);
+	public Map<String, Object> removeMemberList(String memberNoList); // 3,1 이런값을 스트링으로 받아옴
 }

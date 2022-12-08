@@ -15,6 +15,7 @@
 		fn_list();
 		fn_detail();
 		fn_modify();
+		fn_remove();
 	});
 	function fn_add(){
 		$('#btn_add').click(function(){
@@ -117,7 +118,53 @@
 				gender: $(':radio[name=gender]:checked').val(),
 				address:$('#address').val()
 			});
-			alert(member);
+			// 수정
+			$.ajax({
+				type : 'put',
+				url : '${contextPath}/members',
+				data : member,
+				contentType : 'application/json',
+				dataType: 'json',
+				success: function(resData){
+					if(resData.updateResult > 0){
+						alert('회원 정보가 수정되었습니다.');
+						fn_list();
+					} else{
+						alert('회원 정보가 수정되지 않습니다.');
+					}
+				},
+				error: function(jqXHR){
+					alert('에러코드(' + jqXHR.status + ')' + jqXHR.responseText);
+				}
+			});
+		});
+	}
+	
+	function fn_remove(){
+		$('#btn_remove').click(function(){
+			if(confirm('선택한 회원을 모두 삭제할까요?')){
+				// 삭제할 회원번호 
+				let memberNoList = '';
+				for(let i = 0; i < $('.check_one').length; i++){
+					if( $($('.check_one')[i]).is(':checked') ){   // $('.check_one')[i] 뒤의 [i]때문에 자바스크립트 요소가 되기때문에 제이쿼리 랩퍼를 한번 더 감싸줌
+						memberNoList +=  $($('.check_one')[i]).val() + ',';  // 3,1, 마지막에 콤마 있음을 주의
+					}
+				}
+				memberNoList = memberNoList.substr(0, memberNoList.length - 1); // 3, 1   0번째부터 멤버넘버리스트의 -1해서 마지막 콤마를 자름
+				$.ajax({
+					type:'delete',
+					url : '${contextPath}/members/' + memberNoList,
+					dataType : 'json',
+					success : function(resData){
+						if(resData.deleteResult > 0){
+							alert('선택된 회원 정보가 삭제 되었습니다.');
+							fn_list();
+						} else{
+							alert('선택된 회원 정보가 삭제되지 않았습니다.');
+						}
+					}
+				});
+			}
 		});
 	}
 </script>
