@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gdu.rest.mapper.MemberMapper">
+
+	<insert id="insertMember" parameterType="MemberDTO">
+		INSERT INTO MEMBER
+			(MEMBER_NO, ID, NAME, GENDER, ADDRESS)
+		VALUES
+			(MEMBER_SEQ.NEXTVAL, #{id}, #{name}, #{gender}, #{address})	
+	</insert>
+	
+	<select id="selectMemberCount" resultType="int">
+		SELECT COUNT(*)
+		  FROM MEMBER
+	</select>
+	
+	<select id="selectMemberListByMap" parameterType="map" resultType="MemberDTO">
+		SELECT A.ROW_NUM, A.MEMBER_NO, A.ID, A.NAME, A.GENDER, A.ADDRESS
+		  FROM (SELECT ROW_NUMBER() OVER(ORDER BY MEMBER_NO DESC) AS ROW_NUM, MEMBER_NO, ID, NAME, GENDER, ADDRESS
+		  		  FROM MEMBER) A
+		 WHERE A.ROW_NUM BETWEEN #{begin} AND #{end} 		  
+	</select>
+	
+	<select id="selectMemberByNo" parameterType="int" resultType="MemberDTO">
+		SELECT MEMBER_NO, ID, NAME, GENDER, ADDRESS
+		  FROM MEMBER
+		 WHERE MEMBER_NO = #{memberNo} 
+	</select>
+</mapper>

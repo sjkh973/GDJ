@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--/* 
+	조각이름 : head
+	파라미터 : title	
+ */-->
+<head th:fragment="head(title)">
+<meta charset="UTF-8">
+<title th:text="${title}"></title>
+<script th:src="@{/js/jquery-3.6.1.min.js}"></script>
+<script th:src="@{/js/moment-with-locales.js}"></script>
+<script th:src="@{/summernote-0.8.18-dist/summernote-lite.js}"></script>
+<script th:src="@{/summernote-0.8.18-dist/lang/summernote-ko-KR.min.js}"></script>
+<link rel="stylesheet" th:href="@{/summernote-0.8.18-dist/summernote-lite.css}">
+</head>
+<body>
+
+	<div th:fragment="body_title">
+		<h1>Welcome To My BLOG</h1> 
+		<hr>
+	</div>
+
+	
