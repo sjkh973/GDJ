@@ -82,4 +82,6 @@ public class BlogController {
 	public void remove(HttpServletRequest request, HttpServletResponse response) {
 		blogService.removeBlog(request, response); // 삭제 후 목록보기로
 	}
+	
+	
 }

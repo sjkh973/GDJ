@@ -19,8 +19,6 @@ import com.gdu.app07.repository.BoardDAO;
 @ContextConfiguration(classes= {BoardAppContext.class})
 
 
-
-
 public class BoardUnitTest {
 	
 	@Autowired
